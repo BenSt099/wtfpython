@@ -1,119 +1,183 @@
 <p align="center"><img src="/images/logo.png" alt=""></p>
 <h1 align="center">What the f*ck Python! 😱</h1>
-<p align="center">Exploring and understanding Python through surprising snippets.</p>
+<p align="center">Entdecke und verstehe Python durch überraschende Code-Schnipsel.</p>
 
-Translations: [Chinese 中文](https://github.com/robertparley/wtfpython-cn) | [Vietnamese Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Spanish Español](https://web.archive.org/web/20220511161045/https://github.com/JoseDeFreitas/wtfpython-es) | [Korean 한국어](https://github.com/buttercrab/wtfpython-ko) | [Russian Русский](https://github.com/frontdevops/wtfpython) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
+Übersetzungen: [English](https://github.com/robertparley/wtfpython-cn) |
 
-Other modes: [Interactive](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
+Andere Modi: [Interaktiv](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
 
-Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
+Python, bekannt als gut designte High-Level und Interpreter-basierte Programmiersprache, stellt viele Features zur Verfügung, um dem Programmierer das Leben zu erleichtern. Allerdings kann es vorkommen, dass ein Python-Schnipsel ein unerwartetes Verhalten zeigt.
 
-Here's a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
+Hier ist ein schönes Projekt, das versucht die Dinge aufzuzeigen, die bei einigen Code-Schnipseln unter der Haube passieren und darüber hinaus einige weniger bekannte Features von Python zu erklären.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
+Während manche Beispiele nicht unbedingt beeindruckend erscheinen, zeigen sie dennoch interessante Details von Python, die dir womöglich noch nicht aufgefallen sind. Ich finde, dass es eine schöne Möglichkeit ist, die Interna einer Programmiersprache zu lernen und ich glaube das findest du auch !
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in the first attempt. You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
+Wenn du ein erfahrener Python-Programmierer bist, kannst du dies als Herausforderung ansehen, um möglichst viel beim ersten Anlauf
+richtig zu machen. Du hast vielleicht manches schon erlebt, sodass ich möglicherweise alte Erinnerungen wecken kann! :sweat_smile:
 
-PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/) (the examples marked with asterisk are the ones added in the latest major revision). 
+PS: Wenn du bereits mehrfach hier warst, kannst du dich [hier](https://github.com/satwikkansal/wtfpython/releases/) über neue Modifikationen informieren (die Beispiele, die mit einem Stern markiert sind, sind Teil des letzten Releases).
 
-So, here we go...
+Also, los gehts...
 
-# Table of Contents
+# Inhaltsverzeichnis
 
 <!-- Generated using "markdown-toc -i README.md --maxdepth 3"-->
 
 <!-- toc -->
 
+- [Inhaltsverzeichnis](#inhaltsverzeichnis)
 - [Structure of the Examples](#structure-of-the-examples)
-    + [▶ Some fancy Title](#-some-fancy-title)
-- [Usage](#usage)
-- [👀 Examples](#-examples)
-  * [Section: Strain your brain!](#section-strain-your-brain)
-    + [▶ First things first! *](#-first-things-first-)
-    + [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
-    + [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
-    + [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
-    + [▶ Hash brownies](#-hash-brownies)
-    + [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
-    + [▶ Disorder within order *](#-disorder-within-order-)
-    + [▶ Keep trying... *](#-keep-trying-)
-    + [▶ For what?](#-for-what)
-    + [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
-    + [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
-    + [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-    + [▶ Schrödinger's variable](#-schrödingers-variable-)
-    + [▶ The chicken-egg problem *](#-the-chicken-egg-problem-)
-    + [▶ Subclass relationships](#-subclass-relationships)
-    + [▶ Methods equality and identity](#-methods-equality-and-identity)
-    + [▶ All-true-ation *](#-all-true-ation-)
-    + [▶ The surprising comma](#-the-surprising-comma)
-    + [▶ Strings and the backslashes](#-strings-and-the-backslashes)
-    + [▶ not knot!](#-not-knot)
-    + [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
-    + [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
-    + [▶ Class attributes and instance attributes](#-class-attributes-and-instance-attributes)
-    + [▶ yielding None](#-yielding-none)
-    + [▶ Yielding from... return! *](#-yielding-from-return-)
-    + [▶ Nan-reflexivity *](#-nan-reflexivity-)
-    + [▶ Mutating the immutable!](#-mutating-the-immutable)
-    + [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
-    + [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
-    + [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
-    + [▶ Exceeds the limit for integer string conversion](#-exceeds-the-limit-for-integer-string-conversion)
-  * [Section: Slippery Slopes](#section-slippery-slopes)
-    + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
-    + [▶ Stubborn `del` operation](#-stubborn-del-operation)
-    + [▶ The out of scope variable](#-the-out-of-scope-variable)
-    + [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
-    + [▶ Lossy zip of iterators *](#-lossy-zip-of-iterators-)
-    + [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
-    + [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
-    + [▶ Catching the Exceptions](#-catching-the-exceptions)
-    + [▶ Same operands, different story!](#-same-operands-different-story)
-    + [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
-    + [▶ Rounding like a banker *](#-rounding-like-a-banker-)
-    + [▶ Needles in a Haystack *](#-needles-in-a-haystack-)
-    + [▶ Splitsies *](#-splitsies-)
-    + [▶ Wild imports *](#-wild-imports-)
-    + [▶ All sorted? *](#-all-sorted-)
-    + [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
-  * [Section: The Hidden treasures!](#section-the-hidden-treasures)
-    + [▶ Okay Python, Can you make me fly?](#-okay-python-can-you-make-me-fly)
-    + [▶ `goto`, but why?](#-goto-but-why)
-    + [▶ Brace yourself!](#-brace-yourself)
-    + [▶ Let's meet Friendly Language Uncle For Life](#-lets-meet-friendly-language-uncle-for-life)
-    + [▶ Even Python understands that love is complicated](#-even-python-understands-that-love-is-complicated)
-    + [▶ Yes, it exists!](#-yes-it-exists)
-    + [▶ Ellipsis *](#-ellipsis-)
-    + [▶ Inpinity](#-inpinity)
-    + [▶ Let's mangle](#-lets-mangle)
-  * [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
-    + [▶ Skipping lines?](#-skipping-lines)
-    + [▶ Teleportation](#-teleportation)
-    + [▶ Well, something is fishy...](#-well-something-is-fishy)
-  * [Section: Miscellaneous](#section-miscellaneous)
-    + [▶ `+=` is faster](#--is-faster)
-    + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
-    + [▶ Slowing down `dict` lookups *](#-slowing-down-dict-lookups-)
-    + [▶ Bloating instance `dict`s *](#-bloating-instance-dicts-)
-    + [▶ Minor Ones *](#-minor-ones-)
+- [Benutzung](#benutzung)
+- [👀 Beispiele](#-beispiele)
+  - [Kapitel: Strain your brain!](#kapitel-strain-your-brain)
+    - [▶ First things first! \*](#-first-things-first-)
+      - [💡 Erklärung](#-erklärung)
+    - [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
+      - [💡 Explanation:](#-explanation)
+    - [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
+      - [💡 Explanation:](#-explanation-1)
+    - [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
+      - [💡 Explanation:](#-explanation-2)
+    - [▶ Hash brownies](#-hash-brownies)
+      - [💡 Explanation](#-explanation-3)
+    - [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
+      - [💡 Explanation:](#-explanation-4)
+    - [▶ Disorder within order \*](#-disorder-within-order-)
+      - [💡 Explanation:](#-explanation-5)
+    - [▶ Keep trying... \*](#-keep-trying-)
+      - [💡 Explanation:](#-explanation-6)
+    - [▶ For what?](#-for-what)
+      - [💡 Explanation:](#-explanation-7)
+    - [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
+      - [💡 Explanation](#-explanation-8)
+    - [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
+      - [💡 Explanation](#-explanation-9)
+    - [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
+      - [💡 Explanation:](#-explanation-10)
+    - [▶ Schrödinger's variable \*](#-schrödingers-variable-)
+      - [💡 Explanation:](#-explanation-11)
+    - [▶ The chicken-egg problem \*](#-the-chicken-egg-problem-)
+      - [💡 Explanation](#-explanation-12)
+    - [▶ Subclass relationships](#-subclass-relationships)
+      - [💡 Explanation:](#-explanation-13)
+    - [▶ Methods equality and identity](#-methods-equality-and-identity)
+      - [💡 Explanation](#-explanation-14)
+    - [▶ All-true-ation \*](#-all-true-ation-)
+      - [💡 Explanation:](#-explanation-15)
+      - [💡 Explanation:](#-explanation-16)
+    - [▶ Strings and the backslashes](#-strings-and-the-backslashes)
+      - [💡 Explanation](#-explanation-17)
+    - [▶ not knot!](#-not-knot)
+      - [💡 Explanation:](#-explanation-18)
+    - [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
+      - [💡 Explanation:](#-explanation-19)
+    - [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
+      - [💡 Explanation:](#-explanation-20)
+    - [▶ Class attributes and instance attributes](#-class-attributes-and-instance-attributes)
+      - [💡 Explanation:](#-explanation-21)
+    - [▶ yielding None](#-yielding-none)
+      - [💡 Explanation:](#-explanation-22)
+    - [▶ Yielding from... return! \*](#-yielding-from-return-)
+      - [💡 Explanation:](#-explanation-23)
+    - [▶ Nan-reflexivity \*](#-nan-reflexivity-)
+      - [💡 Explanation:](#-explanation-24)
+    - [▶ Mutating the immutable!](#-mutating-the-immutable)
+      - [💡 Explanation:](#-explanation-25)
+    - [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
+      - [💡 Explanation:](#-explanation-26)
+    - [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
+      - [💡 Explanation:](#-explanation-27)
+    - [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+      - [💡 Explanation:](#-explanation-28)
+    - [▶ Exceeds the limit for integer string conversion](#-exceeds-the-limit-for-integer-string-conversion)
+      - [💡 Explanation:](#-explanation-29)
+  - [Section: Slippery Slopes](#section-slippery-slopes)
+    - [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
+      - [💡 Explanation:](#-explanation-30)
+    - [▶ Stubborn `del` operation](#-stubborn-del-operation)
+      - [💡 Explanation:](#-explanation-31)
+    - [▶ The out of scope variable](#-the-out-of-scope-variable)
+      - [💡 Explanation:](#-explanation-32)
+    - [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
+      - [💡 Explanation:](#-explanation-33)
+    - [▶ Lossy zip of iterators \*](#-lossy-zip-of-iterators-)
+      - [💡 Explanation:](#-explanation-34)
+    - [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
+      - [💡 Explanation:](#-explanation-35)
+    - [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
+      - [💡 Explanation:](#-explanation-36)
+    - [▶ Catching the Exceptions](#-catching-the-exceptions)
+      - [💡 Explanation](#-explanation-37)
+    - [▶ Same operands, different story!](#-same-operands-different-story)
+      - [💡 Explanation:](#-explanation-38)
+    - [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
+      - [💡 Explanation](#-explanation-39)
+    - [▶ Rounding like a banker \*](#-rounding-like-a-banker-)
+      - [💡 Explanation:](#-explanation-40)
+    - [▶ Needles in a Haystack \*](#-needles-in-a-haystack-)
+      - [💡 Explanation:](#-explanation-41)
+    - [▶ Splitsies \*](#-splitsies-)
+      - [💡 Explanation:](#-explanation-42)
+    - [▶ Wild imports \*](#-wild-imports-)
+      - [💡 Explanation:](#-explanation-43)
+    - [▶ All sorted? \*](#-all-sorted-)
+      - [💡 Explanation:](#-explanation-44)
+    - [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
+      - [💡 Explanation:](#-explanation-45)
+  - [Section: The Hidden treasures!](#section-the-hidden-treasures)
+    - [▶ Okay Python, Can you make me fly?](#-okay-python-can-you-make-me-fly)
+      - [💡 Explanation:](#-explanation-46)
+    - [▶ `goto`, but why?](#-goto-but-why)
+      - [💡 Explanation:](#-explanation-47)
+    - [▶ Brace yourself!](#-brace-yourself)
+      - [💡 Explanation:](#-explanation-48)
+    - [▶ Let's meet Friendly Language Uncle For Life](#-lets-meet-friendly-language-uncle-for-life)
+      - [💡 Explanation:](#-explanation-49)
+    - [▶ Even Python understands that love is complicated](#-even-python-understands-that-love-is-complicated)
+      - [💡 Explanation:](#-explanation-50)
+    - [▶ Yes, it exists!](#-yes-it-exists)
+      - [💡 Explanation:](#-explanation-51)
+    - [▶ Ellipsis \*](#-ellipsis-)
+      - [💡 Explanation](#-explanation-52)
+    - [▶ Inpinity](#-inpinity)
+      - [💡 Explanation:](#-explanation-53)
+    - [▶ Let's mangle](#-lets-mangle)
+      - [💡 Explanation:](#-explanation-54)
+  - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
+    - [▶ Skipping lines?](#-skipping-lines)
+      - [💡 Explanation](#-explanation-55)
+    - [▶ Teleportation](#-teleportation)
+      - [💡 Explanation:](#-explanation-56)
+    - [▶ Well, something is fishy...](#-well-something-is-fishy)
+      - [💡 Explanation](#-explanation-57)
+  - [Section: Miscellaneous](#section-miscellaneous)
+    - [▶ `+=` is faster](#--is-faster)
+      - [💡 Explanation:](#-explanation-58)
+    - [▶ Let's make a giant string!](#-lets-make-a-giant-string)
+      - [💡 Explanation](#-explanation-59)
+    - [▶ Slowing down `dict` lookups \*](#-slowing-down-dict-lookups-)
+      - [💡 Explanation:](#-explanation-60)
+    - [▶ Bloating instance `dict`s \*](#-bloating-instance-dicts-)
+      - [💡 Explanation:](#-explanation-61)
+    - [▶ Minor Ones \*](#-minor-ones-)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
+      - [Some nice Links!](#some-nice-links)
 - [🎓 License](#-license)
-  * [Surprise your friends as well!](#surprise-your-friends-as-well)
-  * [More content like this?](#more-content-like-this)
+  - [Surprise your friends as well!](#surprise-your-friends-as-well)
+  - [Need a pdf version?](#need-a-pdf-version)
 
 <!-- tocstop -->
 
 # Structure of the Examples
 
-All the examples are structured like below:
+Alle Beispiele sind nach folgendem Muster aufgebaut:
 
 > ### ▶ Some fancy Title
 >
 > ```py
 > # Set up the code.
-> # Preparation for the magic...
+> # Vorbereitung für etwas Magisches...
 > ```
 >
 > **Output (Python version(s)):**
@@ -127,9 +191,9 @@ All the examples are structured like below:
 >
 > #### 💡 Explanation:
 >
-> * Brief explanation of what's happening and why is it happening.
+> * Kurze Erklärung was und warum es passiert.
 > ```py
-> # Set up code
+> # Aufsetzen des Codes
 > # More examples for further clarification (if necessary)
 > ```
 > **Output (Python version(s)):**
@@ -139,35 +203,36 @@ All the examples are structured like below:
 > # some justified output
 > ```
 
-**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified before the output.
+**Note:** Alle Beispiele sind mit Pythons 3.5.2 interaktiven Interpreter getestet, und sie sollten für alle Python Versionen funktionieren. Ausnahmen werden vor dem Output kenntlich gemacht.
 
-# Usage
+# Benutzung
 
-A nice way to get the most out of these examples, in my opinion, is to read them in sequential order, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, you'll successfully anticipate what's going to happen next most of the time.
-- Read the output snippets and,
-  + Check if the outputs are the same as you'd expect.
-  + Make sure if you know the exact reason behind the output being the way it is.
-    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfpython/issues/new)).
-    - If yes, give a gentle pat on your back, and you may skip to the next example.
+Ein guter Weg, um die Beispiele bestmöglich zu nutzen, ist es, sie von anfang an durchzugehen und bei jedem Beispiel folgendes zu tun:
+- Lese vorsichtig den initialen Code des Beispiels. Wenn du ein erfahrener Python-Programmierer bist, wirst du wahrscheinlich wissen, was
+als nächstes kommt.
+- Lies die Schnippsel durch und
+  + Überprüfe, dass die Ausgabe die ist, die du erwartet hast
+  + Weißt du, warum sich die Ausgabe so gestaltet, wie sie es tut ?
+    - Wenn die Antwort Nein ist (was vollkommen in Ordnung ist), nimm einen tiefen Atemzug, und lies dir die Erklärung durch. Wenn du es dann immernoch nicht verstanden hast, frage nach Hilfe, indem du [hier](https://github.com/satwikkansal/wtfpython/issues/new) ein Issue erstellst.
+    - Wenn Ja, kannst du dir auf die Schulter klopfen und zum nächsten Beispiel springen. 
 
-PS: You can also read WTFPython at the command line using the [pypi package](https://pypi.python.org/pypi/wtfpython),
+PS: Du kannst dir auch WTFPython im Terminal ansehen, indem du das [pypi package](https://pypi.python.org/pypi/wtfpython) nutzt:
 ```sh
 $ pip install wtfpython -U
 $ wtfpython
 ```
 ---
 
-# 👀 Examples
+# 👀 Beispiele
 
-## Section: Strain your brain!
+## Kapitel: Strain your brain!
 
 ### ▶ First things first! *
 
 <!-- Example ID: d3d73936-3cf1-4632-b5ab-817981338863 -->
 <!-- read-only -->
 
-For some reason, the Python 3.8's "Walrus" operator (`:=`) has become quite popular. Let's check it out,
+Aus irgendwelchen Gründen ist der "Walrus" Operator (`:=`) in Python 3.8 ziemlich beliebt. Lass uns starten,
 
 1\.
 
@@ -184,7 +249,7 @@ File "<stdin>", line 1
       ^
 SyntaxError: invalid syntax
 
->>> (a := "wtf_walrus") # This works though
+>>> (a := "wtf_walrus") # Das funktioniert merkwürdigerweise
 'wtf_walrus'
 >>> a
 'wtf_walrus'
@@ -213,10 +278,10 @@ SyntaxError: invalid syntax
           ^
 SyntaxError: invalid syntax
 
->>> (a, b := 16, 19) # This prints out a weird 3-tuple
+>>> (a, b := 16, 19) # Dies gibt ein eigenartiges 3-Tupel aus
 (6, 16, 19)
 
->>> a # a is still unchanged?
+>>> a # Ist a immernoch unverändert ?
 6
 
 >>> b
@@ -225,7 +290,7 @@ SyntaxError: invalid syntax
 
 
 
-#### 💡 Explanation
+#### 💡 Erklärung
 
 **Quick walrus operator refresher**
 
