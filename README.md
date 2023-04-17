@@ -36,7 +36,7 @@ Also, los gehts...
       - [💡 Erklärung:](#-erklärung-1)
     - [▶ Vorsicht bei verketteten Operationen](#-vorsicht-bei-verketteten-operationen)
       - [💡 Erklärung:](#-erklärung-2)
-    - [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
+    - [▶ Wie man den `is` Operator nicht nutzt](#-wie-man-den-is-operator-nicht-nutzt)
       - [💡 Erklärung:](#-erklärung-3)
     - [▶ Hash brownies](#-hash-brownies)
       - [💡 Erklärung](#-erklärung-4)
@@ -451,29 +451,34 @@ False
 
 #### 💡 Erklärung:
 
-As per https://docs.python.org/3/reference/expressions.html#comparisons
+Zitat von https://docs.python.org/3/reference/expressions.html#comparisons
 
 > Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
 
-While such behavior might seem silly to you in the above examples, it's fantastic with stuff like `a == b == c` and `0 <= x <= 100`.
+Übersetzt:
 
-* `False is False is False` is equivalent to `(False is False) and (False is False)`
-* `True is False == False` is equivalent to `(True is False) and (False == False)` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
-* `1 > 0 < 1` is equivalent to `(1 > 0) and (0 < 1)` which evaluates to `True`.
-* The expression `(1 > 0) < 1` is equivalent to `True < 1` and
+> Formal ausgedrückt: wenn a, b, c, ..., y, z Ausdrücke und op1, op2, ..., opN Vergleichsoperatoren sind, dann sind a op1 b op2 c ... y opN z äquivalent zu a op1 b and b op2 c and ... y opN z, mit der Ausnahme, dass jeder Ausdruck höchstens einmal ausgewertet wird.
+
+
+Während dieses Verhalten in den Beispielen vielleicht unsinnig erscheint, kann es super verwendet werden, z.B. `a == b == c` und `0 <= x <= 100`.
+
+* `False is False is False` ist äquivalent zu `(False is False) and (False is False)`
+* `True is False == False` ist äquivalent zu `(True is False) and (False == False)` und während der erste Teil des Statements (`True is False`) zu `False` ausgewertet wird, wird der gesamt Ausdruck zu `False` ausgewertet.
+* `1 > 0 < 1` ist äquivalent zu `(1 > 0) and (0 < 1)` which evaluates to `True`.
+* Der Ausdruck `(1 > 0) < 1` ist äquivalent zu `True < 1` und
   ```py
   >>> int(True)
   1
-  >>> True + 1 #not relevant for this example, but just for fun
+  >>> True + 1 # Nicht relevant für dieses Beispiel, aber trotzdem nur zum Spaß
   2
   ```
-  So, `1 < 1` evaluates to `False`
+  So wird `1 < 1` zu `False` ausgewertet
 
 ---
 
-### ▶ How not to use `is` operator
+### ▶ Wie man den `is` Operator nicht nutzt
 <!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
-The following is a very famous example present all over the internet.
+Das folgende Beispiel ist im Internet überall bekannt.
 
 1\.
 
@@ -512,7 +517,7 @@ True
 True
 ```
 
-**Ausgabe (Python 3.7.x specifically)**
+**Ausgabe (Python 3.7.x spezifisch)**
 
 ```py
 >>> a, b = 257, 257
@@ -522,23 +527,28 @@ False
 
 #### 💡 Erklärung:
 
-**The difference between `is` and `==`**
+**Der Unterschied zwischen `is` und `==`**
 
-* `is` operator checks if both the operands refer to the same object (i.e., it checks if the identity of the operands matches or not).
-* `==` operator compares the values of both the operands and checks if they are the same.
-* So `is` is for reference equality and `==` is for value equality. An example to clear things up,
+* `is` Operator checkt, ob sich beide Operanden auf dasselbe Objekt beziehen (i.e., it checks if the identity of the operands matches or not).
+* `==` Operator vergleicht die Werte der beiden Operanden und überprüft, ob diese gleich sind.
+* Also `is` wird für Beziehungsgleichheit und `==` für Wertgleichheit benutzt. Ein Beispiel, um das Gesagte zu vertiefen:
   ```py
   >>> class A: pass
-  >>> A() is A() # These are two empty objects at two different memory locations.
+  >>> A() is A() # Das sind zwei leere Objekte an zwei verschiedenen Orten im Speicher.
   False
   ```
 
-**`256` is an existing object but `257` isn't**
+**`256` ist ein existierendes Objekt, aber `257` nicht**
 
-When you start up python the numbers from `-5` to `256` will be allocated. These numbers are used a lot, so it makes sense just to have them ready.
+Wenn du Python startest, werden die Nummern von `-5` bis `256` bereitgestellt. Diese Nummern werden sehr oft benutzt, also ergibt es Sinn,
+sie schnell bereit zu haben.
 
-Quoting from https://docs.python.org/3/c-api/long.html
+Zitat von https://docs.python.org/3/c-api/long.html
 > The current implementation keeps an array of integer objects for all integers between -5 and 256, when you create an int in that range you just get back a reference to the existing object. So it should be possible to change the value of 1. I suspect the behavior of Python, in this case, is undefined. :-)
+
+Übersetzung:
+> Die momentane Implementation stellt ein Array aus Integer-Objekten für alle Integer zwischen -5 und 256 bereit. Wenn du einen int in diesem Bereich erstellst, bekommst du nur eine Referenz auf das existierende Objekt zurück. Also sollte es möglich sein, den Wert von 1 zu ändern. Ich vermute das Verhalten von Python ist in diesem Fall undefiniert. :-)
+
 
 ```py
 >>> id(256)
@@ -559,11 +569,11 @@ Quoting from https://docs.python.org/3/c-api/long.html
 140084850247344
 ```
 
-Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257,` and so it goes on to create another object in the memory.
+Hier ist der Interpreter nicht schlau genug während des Ausführens von `y = 257` zu erkennen, dass wir bereits ein Integer mit dem Wert `257` erstellt haben und daher wird ein neues Objekt im Speicher angelegt.
 
-Similar optimization applies to other **immutable** objects like empty tuples as well. Since lists are mutable, that's why `[] is []` will return `False` and `() is ()` will return `True`. This explains our second snippet. Let's move on to the third one, 
+Ähnliche Optimierungen treffen auf andere **immutable** Objekte zu, z.B. leere Tuples. Da Listen mutable sind, wird `[] is []` zu `False` ausgewertet und `() is ()` wird zu `True` ausgewertet. Das erklärt unser zweiter Schnipsel. Lass uns mit dem dritten Beispiell weiter machen: 
 
-**Both `a` and `b` refer to the same object when initialized with same value in the same line.**
+**Sowohl `a` und `b` beziehen sich auf dasselbe Objekt wenn sie in derselben Zeile mit demselben Wert initialisiert werden.**
 
 **Ausgabe**
 
