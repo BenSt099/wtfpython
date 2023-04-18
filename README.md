@@ -40,126 +40,126 @@ Also, los gehts...
       - [💡 Erklärung:](#-erklärung-3)
     - [▶ Hash brownies](#-hash-brownies)
       - [💡 Erklärung](#-erklärung-4)
-    - [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
+    - [▶ Tief im Inneren sind wir alle gleich](#-tief-im-inneren-sind-wir-alle-gleich)
       - [💡 Erklärung:](#-erklärung-5)
-    - [▶ Disorder within order \*](#-disorder-within-order-)
+    - [▶ Unordnung in der Ordnung \*](#-unordnung-in-der-ordnung-)
       - [💡 Erklärung:](#-erklärung-6)
-    - [▶ Keep trying... \*](#-keep-trying-)
+    - [▶ Versuche es weiter... \*](#-versuche-es-weiter-)
       - [💡 Erklärung:](#-erklärung-7)
-    - [▶ For what?](#-for-what)
+    - [▶ Wofür?](#-wofür)
       - [💡 Erklärung:](#-erklärung-8)
-    - [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
+    - [▶ Diskrepanz in der Auswertungszeit](#-diskrepanz-in-der-auswertungszeit)
       - [💡 Erklärung](#-erklärung-9)
-    - [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
+    - [▶ `is not ...` ist nicht `is (not ...)`](#-is-not--ist-nicht-is-not-)
       - [💡 Erklärung](#-erklärung-10)
-    - [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
+    - [▶ Ein tic-tac-toe wo X im ersten Versuch gewinnt!](#-ein-tic-tac-toe-wo-x-im-ersten-versuch-gewinnt)
       - [💡 Erklärung:](#-erklärung-11)
-    - [▶ Schrödinger's variable \*](#-schrödingers-variable-)
+    - [▶ Schrödingers Variable \*](#-schrödingers-variable-)
       - [💡 Erklärung:](#-erklärung-12)
-    - [▶ The chicken-egg problem \*](#-the-chicken-egg-problem-)
+    - [▶ Das Henne-Ei-Problem \*](#-das-henne-ei-problem-)
       - [💡 Erklärung](#-erklärung-13)
-    - [▶ Subclass relationships](#-subclass-relationships)
+    - [▶ Beziehungen in Unterklassen](#-beziehungen-in-unterklassen)
       - [💡 Erklärung:](#-erklärung-14)
-    - [▶ Methods equality and identity](#-methods-equality-and-identity)
+    - [▶ Methodengleichheit und -identität](#-methodengleichheit-und--identität)
       - [💡 Erklärung](#-erklärung-15)
     - [▶ All-true-ation \*](#-all-true-ation-)
       - [💡 Erklärung:](#-erklärung-16)
       - [💡 Erklärung:](#-erklärung-17)
-    - [▶ Strings and the backslashes](#-strings-and-the-backslashes)
+    - [▶ Strings und die Backslashes](#-strings-und-die-backslashes)
       - [💡 Erklärung](#-erklärung-18)
     - [▶ not knot!](#-not-knot)
       - [💡 Erklärung:](#-erklärung-19)
-    - [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
+    - [▶ Halbe Zeichenketten in dreifachen Anführungszeichen](#-halbe-zeichenketten-in-dreifachen-anführungszeichen)
       - [💡 Erklärung:](#-erklärung-20)
-    - [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
+    - [▶ Was ist falsch an booleans?](#-was-ist-falsch-an-booleans)
       - [💡 Erklärung:](#-erklärung-21)
-    - [▶ Class attributes and instance attributes](#-class-attributes-and-instance-attributes)
+    - [▶ Klassen- und Instanzattribute](#-klassen--und-instanzattribute)
       - [💡 Erklärung:](#-erklärung-22)
     - [▶ yielding None](#-yielding-none)
       - [💡 Erklärung:](#-erklärung-23)
     - [▶ Yielding from... return! \*](#-yielding-from-return-)
       - [💡 Erklärung:](#-erklärung-24)
-    - [▶ Nan-reflexivity \*](#-nan-reflexivity-)
+    - [▶ Nan-Reflexivität \*](#-nan-reflexivität-)
       - [💡 Erklärung:](#-erklärung-25)
-    - [▶ Mutating the immutable!](#-mutating-the-immutable)
+    - [▶ Verändern des Unveränderlichen!](#-verändern-des-unveränderlichen)
       - [💡 Erklärung:](#-erklärung-26)
-    - [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
+    - [▶ Die verschwindende Variable aus dem äußeren Gültigkeitsbereich](#-die-verschwindende-variable-aus-dem-äußeren-gültigkeitsbereich)
       - [💡 Erklärung:](#-erklärung-27)
-    - [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
+    - [▶ Die mysteriöse key type Umwandlung](#-die-mysteriöse-key-type-umwandlung)
       - [💡 Erklärung:](#-erklärung-28)
-    - [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+    - [▶ Lass uns sehen, ob du dies errätst?](#-lass-uns-sehen-ob-du-dies-errätst)
       - [💡 Erklärung:](#-erklärung-29)
-    - [▶ Exceeds the limit for integer string conversion](#-exceeds-the-limit-for-integer-string-conversion)
+    - [▶ Überschreitet den Grenzwert für die Umwandlung von Integer-Strings](#-überschreitet-den-grenzwert-für-die-umwandlung-von-integer-strings)
       - [💡 Erklärung:](#-erklärung-30)
   - [Section: Slippery Slopes](#section-slippery-slopes)
-    - [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
+    - [▶ Modifizieren eines Dictionarys während einer Iteration](#-modifizieren-eines-dictionarys-während-einer-iteration)
       - [💡 Erklärung:](#-erklärung-31)
-    - [▶ Stubborn `del` operation](#-stubborn-del-operation)
+    - [▶ Hartnäckige `del` Operation](#-hartnäckige-del-operation)
       - [💡 Erklärung:](#-erklärung-32)
-    - [▶ The out of scope variable](#-the-out-of-scope-variable)
+    - [▶ Die Variable aus dem äußeren Geltungsbereich](#-die-variable-aus-dem-äußeren-geltungsbereich)
       - [💡 Erklärung:](#-erklärung-33)
-    - [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
+    - [▶ Löschen eines Listenelements während einer Iteration](#-löschen-eines-listenelements-während-einer-iteration)
       - [💡 Erklärung:](#-erklärung-34)
-    - [▶ Lossy zip of iterators \*](#-lossy-zip-of-iterators-)
+    - [▶ Lossy Zips von Iteratoren \*](#-lossy-zips-von-iteratoren-)
       - [💡 Erklärung:](#-erklärung-35)
-    - [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
+    - [▶ Schleifenvariablen, die auslaufen!](#-schleifenvariablen-die-auslaufen)
       - [💡 Erklärung:](#-erklärung-36)
-    - [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
+    - [▶ Vorsicht vor standardmäßig veränderbaren Argumenten!](#-vorsicht-vor-standardmäßig-veränderbaren-argumenten)
       - [💡 Erklärung:](#-erklärung-37)
-    - [▶ Catching the Exceptions](#-catching-the-exceptions)
+    - [▶ Fangen der Exceptions](#-fangen-der-exceptions)
       - [💡 Erklärung](#-erklärung-38)
-    - [▶ Same operands, different story!](#-same-operands-different-story)
+    - [▶ Gleiche Operanden, unterschiedliche Story!](#-gleiche-operanden-unterschiedliche-story)
       - [💡 Erklärung:](#-erklärung-39)
-    - [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
+    - [▶ Namensauflösung ohne Berücksichtigung des Geltungsbereichs der Klasse](#-namensauflösung-ohne-berücksichtigung-des-geltungsbereichs-der-klasse)
       - [💡 Erklärung](#-erklärung-40)
-    - [▶ Rounding like a banker \*](#-rounding-like-a-banker-)
+    - [▶ Runden wie ein Bankier \*](#-runden-wie-ein-bankier-)
       - [💡 Erklärung:](#-erklärung-41)
-    - [▶ Needles in a Haystack \*](#-needles-in-a-haystack-)
+    - [▶ Nadeln im Heuhaufen \*](#-nadeln-im-heuhaufen-)
       - [💡 Erklärung:](#-erklärung-42)
     - [▶ Splitsies \*](#-splitsies-)
       - [💡 Erklärung:](#-erklärung-43)
-    - [▶ Wild imports \*](#-wild-imports-)
+    - [▶ Wilde Imports \*](#-wilde-imports-)
       - [💡 Erklärung:](#-erklärung-44)
-    - [▶ All sorted? \*](#-all-sorted-)
+    - [▶  Alles sortieren ? \*](#--alles-sortieren--)
       - [💡 Erklärung:](#-erklärung-45)
-    - [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
+    - [▶ Mitternachtszeit gibt es nicht ?](#-mitternachtszeit-gibt-es-nicht-)
       - [💡 Erklärung:](#-erklärung-46)
-  - [Section: The Hidden treasures!](#section-the-hidden-treasures)
-    - [▶ Okay Python, Can you make me fly?](#-okay-python-can-you-make-me-fly)
+  - [Section: Die verborgenen Schätze!](#section-die-verborgenen-schätze)
+    - [▶ Okay Python, kannst du mich fliegen lassen?](#-okay-python-kannst-du-mich-fliegen-lassen)
       - [💡 Erklärung:](#-erklärung-47)
-    - [▶ `goto`, but why?](#-goto-but-why)
+    - [▶ `goto`, aber wieso?](#-goto-aber-wieso)
       - [💡 Erklärung:](#-erklärung-48)
-    - [▶ Brace yourself!](#-brace-yourself)
+    - [▶ Halte dich fest!](#-halte-dich-fest)
       - [💡 Erklärung:](#-erklärung-49)
     - [▶ Let's meet Friendly Language Uncle For Life](#-lets-meet-friendly-language-uncle-for-life)
       - [💡 Erklärung:](#-erklärung-50)
-    - [▶ Even Python understands that love is complicated](#-even-python-understands-that-love-is-complicated)
+    - [▶ Selbst Python versteht, dass Liebe kompliziert ist](#-selbst-python-versteht-dass-liebe-kompliziert-ist)
       - [💡 Erklärung:](#-erklärung-51)
-    - [▶ Yes, it exists!](#-yes-it-exists)
+    - [▶ Ja, es existiert!](#-ja-es-existiert)
       - [💡 Erklärung:](#-erklärung-52)
-    - [▶ Ellipsis \*](#-ellipsis-)
+    - [▶ Ellipsen \*](#-ellipsen-)
       - [💡 Erklärung](#-erklärung-53)
-    - [▶ Inpinity](#-inpinity)
+    - [▶ Einbindung](#-einbindung)
       - [💡 Erklärung:](#-erklärung-54)
-    - [▶ Let's mangle](#-lets-mangle)
+    - [▶ Lass uns demolieren](#-lass-uns-demolieren)
       - [💡 Erklärung:](#-erklärung-55)
-  - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
-    - [▶ Skipping lines?](#-skipping-lines)
+  - [Section: Der Schein trügt!](#section-der-schein-trügt)
+    - [▶ Zeilen überspringen?](#-zeilen-überspringen)
       - [💡 Erklärung](#-erklärung-56)
     - [▶ Teleportation](#-teleportation)
       - [💡 Erklärung:](#-erklärung-57)
-    - [▶ Well, something is fishy...](#-well-something-is-fishy)
+    - [▶ Da ist wohl irgendwas faul...](#-da-ist-wohl-irgendwas-faul)
       - [💡 Erklärung](#-erklärung-58)
-  - [Section: Miscellaneous](#section-miscellaneous)
-    - [▶ `+=` is faster](#--is-faster)
+  - [Section: Sonstiges](#section-sonstiges)
+    - [▶ `+=` ist schneller](#--ist-schneller)
       - [💡 Erklärung:](#-erklärung-59)
-    - [▶ Let's make a giant string!](#-lets-make-a-giant-string)
+    - [▶ Lass uns einen gigantischen String machen!](#-lass-uns-einen-gigantischen-string-machen)
       - [💡 Erklärung](#-erklärung-60)
-    - [▶ Slowing down `dict` lookups \*](#-slowing-down-dict-lookups-)
+    - [▶ Verlangsamen von `dict` Lookups \*](#-verlangsamen-von-dict-lookups-)
       - [💡 Erklärung:](#-erklärung-61)
-    - [▶ Bloating instance `dict`s \*](#-bloating-instance-dicts-)
+    - [▶ Blähende Instanz `dict`s \*](#-blähende-instanz-dicts-)
       - [💡 Erklärung:](#-erklärung-62)
-    - [▶ Minor Ones \*](#-minor-ones-)
+    - [▶ Kleinigkeiten \*](#-kleinigkeiten-)
 - [Contributing](#contributing)
 - [Anerkennung](#anerkennung)
       - [Ein paar nützliche Links!](#ein-paar-nützliche-links)
@@ -591,9 +591,13 @@ Hier ist der Interpreter nicht schlau genug während des Ausführens von `y = 25
 140640774013488
 ```
 
-* When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
+* Wenn a und b in derselben Zeile auf `257` gesetzt werden, erstellt der Python Interpreter ein neues Objekt, und referenziert die zweite Variable
+zur selben Zeit. Wenn man es in verschiedenen Zeilen macht, dann weiß Python nicht, dass eine `257` als Objekt schon existiert.
 
-* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once. This optimization is not limited to integers, it works for other immutable data types like strings (check the "Strings are tricky example") and floats as well,
+* Es ist eine Compiler Optimierung, die speziell für die interaktive Umgebung gilt. Wenn man zwei Zeilen in einem Live Interpreter eingibt, dann
+werden sie getrennt kompiliert und auch getrennt optimiert. Wenn du dieses Beispiel in einer `.py` Datei ausprobierst, würdest du nicht dasselbe
+Verhalten beobachten, denn die Datei wird auf einmal kompiliert. Diese Optimierung ist nicht auf Integer beschränkt, sie funktioniert auch für
+andere immutable Datentypen, wie z.B. Strings (siehe auch das Beispiel "Strings können manchmal schwierig sein") oder floats:
 
   ```py
   >>> a, b = 257.0, 257.0
@@ -601,7 +605,8 @@ Hier ist der Interpreter nicht schlau genug während des Ausführens von `y = 25
   True
   ```
 
-* Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
+* Warum funktioniert das nicht in Python 3.7 ? Die abstrakte Antwort ist: Die Compiler Optimierungen sind von der Implementierung abhängig (es verändert sich mit der Version, dem Betriebssystem, etc.). Ich versuche noch herauszufinden, welche Implementierungsänderung dieses Problem
+verursacht. Für Updates, schaue dieses [Issue](https://github.com/satwikkansal/wtfpython/issues/100) an.
 
 ---
 
@@ -621,7 +626,7 @@ some_dict[5] = "Python"
 ```py
 >>> some_dict[5.5]
 "JavaScript"
->>> some_dict[5.0] # "Python" destroyed the existence of "Ruby"?
+>>> some_dict[5.0] # "Python" hat die Existenz von "Ruby" ausgelöscht ?
 "Python"
 >>> some_dict[5] 
 "Python"
@@ -633,7 +638,7 @@ complex
 "Python"
 ```
 
-So, why is Python all over the place?
+Warum also ist Python überall zu finden ?
 
 
 #### 💡 Erklärung
@@ -672,7 +677,7 @@ So, why is Python all over the place?
 
 ---
 
-### ▶ Deep down, we're all the same.
+### ▶ Tief im Inneren sind wir alle gleich
 <!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
 ```py
 class WTF:
@@ -722,7 +727,7 @@ True
 
 ---
 
-### ▶ Disorder within order *
+### ▶ Unordnung in der Ordnung *
 <!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
 ```py
 from collections import OrderedDict
@@ -780,7 +785,7 @@ TypeError: unhashable type: 'dict'
 2
 ```
 
-What is going on here?
+Was geht hier vor ?
 
 #### 💡 Erklärung:
 
@@ -820,7 +825,7 @@ What is going on here?
 
 ---
 
-### ▶ Keep trying... *
+### ▶ Versuche es weiter... *
 <!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
 ```py
 def some_func():
@@ -881,7 +886,7 @@ Iteration 0
 ---
 
 
-### ▶ For what?
+### ▶ Wofür?
 <!-- Example ID: 64a9dccf-5083-4bc9-98aa-8aeecde4f210 --->
 ```py
 some_string = "wtf"
@@ -918,7 +923,7 @@ for i, some_dict[i] in enumerate(some_string):
   3
   ```
 
-  Did you expect the loop to run just once?
+  Hast du erwartet, dass die Schleife nur einmal läuft ?
 
   **💡 Erklärung:**
 
@@ -934,7 +939,7 @@ for i, some_dict[i] in enumerate(some_string):
 
 ---
 
-### ▶ Evaluation time discrepancy
+### ▶ Diskrepanz in der Auswertungszeit
 <!-- Example ID: 6aa11a4b-4cf1-467a-b43a-810731517e98 --->
 1\.
 ```py
@@ -1003,7 +1008,7 @@ array_4 = [400, 500, 600]
 ---
 
 
-### ▶ `is not ...` is not `is (not ...)`
+### ▶ `is not ...` ist nicht `is (not ...)`
 <!-- Example ID: b26fb1ed-0c7d-4b9c-8c6d-94a58a055c0d --->
 ```py
 >>> 'something' is not None
@@ -1020,7 +1025,7 @@ False
 
 ---
 
-### ▶ A tic-tac-toe where X wins in the first attempt!
+### ▶ Ein tic-tac-toe wo X im ersten Versuch gewinnt!
 <!-- Example ID: 69329249-bdcb-424f-bd09-cca2e6705a7a --->
 
 ```py
@@ -1067,7 +1072,7 @@ We can avoid this scenario here by not using `row` variable to generate `board`.
 
 ---
 
-### ▶ Schrödinger's variable *
+### ▶ Schrödingers Variable *
 <!-- Example ID: 4dc42f77-94cb-4eb5-a120-8203d3ed7604 --->
 
 
@@ -1143,7 +1148,7 @@ ClosureVars(nonlocals={}, globals={}, builtins={}, unbound=set())
 
 ---
 
-### ▶ The chicken-egg problem *
+### ▶ Das Henne-Ei-Problem *
 <!-- Example ID: 60730dc2-0d79-4416-8568-2a63323b3ce8 --->
 1\.
 ```py
@@ -1193,7 +1198,7 @@ False
 
 ---
 
-### ▶ Subclass relationships
+### ▶ Beziehungen in Unterklassen
 <!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
 **Ausgabe:**
 ```py
@@ -1217,7 +1222,7 @@ The Subclass relationships were expected to be transitive, right? (i.e., if `A` 
 
 ---
 
-### ▶ Methods equality and identity
+### ▶ Methodengleichheit und -identität
 <!-- Example ID: 94802911-48fe-4242-defa-728ae893fa32 --->
 
 1.
@@ -1356,7 +1361,7 @@ Why's this True-False alteration?
 
 ---
 
-### ▶ The surprising comma
+### ▶ Das überraschende Komma
 <!-- Example ID: 31a819c8-ed73-4dcc-84eb-91bedbb51e58 --->
 **Ausgabe (< 3.6):**
 
@@ -1388,7 +1393,7 @@ SyntaxError: invalid syntax
 
 ---
 
-### ▶ Strings and the backslashes
+### ▶ Strings und die Backslashes
 <!-- Example ID: 6ae622c3-6d99-4041-9b33-507bd1a4407b --->
 **Ausgabe:**
 ```py
@@ -1458,7 +1463,7 @@ SyntaxError: invalid syntax
 
 ---
 
-### ▶ Half triple-quoted strings
+### ▶ Halbe Zeichenketten in dreifachen Anführungszeichen
 <!-- Example ID: c55da3e2-1034-43b9-abeb-a7a970a2ad9e --->
 **Ausgabe:**
 ```py
@@ -1487,7 +1492,7 @@ SyntaxError: EOF while scanning triple-quoted string literal
 
 ---
 
-### ▶ What's wrong with booleans?
+### ▶ Was ist falsch an booleans?
 <!-- Example ID: 0bba5fa7-9e6d-4cd2-8b94-952d061af5dd --->
 1\.
 
@@ -1577,7 +1582,7 @@ I have lost faith in truth!
 
 ---
 
-### ▶ Class attributes and instance attributes
+### ▶ Klassen- und Instanzattribute
 <!-- Example ID: 6f332208-33bd-482d-8106-42863b739ed9 --->
 1\.
 ```py
@@ -1673,7 +1678,7 @@ def some_func(val):
 
 #### 💡 Erklärung:
 - This is a bug in CPython's handling of `yield` in generators and comprehensions.
-- Source and Erklärung can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
+- Quelle and Erklärung can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
 - Related bug report: https://bugs.python.org/issue10544
 - Python 3.8+ no longer allows `yield` inside list comprehension and will throw a `SyntaxError`.
 
@@ -1745,7 +1750,7 @@ The same result, this didn't work either.
 
 ---
 
-### ▶ Nan-reflexivity *
+### ▶ Nan-Reflexivität *
 
 <!-- Example ID: 59bee91a-36e0-47a4-8c7d-aa89bf1d3976 --->
 
@@ -1821,7 +1826,7 @@ True
 
 ---
 
-### ▶ Mutating the immutable!
+### ▶ Verändern des Unveränderlichen!
 
 <!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --->
 
@@ -1849,7 +1854,7 @@ But I thought tuples were immutable...
 
 #### 💡 Erklärung:
 
-* Quoting from https://docs.python.org/3/reference/datamodel.html
+* Zitat von https://docs.python.org/3/reference/datamodel.html
 
     > Immutable sequences
         An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be modified; however, the collection of objects directly referenced by an immutable object cannot change.)
@@ -1859,7 +1864,7 @@ But I thought tuples were immutable...
 
 ---
 
-### ▶ The disappearing variable from outer scope
+### ▶ Die verschwindende Variable aus dem äußeren Gültigkeitsbereich
 <!-- Example ID: 7f1e71b6-cb3e-44fb-aa47-87ef1b7decc8 --->
 
 ```py
@@ -1884,7 +1889,7 @@ NameError: name 'e' is not defined
 
 #### 💡 Erklärung:
 
-* Source: https://docs.python.org/3/reference/compound_stmts.html#except
+* Quelle: https://docs.python.org/3/reference/compound_stmts.html#except
 
   When an exception has been assigned using `as` target, it is cleared at the end of the `except` clause. This is as if
 
@@ -1941,7 +1946,7 @@ NameError: name 'e' is not defined
 ---
 
 
-### ▶ The mysterious key type conversion
+### ▶ Die mysteriöse key type Umwandlung
 <!-- Example ID: 00f42dd0-b9ef-408d-9e39-1bc209ce3f36 --->
 ```py
 class SomeClass(str):
@@ -1997,7 +2002,7 @@ str
 
 ---
 
-### ▶ Let's see if you can guess this?
+### ▶ Lass uns sehen, ob du dies errätst?
 <!-- Example ID: 81aa9fbe-bd63-4283-b56d-6fdd14c9105e --->
 ```py
 a, b = a[b] = {}, 5
@@ -2055,7 +2060,7 @@ a, b = a[b] = {}, 5
 
 ---
 
-### ▶ Exceeds the limit for integer string conversion
+### ▶ Überschreitet den Grenzwert für die Umwandlung von Integer-Strings
 ```py
 >>> # Python 3.10.6
 >>> int("2" * 5432)
@@ -2093,7 +2098,7 @@ Fortunately, you can increase the limit for the allowed number of digits when yo
 
 ## Section: Slippery Slopes
 
-### ▶ Modifying a dictionary while iterating over it
+### ▶ Modifizieren eines Dictionarys während einer Iteration
 <!-- Example ID: b4e5cdfb-c3a8-4112-bd38-e2356d801c41 --->
 ```py
 x = {0: None}
@@ -2129,7 +2134,7 @@ Yes, it runs for exactly **eight** times and stops.
 
 ---
 
-### ▶ Stubborn `del` operation
+### ▶ Hartnäckige `del` Operation
 <!-- Example ID: 777ed4fd-3a2d-466f-95e7-c4058e61d78e --->
 <!-- read-only -->
 
@@ -2174,7 +2179,7 @@ Okay, now it's deleted :confused:
 
 ---
 
-### ▶ The out of scope variable
+### ▶ Die Variable aus dem äußeren Geltungsbereich
 <!-- Example ID: 75c03015-7be9-4289-9e22-4f5fdda056f7 --->
 
 1\.
@@ -2254,7 +2259,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
 
 ---
 
-### ▶ Deleting a list item while iterating
+### ▶ Löschen eines Listenelements während einer Iteration
 <!-- Example ID: 4cc52d4e-d42b-4e09-b25f-fbf5699b7d4e --->
 ```py
 list_1 = [1, 2, 3, 4]
@@ -2315,7 +2320,7 @@ Can you guess why the Ausgabe is `[2, 4]`?
 ---
 
 
-### ▶ Lossy zip of iterators *
+### ▶ Lossy Zips von Iteratoren *
 <!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --->
 
 ```py
@@ -2364,7 +2369,7 @@ Where did element `3` go from the `numbers` list?
 
 ---
 
-### ▶ Loop variables leaking out!
+### ▶ Schleifenvariablen, die auslaufen!
 <!-- Example ID: ccec7bf6-7679-4963-907a-1cd8587be9ea --->
 1\.
 ```py
@@ -2428,7 +2433,7 @@ print(x, ': x in global')
 
 ---
 
-### ▶ Beware of default mutable arguments!
+### ▶ Vorsicht vor standardmäßig veränderbaren Argumenten!
 <!-- Example ID: 7d42dade-e20d-4a7b-9ed7-16fb58505fe9 --->
 
 ```py
@@ -2486,7 +2491,7 @@ def some_func(default_arg=[]):
 
 ---
 
-### ▶ Catching the Exceptions
+### ▶ Fangen der Exceptions
 <!-- Example ID: b5ca5e6a-47b9-4f69-9375-cda0f8c6755d --->
 ```py
 some_list = [1, 2, 3]
@@ -2561,7 +2566,7 @@ SyntaxError: invalid syntax
 
 ---
 
-### ▶ Same operands, different story!
+### ▶ Gleiche Operanden, unterschiedliche Story!
 <!-- Example ID: ca052cdf-dd2d-4105-b936-65c28adc18a0 --->
 1\.
 ```py
@@ -2603,7 +2608,7 @@ a += [5, 6, 7, 8]
 
 ---
 
-### ▶ Name resolution ignoring class scope
+### ▶ Namensauflösung ohne Berücksichtigung des Geltungsbereichs der Klasse
 <!-- Example ID: 03f73d96-151c-4929-b0a8-f74430788324 --->
 1\.
 ```py
@@ -2646,7 +2651,7 @@ class SomeClass:
 
 ---
 
-### ▶ Rounding like a banker *
+### ▶ Runden wie ein Bankier *
 
 Let's implement a naive function to get the middle element of a list:
 ```py
@@ -2696,7 +2701,7 @@ It seems as though Python rounded 2.5 to 2.
 
 ---
 
-### ▶ Needles in a Haystack *
+### ▶ Nadeln im Heuhaufen *
 
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
 
@@ -2909,7 +2914,7 @@ def similar_recursive_func(a):
 
 ---
 
-### ▶ Wild imports *
+### ▶ Wilde Imports *
 <!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --->
 <!-- read-only -->
 
@@ -2968,7 +2973,7 @@ NameError: name '_another_weird_name_func' is not defined
 
 ---
 
-### ▶ All sorted? *
+### ▶  Alles sortieren ? *
 
 <!-- Example ID: e5ff1eaf-8823-4738-b4ce-b73f7c9d5511 -->
 
@@ -3009,7 +3014,7 @@ False
 
 ---
 
-### ▶ Midnight time doesn't exist?
+### ▶ Mitternachtszeit gibt es nicht ?
 <!-- Example ID: 1bce8294-5619-4d70-8ce3-fe0bade690d1 --->
 ```py
 from datetime import datetime
@@ -3043,11 +3048,11 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 
 
 
-## Section: The Hidden treasures!
+## Section: Die verborgenen Schätze!
 
 This section contains a few lesser-known and interesting things about Python that most beginners like me are unaware of (well, not anymore).
 
-### ▶ Okay Python, Can you make me fly?
+### ▶ Okay Python, kannst du mich fliegen lassen?
 <!-- Example ID: a92f3645-1899-4d50-9721-0031be4aec3f --->
 Well, here you go
 
@@ -3065,7 +3070,7 @@ Sshh... It's a super-secret.
 
 ---
 
-### ▶ `goto`, but why?
+### ▶ `goto`, aber wieso?
 <!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
 
 ```py
@@ -3094,7 +3099,7 @@ Freedom!
 
 ---
 
-### ▶ Brace yourself!
+### ▶ Halte dich fest!
 <!-- Example ID: 5c0c75f2-ddd9-4da3-ba49-c4be7ec39acf --->
 If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
 
@@ -3150,7 +3155,7 @@ There we go.
 
 ---
 
-### ▶ Even Python understands that love is complicated
+### ▶ Selbst Python versteht, dass Liebe kompliziert ist
 <!-- Example ID: b93cad9e-d341-45d1-999c-fcdce65bed25 --->
 ```py
 import this
@@ -3207,7 +3212,7 @@ True
 
 ---
 
-### ▶ Yes, it exists!
+### ▶ Ja, es existiert!
 <!-- Example ID: 4286db3d-1ea7-47c9-8fb6-a9a04cac6e49 --->
 **The `else` clause for loops.** One typical example might be:
 
@@ -3251,7 +3256,7 @@ Try block executed successfully...
 - `else` clause after a try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
 ---
-### ▶ Ellipsis *
+### ▶ Ellipsen *
 <!-- Example ID: 969b7100-ab3d-4a7d-ad7d-a6be16181b2b --->
 ```py
 def some_func():
@@ -3311,7 +3316,7 @@ Ellipsis
 
 ---
 
-### ▶ Inpinity
+### ▶ Einbindung
 <!-- Example ID: ff473ea8-a3b1-4876-a6f0-4378aff790c1 --->
 The spelling is intended. Please, don't submit a patch for this.
 
@@ -3330,7 +3335,7 @@ The spelling is intended. Please, don't submit a patch for this.
 
 ---
 
-### ▶ Let's mangle
+### ▶ Lass uns demolieren
 <!-- Example ID: 37146d2d-9e67-43a9-8729-3c17934b910c --->
 1\.
 ```py
@@ -3406,9 +3411,9 @@ AttributeError: 'A' object has no attribute '__variable'
 ---
 ---
 
-## Section: Appearances are deceptive!
+## Section: Der Schein trügt!
 
-### ▶ Skipping lines?
+### ▶ Zeilen überspringen?
 <!-- Example ID: d50bbde1-fb9d-4735-9633-3444b9d2f417 --->
 **Ausgabe:**
 ```py
@@ -3477,7 +3482,7 @@ Where's the Nobel Prize?
 
 ---
 
-### ▶ Well, something is fishy...
+### ▶ Da ist wohl irgendwas faul...
 <!-- Example ID: cb6a37c5-74f7-44ca-b58c-3b902419b362 --->
 ```py
 def square(x):
@@ -3518,10 +3523,10 @@ Shouldn't that be 100?
 ---
 ---
 
-## Section: Miscellaneous
+## Section: Sonstiges
 
 
-### ▶ `+=` is faster
+### ▶ `+=` ist schneller
 <!-- Example ID: bfd19c60-a807-4a26-9598-4912b86ddb36 --->
 
 ```py
@@ -3538,7 +3543,7 @@ Shouldn't that be 100?
 
 ---
 
-### ▶ Let's make a giant string!
+### ▶ Lass uns einen gigantischen String machen!
 <!-- Example ID: c7a07424-63fe-4504-9842-8f3d334f28fc --->
 ```py
 def add_string_with_plus(iters):
@@ -3632,7 +3637,7 @@ Let's increase the number of iterations by a factor of 10.
 
 ---
 
-### ▶ Slowing down `dict` lookups *
+### ▶ Verlangsamen von `dict` Lookups *
 <!-- Example ID: c9c26ce6-df0c-47f7-af0b-966b9386d4c3 --->
 ```py
 some_dict = {str(i): 1 for i in range(1_000_000)}
@@ -3665,7 +3670,7 @@ Why are same lookups becoming slower?
 + This process is not reversible for the particular `dict` instance, and the key doesn't even have to exist in the dictionary. That's why attempting a failed lookup has the same effect.
 
 
-### ▶ Bloating instance `dict`s *
+### ▶ Blähende Instanz `dict`s *
 <!-- Example ID: fe706ab4-1615-c0ba-a078-76c98cbe3f48 --->
 ```py
 import sys
@@ -3727,7 +3732,7 @@ What makes those dictionaries become bloated? And why are newly created objects 
 + A small tip, if you aim to lower your program's memory footprint: don't delete instance attributes, and make sure to initialize all attributes in your `__init__`!
 
 
-### ▶ Minor Ones *
+### ▶ Kleinigkeiten *
 <!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
 
