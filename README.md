@@ -2,7 +2,7 @@
 <h1 align="center">What the f*ck Python! 😱</h1>
 <p align="center">Entdecke und verstehe Python durch überraschende Code-Schnipsel.</p>
 
-Übersetzungen: [English](https://github.com/robertparley/wtfpython-cn) |
+Übersetzungen: [English](https://github.com/satwikkansal/wtfpython) |
 
 Andere Modi: [Interaktiv](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
 
@@ -29,7 +29,7 @@ Also, los gehts...
 - [Sruktur der Beispiele](#sruktur-der-beispiele)
 - [Benutzung](#benutzung)
 - [👀 Beispiele](#-beispiele)
-  - [Kapitel: Strain your brain!](#kapitel-strain-your-brain)
+  - [Kapitel: Fordere dein Gehirn heraus!](#kapitel-fordere-dein-gehirn-heraus)
     - [▶ Das Wichtigste zuerst! \*](#-das-wichtigste-zuerst-)
       - [💡 Erklärung](#-erklärung)
     - [▶ Strings können manchmal schwierig sein](#-strings-können-manchmal-schwierig-sein)
@@ -91,7 +91,7 @@ Also, los gehts...
       - [💡 Erklärung:](#-erklärung-29)
     - [▶ Überschreitet den Grenzwert für die Umwandlung von Integer-Strings](#-überschreitet-den-grenzwert-für-die-umwandlung-von-integer-strings)
       - [💡 Erklärung:](#-erklärung-30)
-  - [Section: Slippery Slopes](#section-slippery-slopes)
+  - [Kapitel: Slippery Slopes](#kapitel-slippery-slopes)
     - [▶ Modifizieren eines Dictionarys während einer Iteration](#-modifizieren-eines-dictionarys-während-einer-iteration)
       - [💡 Erklärung:](#-erklärung-31)
     - [▶ Hartnäckige `del` Operation](#-hartnäckige-del-operation)
@@ -124,7 +124,7 @@ Also, los gehts...
       - [💡 Erklärung:](#-erklärung-45)
     - [▶ Mitternachtszeit gibt es nicht ?](#-mitternachtszeit-gibt-es-nicht-)
       - [💡 Erklärung:](#-erklärung-46)
-  - [Section: Die verborgenen Schätze!](#section-die-verborgenen-schätze)
+  - [Kapitel: Die verborgenen Schätze!](#kapitel-die-verborgenen-schätze)
     - [▶ Okay Python, kannst du mich fliegen lassen?](#-okay-python-kannst-du-mich-fliegen-lassen)
       - [💡 Erklärung:](#-erklärung-47)
     - [▶ `goto`, aber wieso?](#-goto-aber-wieso)
@@ -143,14 +143,14 @@ Also, los gehts...
       - [💡 Erklärung:](#-erklärung-54)
     - [▶ Lass uns demolieren](#-lass-uns-demolieren)
       - [💡 Erklärung:](#-erklärung-55)
-  - [Section: Der Schein trügt!](#section-der-schein-trügt)
+  - [Kapitel: Der Schein trügt!](#kapitel-der-schein-trügt)
     - [▶ Zeilen überspringen?](#-zeilen-überspringen)
       - [💡 Erklärung](#-erklärung-56)
     - [▶ Teleportation](#-teleportation)
       - [💡 Erklärung:](#-erklärung-57)
     - [▶ Da ist wohl irgendwas faul...](#-da-ist-wohl-irgendwas-faul)
       - [💡 Erklärung](#-erklärung-58)
-  - [Section: Sonstiges](#section-sonstiges)
+  - [Kapitel: Sonstiges](#kapitel-sonstiges)
     - [▶ `+=` ist schneller](#--ist-schneller)
       - [💡 Erklärung:](#-erklärung-59)
     - [▶ Lass uns einen gigantischen String machen!](#-lass-uns-einen-gigantischen-string-machen)
@@ -225,7 +225,7 @@ $ wtfpython
 
 # 👀 Beispiele
 
-## Kapitel: Strain your brain!
+## Kapitel: Fordere dein Gehirn heraus!
 
 ### ▶ Das Wichtigste zuerst! *
 
@@ -411,17 +411,22 @@ False
 Ergibt Sinn, Oder?
 
 #### 💡 Erklärung:
-+ The behavior in first and second snippets is due to a CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
-+ After being "interned," many variables may reference the same string object in memory (saving memory thereby).
-+ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation-dependent. There are some rules that can be used to guess if a string will be interned or not:
-  * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f'])` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
++ Das Verhalten im ersten und zweiten Schnipsel erklärt sich durch eine CPython Optimierung (auch string interning genannt), die versucht, existierende
+immutable Objekte zu nutzen anstatt jedes mal ein neues Objekt zu erstellen.
++ Nachdem "interned" (festgehalten) wurde, kann es sein, dass viele Variablen dasselbe String-Objekt im Speicher referenzieren (man spart also Speicher). 
+
++ In den Schnipseln oben werden Strings implizit festgehalten. Die Entscheidung, wann ein String implizit festgehalten wird, ist von der Implementierung
+abhängig. Es gibt einige Regeln, die benutzt werden können, um zu erahnen, ob ein String festgehalten wird oder nicht:
+  * Alle String der Länge 0 und 1 werden festgehalten.
+  * Strings werden während der Compilezeit festgehalten (`'wtf'` wird festgehalten, aber `''.join(['w', 't', 'f'])` nicht)
+  * Strings, die nicht aus ASCII-Buchstaben, Ziffern oder Unterstrichen zusammengesetzt sind, werden nicht festgehalten. Das erklärt warum `'wtf!'` nicht festgehalten wurde (wegen `!`). 
+  Die CPython-Implementierung dieser Regel kann [hier](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19) gefunden werden
   ![image](/images/string-intern/string_intern.png)
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `"wtf!"` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
-+ A compile unit in an interactive environment like IPython consists of a single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are two statements in a single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
-+ The abrupt change in the Ausgabe of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having a length of less than 21. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
-+ Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the fourth snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
++ Wenn `a` und `b` in derselben Zeile auf `"wtf!"` gesetzt werden, erzeugt der Python Interpreter ein neues Objekt, welches von der zweiten Variable zur selben Zeit referenziert wird. Wenn du es in zwei verschiedenen Zeilen deklarierst, dann "weiß" der Interpreter nicht, dass `"wtf!"` als Objekt schon existiert (weil `"wtf!"` nicht implizit festgehalten wird, siehe obige Auflistung). Es ist eine Compilezeit-Optimierung. Diese Optimierung gilt nicht für 3.7.x Versionen von CPython (siehe dieses [Issue](https://github.com/satwikkansal/wtfpython/issues/100)).
++ Eine Compile-Unit ist eine interaktive Umgebung, wie z.B. IPython besteht aus einen einzigen Statement, während es aus einem ganzen Modul im Falle von Modulen besteht. `a, b = "wtf!", "wtf!"` ist ein einziges Statement, während `a = "wtf!"; b = "wtf!"` zwei Statements in einer Zeile sind. Das erklärt, warum die Identitäten `a = "wtf!"; b = "wtf!"` verschieden sind. Es erklärt auch, warum sie dieselben sind, wenn sie in `some_file.py` aufgerufen werden.
++ Die abrupte Veränderung in der Ausgabe des 4.Schnipsel ist der [peephole Optimierung](https://en.wikipedia.org/wiki/Peephole_optimization) Technik
+geschuldet, auch als Constant Folding bekannt. Das bedeutet, der Ausdruck `'a'*20` wird durch `'aaaaaaaaaaaaaaaaaaaa'` während der Kompilierung ersetzt, um ein paar Taktzyklen während der Laufzeit zu sparen. Constant Folding wird nur für String mit einer kleineren Länge als 21 angewendet. (Wieso ? Stelle dir die Größe einer `.pyc` Datei vor, die durch den Ausdruck `'a'*10**10` generiert wurde). [Hier](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) ist die Quelle der Implementierung dafür.
++ Notiz: In Python 3.7, konstantes Folding wurde vom peephole-Optimierer zum neuen AST-Optimierer verschoben (mit ein paar Veränderungen in der Logik), d.h. das 4.Schnipsel funktioniert in Python 3.7 nicht. Du kannst [hier](https://bugs.python.org/issue11549) mehr darüber erfahren.
 
 ---
 
@@ -2096,7 +2101,7 @@ Fortunately, you can increase the limit for the allowed number of digits when yo
 ---
 
 
-## Section: Slippery Slopes
+## Kapitel: Slippery Slopes
 
 ### ▶ Modifizieren eines Dictionarys während einer Iteration
 <!-- Example ID: b4e5cdfb-c3a8-4112-bd38-e2356d801c41 --->
@@ -3048,7 +3053,7 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 
 
 
-## Section: Die verborgenen Schätze!
+## Kapitel: Die verborgenen Schätze!
 
 This section contains a few lesser-known and interesting things about Python that most beginners like me are unaware of (well, not anymore).
 
@@ -3411,7 +3416,7 @@ AttributeError: 'A' object has no attribute '__variable'
 ---
 ---
 
-## Section: Der Schein trügt!
+## Kapitel: Der Schein trügt!
 
 ### ▶ Zeilen überspringen?
 <!-- Example ID: d50bbde1-fb9d-4735-9633-3444b9d2f417 --->
@@ -3523,7 +3528,7 @@ Shouldn't that be 100?
 ---
 ---
 
-## Section: Sonstiges
+## Kapitel: Sonstiges
 
 
 ### ▶ `+=` ist schneller
