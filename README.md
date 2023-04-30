@@ -327,11 +327,11 @@ if a := irgendeine_funktion():
 
 Das hat uns eine Zeile Code erspart. Zudem spart es einen zusätzlichen Aufruf der Funktion `irgendeine_funktion`.
 
-- Unparenthesized "assignment expression" (use of walrus operator), is restricted at the top level, hence the `SyntaxError` in the `a := "wtf_walrus"` statement of the first snippet. Parenthesizing it worked as expected and assigned `a`.  
+- Nichtgeklammerte "Zuweisung Ausdruck" (Verwendung des Walrus-Operator), ist auf der obersten Ebene beschränkt, daher der `Syntaxfehler` in der Anweisung `a := "wtf_walrus"` des erstes Schnipsels.  Einklammeren hat funktioniert und wies `a` zu.
 
-- As usual, parenthesizing of an expression containing `=` operator is not allowed. Hence the syntax error in `(a, b = 6, 9)`. 
+- Wie immer, Einklammerung eines Ausdrucks, welcher `=`- Operator enthält, ist nicht erlaubt. Daher der Syntaxfehler in `(a, b = 6, 9)`.
 
-- The syntax of the Walrus operator is of the form `NAME:= expr`, where `NAME` is a valid identifier, and `expr` is a valid expression. Hence, iterable packing and unpacking are not supported which means, 
+- Die Syntax des Walrus Operators lautet wie folgt: `NAME:= ausdruck`, wobei `NAME` ist ein gültiger Identifier, und `ausdruck` ist ein gültiger Ausdruck. Zudem werden iterierbares Verpacken und Entpacken nicht unterstützt, d.h.: 
 
   - `(a := 6, 9)` ist äquivalent zu `((a := 6), 9)` und zu `(a, 9) ` (where `a`'s value is 6')
 
@@ -678,7 +678,7 @@ Warum also ist Python überall zu finden ?
   >>> hash(5) == hash(5.0) == hash(5 + 0j)
   True
   ```
-  **Note:** The inverse is not necessarily true: Objects with equal hash values may themselves be unequal. (This causes what's known as a [hash collision](https://en.wikipedia.org/wiki/Collision_(computer_science)), and degrades the constant-time performance that hashing usually provides.)
+  **Note:** Das Inverse ist nicht unbedingt wahr: Objekte mit gleichem Hashwert können evtl. ungleich sein. (Das versursacht was auch als [hash collision](https://de.wikipedia.org/wiki/Kollisionsresistenz) bekannt ist), und und verschlechtert die zeitlich konstante Leistung, die Hashing normalerweise bietet.
 
 ---
 
