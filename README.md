@@ -160,6 +160,7 @@ Also, los gehts...
     - [▶ Blähende Instanz `dict`s \*](#-blähende-instanz-dicts-)
       - [💡 Erklärung:](#-erklärung-62)
     - [▶ Kleinigkeiten \*](#-kleinigkeiten-)
+  - [Das Verhalten ist darauf zurückzuführen, dass leere Teilstrings (`''`) mit Slices der Länge 0 in der ursprünglichen Zeichenkette übereinstimmen](#das-verhalten-ist-darauf-zurückzuführen-dass-leere-teilstrings--mit-slices-der-länge-0-in-der-ursprünglichen-zeichenkette-übereinstimmen)
 - [Contributing](#contributing)
 - [Anerkennung](#anerkennung)
       - [Ein paar nützliche Links!](#ein-paar-nützliche-links)
@@ -3055,23 +3056,23 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 
 ## Kapitel: Die verborgenen Schätze!
 
-This section contains a few lesser-known and interesting things about Python that most beginners like me are unaware of (well, not anymore).
+Dieser Abschnitt enthält ein paar weniger bekannte und interessante Dinge über Python, die den meisten Anfängern wie mir nicht bekannt sind (nun aber schon).
 
 ### ▶ Okay Python, kannst du mich fliegen lassen?
 <!-- Example ID: a92f3645-1899-4d50-9721-0031be4aec3f --->
-Well, here you go
+Nun hier wären wir:
 
 ```py
 import antigravity
 ```
 
 **Ausgabe:**
-Sshh... It's a super-secret.
+Sshh... Es ist supergeheim.
 
 #### 💡 Erklärung:
-+ `antigravity` module is one of the few easter eggs released by Python developers.
-+ `import antigravity` opens up a web browser pointing to the [classic XKCD comic](https://xkcd.com/353/) about Python.
-+ Well, there's more to it. There's **another easter egg inside the easter egg**. If you look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
++ Das `antigravity` Modul ist eines der wenigen easter eggs, die von Python Entwicklern veröffentlicht werden.
++ `import antigravity` öffnet deinen Webbrowser und zeigt zum [klassischen XKCD Comic](https://xkcd.com/353/).
++ Nun, es gibt noch mehr. Es gibt noch ein **easter egg im easter egg**. Wenn du dir den [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17) anschaust, dann findest du eine Funktion, die die Ausführung des [XKCDs Geohashing Algorithmus](https://xkcd.com/426/) beabsichtigt.
 
 ---
 
@@ -3098,15 +3099,15 @@ Freedom!
 ```
 
 #### 💡 Erklärung:
-- A working version of `goto` in Python was [announced](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html) as an April Fool's joke on 1st April 2004.
-- Current versions of Python do not have this module.
-- Although it works, but please don't use it. Here's the [reason](https://docs.python.org/3/faq/design.html#why-is-there-no-goto) to why `goto` is not present in Python.
+- Eine funktionierende Version von `goto` in Python wurde als Aprilscherz am 1. April 2004 [angekündigt](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html).
+- Aktuelle Versionen von Python haben dieses Modul nicht.
+- Auch wenn es funktioniert, benutze es bitte nicht. Hier ist die [Antwort](https://docs.python.org/3/faq/design.html#why-is-there-no-goto), warum `goto` in Python nicht verwendet wird.
 
 ---
 
 ### ▶ Halte dich fest!
 <!-- Example ID: 5c0c75f2-ddd9-4da3-ba49-c4be7ec39acf --->
-If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
+Wenn du zu den Leuten gehörst, die keine Leerzeichen in Python verwenden wollen, um Bereiche zu kennzeichnen, kannst du den C-Stil {} verwenden, indem du folgendes importierst:
 
 ```py
 from __future__ import braces
@@ -3119,13 +3120,13 @@ from __future__ import braces
 SyntaxError: not a chance
 ```
 
-Braces? No way! If you think that's disappointing, use Java. Okay, another surprising thing, can you find where's the `SyntaxError` raised in `__future__` module [code](https://github.com/python/cpython/blob/master/Lib/__future__.py)?
+Klammern? Niemals! Wenn du enttäuscht bist, nutze Java. Okay, eine weitere überraschende Sache, kannst du herausfinden, wo `SyntaxError` im `__future__` Mmodul geworfen wird [code](https://github.com/python/cpython/blob/master/Lib/__future__.py)?
 
 #### 💡 Erklärung:
-+ The `__future__` module is normally used to provide features from future versions of Python. The "future" in this specific context is however, ironic.
-+ This is an easter egg concerned with the community's feelings on this issue.
-+ The code is actually present [here](https://github.com/python/cpython/blob/025eb98dc0c1dc27404df6c544fc2944e0fa9f3a/Python/future.c#L49) in `future.c` file.
-+ When the CPython compiler encounters a [future statement](https://docs.python.org/3.3/reference/simple_stmts.html#future-statements), it first runs the appropriate code in `future.c` before treating it as a normal import statement.
++ Das `__future__` Modul wird normalerweise benutzt, um Features von zukünftigen Python Versionen bereitzustellen. Das "future" is in diesem spezifischen Kontext ironisch gemeint.
++ Das ist ein easter egg die die Gefühle der Community in dieser Frage wiederspiegeln.
++ Der Code ist tatsächlich [hier](https://github.com/python/cpython/blob/025eb98dc0c1dc27404df6c544fc2944e0fa9f3a/Python/future.c#L49) in der Datei `future.c` verfügbar.
++ Wenn der CPython Compiler auf ein  [future Statement](https://docs.python.org/3.3/reference/simple_stmts.html#future-statements) trifft, wird zunächst der entsprechende Code in `future.c` ausgeführt, bevor es als normale Importanweisung behandelt wird.
 
 ---
 
@@ -3134,7 +3135,7 @@ Braces? No way! If you think that's disappointing, use Java. Okay, another surpr
 **Ausgabe (Python 3.x)**
 ```py
 >>> from __future__ import barry_as_FLUFL
->>> "Ruby" != "Python" # there's no doubt about it
+>>> "Ruby" != "Python" # Hier bestehen keine Zweifel
   File "some_file.py", line 1
     "Ruby" != "Python"
               ^
@@ -3144,11 +3145,11 @@ SyntaxError: invalid syntax
 True
 ```
 
-There we go.
+Das wars schon.
 
 #### 💡 Erklärung:
-- This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
-- Quoting from the PEP-401
+-Das ist relevant für [PEP-401](https://www.python.org/dev/peps/pep-0401/), was am 1. April 2009 veröffentlicht wurde (nun weißt du, was das heißt).
+- Zitat vom PEP-401
   
   > Recognized that the != inequality operator in Python 3.0 was a horrible, finger-pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
 - There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
@@ -3166,11 +3167,11 @@ There we go.
 import this
 ```
 
-Wait, what's **this**? `this` is love :heart:
+Warte, was ist **this**? `this` ist love :heart:
 
 **Ausgabe:**
 ```
-The Zen of Python, by Tim Peters
+Der Zen von Python, von Tim Peters
 
 Beautiful is better than ugly.
 Explicit is better than implicit.
@@ -3193,7 +3194,7 @@ If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
 ```
 
-It's the Zen of Python!
+Das ist der Zen von Python!
 
 ```py
 >>> love = this
@@ -3219,7 +3220,7 @@ True
 
 ### ▶ Ja, es existiert!
 <!-- Example ID: 4286db3d-1ea7-47c9-8fb6-a9a04cac6e49 --->
-**The `else` clause for loops.** One typical example might be:
+**The `else` clause for loops.** Ein typisches Beispiel wäre:
 
 ```py
   def does_exists_num(l, to_find):
@@ -3240,7 +3241,7 @@ Exists!
 Does not exist
 ```
 
-**The `else` clause in exception handling.** An example,
+**The `else` clause in exception handling.** Ein Beispiel:
 
 ```py
 try:
@@ -3271,7 +3272,7 @@ def some_func():
 **Ausgabe**
 ```py
 >>> some_func()
-# No Ausgabe, No Error
+# Keine Ausgabe, Kein Fehler
 
 >>> SomeRandomString
 Traceback (most recent call last):
@@ -3283,7 +3284,7 @@ Ellipsis
 ```
 
 #### 💡 Erklärung
-- In Python, `Ellipsis` is a globally available built-in object which is equivalent to `...`.
+- In Python, `Ellipsis` ist ein global verfügbares built-in Objekt, was äquivalent ist zu `...`.
     ```py
     >>> ...
     Ellipsis
@@ -3323,7 +3324,7 @@ Ellipsis
 
 ### ▶ Einbindung
 <!-- Example ID: ff473ea8-a3b1-4876-a6f0-4378aff790c1 --->
-The spelling is intended. Please, don't submit a patch for this.
+Die Schreibweise ist beabsichtigt. Bitte schicke keinen Patch hierfür ab.
 
 **Ausgabe (Python 3.x):**
 ```py
@@ -3364,7 +3365,7 @@ True
 ```py
 class Yo(object):
     def __init__(self):
-        # Let's try something symmetrical this time
+        # Versuchen wir es dieses Mal mit etwas Symmetrischem
         self.__honey__ = True
         self.bro = True
 ```
@@ -3380,7 +3381,7 @@ Traceback (most recent call last):
 AttributeError: 'Yo' object has no attribute '_Yo__honey__'
 ```
 
-Why did `Yo()._Yo__honey` work?
+Warum hat `Yo()._Yo__honey` funktioniert?
 
 3\.
 
@@ -3389,7 +3390,7 @@ _A__variable = "Some value"
 
 class A(object):
     def some_func(self):
-        return __variable # not initialized anywhere yet
+        return __variable # noch nirgends initialisiert
 ```
 
 **Ausgabe:**
@@ -3406,7 +3407,7 @@ AttributeError: 'A' object has no attribute '__variable'
 
 #### 💡 Erklärung:
 
-* [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) is used to avoid naming collisions between different namespaces.
+* [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) wird verwendet, um Namenskollisionen zwischen verschiedenen namespaces zu vermeiden.
 * In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore a.k.a "dunder") and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
 * So, to access `__honey` attribute in the first snippet, we had to append `_Yo` to the front, which would prevent conflicts with the same name attribute defined in any other class.
 * But then why didn't it work in the second snippet? Because name mangling excludes the names ending with double underscores.
@@ -3428,9 +3429,9 @@ AttributeError: 'A' object has no attribute '__variable'
 11
 ```
 
-Wut?
+Was?
 
-**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shell.
+**Note:** Um dies zu reproduzieren, kopiere einfach die Anweisungen aus dem obigen Ausschnitt und füge sie in deine Datei/Shell ein.
 
 #### 💡 Erklärung
 
@@ -3459,15 +3460,15 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 <!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
 
 ```py
-# `pip install numpy` first.
+# `pip install numpy` vorher.
 import numpy as np
 
 def energy_send(x):
-    # Initializing a numpy array
+    # Initialisiere ein numpy array
     np.array([float(x)])
 
 def energy_receive():
-    # Return an empty numpy array
+    # Gib ein leeres numpy array zurück
     return np.empty((), dtype=np.float).tolist()
 ```
 
@@ -3478,7 +3479,7 @@ def energy_receive():
 123.456
 ```
 
-Where's the Nobel Prize?
+Wo ist der Nobelpreis?
 
 #### 💡 Erklärung:
 
@@ -3492,7 +3493,7 @@ Where's the Nobel Prize?
 ```py
 def square(x):
     """
-    A simple function to calculate the square of a number by addition.
+    Eine einfahce FUnktion, um das Quadrat einer Zahl durch Addition zu bestimmen
     """
     sum_so_far = 0
     for counter in range(x):
@@ -3507,9 +3508,9 @@ def square(x):
 10
 ```
 
-Shouldn't that be 100?
+Sollte das nicht 100 sein?
 
-**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
+**Note:** Wenn du das Ergebnis nicht reproduzieren kannst, versuch die Datei [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via shell auszuführen.
 
 #### 💡 Erklärung
 
@@ -3544,7 +3545,7 @@ Shouldn't that be 100?
 ```
 
 #### 💡 Erklärung:
-+ `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
++ `+=` ist schneller als `+`, um mehr als zwei String zu konkatenieren, weil der erste String (Beispiel: `s1` für `s1 += s2 + s3`), während der Kalkulation des gesamten Strings, nicht zerstört wird.
 
 ---
 
@@ -3636,9 +3637,9 @@ Let's increase the number of iterations by a factor of 10.
   >>> %timeit -n100 add_string_with_plus(10000) # Quadratic increase in execution time
   9 ms ± 298 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
   ```
-- So many ways to format and create a giant string are somewhat in contrast to the [Zen of Python](https://www.python.org/dev/peps/pep-0020/), according to which,
+- So viele Möglichkeiten einen gigantischen String zu erzeugen und zu formatieren stehen irgendwie in Kontrast zum [Zen von Python](https://www.python.org/dev/peps/pep-0020/), nachdem gilt:
   
-    > There should be one-- and preferably only one --obvious way to do it.
+    > Es sollte einen - und vorzugsweise nur einen - offensichtlichen Weg geben, dies zu tun.
 
 ---
 
@@ -3666,11 +3667,11 @@ KeyError: 1
 >>> %timeit another_dict['5']
 38.5 ns ± 0.0913 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 ```
-Why are same lookups becoming slower?
+Wieso werden dieselben lookups immer langsamer?
 
 #### 💡 Erklärung:
 + CPython has a generic dictionary lookup function that handles all types of keys (`str`, `int`, any object ...), and a specialized one for the common case of dictionaries composed of `str`-only keys.
-+ The specialized function (named `lookdict_unicode` in CPython's [source](https://github.com/python/cpython/blob/522691c46e2ae51faaad5bbbce7d959dd61770df/Objects/dictobject.c#L841)) knows all existing keys (including the looked-up key) are strings, and uses the faster & simpler string comparison to compare keys, instead of calling the `__eq__` method.
++ The specialized function (werden `lookdict_unicode` in CPythons [code](https://github.com/python/cpython/blob/522691c46e2ae51faaad5bbbce7d959dd61770df/Objects/dictobject.c#L841) genannt) knows all existing keys (including the looked-up key) are strings, and uses the faster & simpler string comparison to compare keys, instead of calling the `__eq__` method.
 + The first time a `dict` instance is accessed with a non-`str` key, it's modified so future lookups use the generic function.
 + This process is not reversible for the particular `dict` instance, and the key doesn't even have to exist in the dictionary. That's why attempting a failed lookup has the same effect.
 
@@ -3693,7 +3694,7 @@ def dict_size(o):
 
 ```
 
-**Ausgabe:** (Python 3.8, other Python 3 versions may vary a little)
+**Ausgabe:** (Python 3.8, oder Python 3 Versionen können ein bisschen variieren)
 ```py
 >>> o1 = SomeClass()
 >>> o2 = SomeClass()
@@ -3709,7 +3710,7 @@ def dict_size(o):
 232
 ```
 
-Let's try again... In a new interpreter:
+Versuchen wir es noch einmal... In einem neuen Interpreter:
 
 ```py
 >>> o1 = SomeClass()
@@ -3739,16 +3740,16 @@ What makes those dictionaries become bloated? And why are newly created objects 
 
 ### ▶ Kleinigkeiten *
 <!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
-* `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
+* `join()` ist eine String-Operation anstatt einer List-Operation. (auf den ersten Blick nicht einfach zu verstehen)
 
-  **💡 Erklärung:** If `join()` is a method on a string, then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic `list` object API.
+  **💡 Erklärung:** Wenn `join()` eine Methode auf einem String ist, dann kann es auf irgendeinem Iterable operieren (Liste, Tuple, Iteratoren). Wäre es eine Methode auf einer Liste, müsste sie von jedem Typ separat implementiert werden. Außerdem macht es nicht viel Sinn, eine String-spezifische Methode auf eine generische API eines `listen`-Objektes anzuwenden
   
-* Few weird looking but semantically correct statements:
-  + `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
-  + `'a'[0][0][0][0][0]` is also semantically correct, because Python doesn't have a character data type like other languages branched from C. So selecting a single character from a string returns a single-character string.
-  + `3 --0-- 5 == 8` and `--5 == 5` are both semantically correct statements and evaluate to `True`.
+* Ein paar komisch aussehende aber semantisch korrekte Statements:
+  + `[] = ()` ist ein semantisch korrektes Statement (entpacken eines leeren `Tuples` in eine leere `Liste`)
+  + `'a'[0][0][0][0][0]` ist auch semantisch korrect, weil Python keinen Char-Datentyp wie viele andere Sprachen, die auf C basieren, hat. Also ergibt das Auswählen eines einzelnen Characters aus einem String einen Single-character String.
+  + `3 --0-- 5 == 8` und `--5 == 5` sind beides semantisch korrekte Statements und wird zu `True` ausgewertet.
 
-* Given that `a` is a number, `++a` and `--a` are both valid Python statements but don't behave the same way as compared with similar statements in languages like C, C++, or Java.
+* Sei `a` eine Zahl, `++a` und `--a` sind beides valide Python Statements aber sie verhaten sich nicht so wie vergleichbare Statements in Sprachen wie C, C++, oder Java.
   ```py
   >>> a = 5
   >>> a
@@ -3760,26 +3761,26 @@ What makes those dictionaries become bloated? And why are newly created objects 
   ```
 
   **💡 Erklärung:**
-  + There is no `++` operator in Python grammar. It is actually two `+` operators.
-  + `++a` parses as `+(+a)` which translates to `a`. Similarly, the Ausgabe of the statement `--a` can be justified.
-  + This StackOverflow [thread](https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python) discusses the rationale behind the absence of increment and decrement operators in Python.
+  + Es gibt keinen `++` Operator in der Python Grammatik. Es handelt sich eigentlich um zwei `+` Operatoren.
+  + `++a` parst eigentlich `+(+a)` was übersetzt wird zu `a`. In ähnlicher Weise kann die Ausgabe des Statement `--a` begründet werden.
+  + Dieser StackOverflow [Thread](https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python) erörtert die Gründe für das Fehlen von Inkrement- und Dekrementoperatoren in Python.
 
-* You must be aware of the Walrus operator in Python. But have you ever heard about *the space-invader operator*?
+* Der Walrus Operator in Python sollte dir bekannt sein. Aber hast du schon mal von dem *space-invader Operator* gehört?
   ```py
   >>> a = 42
   >>> a -=- 1
   >>> a
   43
   ```
-  It is used as an alternative incrementation operator, together with another one
+  Er wird als alternativer Inkrementierungsoperator verwendet, zusammen mit einem anderen Operator
   ```py
   >>> a +=+ 1
   >>> a
   >>> 44
   ```
-  **💡 Erklärung:** This prank comes from [Raymond Hettinger's tweet](https://twitter.com/raymondh/status/1131103570856632321?lang=en). The space invader operator is actually just a malformatted `a -= (-1)`. Which is equivalent to `a = a - (- 1)`. Similar for the `a += (+ 1)` case.
+  **💡 Erklärung:** Dieser Streich kommt von [Raymond Hettingers Tweet](https://twitter.com/raymondh/status/1131103570856632321?lang=en). Der Space Invader Operator ist tatsächlich nur ein schlecht formatiertes `a -= (-1)`, was äquivalent zu `a = a - (- 1)` ist. Ähnliches gilt für `a += (+ 1)`.
   
-* Python has an undocumented [converse implication](https://en.wikipedia.org/wiki/Converse_implication) operator. 
+* Python hat einen undokumentierten [umgekehrten Implikations](https://en.wikipedia.org/wiki/Converse_implication) Operator. 
      
      ```py
      >>> False ** False == True
@@ -3792,9 +3793,9 @@ What makes those dictionaries become bloated? And why are newly created objects 
      True
      ```
 
-     **💡 Erklärung:** If you replace `False` and `True` by 0 and 1 and do the maths, the truth table is equivalent to a converse implication operator. ([Source](https://github.com/cosmologicon/pywat/blob/master/Erklärung.md#the-undocumented-converse-implication-operator))
+     **💡 Erklärung:** If you replace `False` and `True` by 0 and 1 and do the maths, the truth table is equivalent to a converse implication operator. ([Quelle](https://github.com/cosmologicon/pywat/blob/master/Erklärung.md#the-undocumented-converse-implication-operator))
      
-* Since we are talking operators, there's also `@` operator for matrix multiplication (don't worry, this time it's for real).
+* Weil wir über Operatoren sprechen, erwähnen wir auch den `@` Ooperator, der für Matrixmultiplikation benutzt wird (Keine Sorge, diese mal ist es ernst).
 
      ```py
      >>> import numpy as np
@@ -3802,16 +3803,16 @@ What makes those dictionaries become bloated? And why are newly created objects 
      46
      ```
 
-     **💡 Erklärung:** The `@` operator was added in Python 3.5 keeping the scientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
+     **💡 Erklärung:** Der `@` Operator wurde, mit der wissenschaftlichen Community im Hinterkopf, in Python 3.5 eingeführt. Jedes Objekt kann die magische `__matmul__`  Method überladen, um ein bestimmtes Verhalten für diesen Operator zu definieren.
 
-* From Python 3.8 onwards you can use a typical f-string syntax like `f'{some_var=}` for quick debugging. Example,
+* Ab Python 3.8 kannst du eine typische f-String-Syntax wie `f'{some_var=}` für schnelles Debugging verwenden. Zum Beispiel:
     ```py
     >>> some_string = "wtfpython"
     >>> f'{some_string=}'
     "some_string='wtfpython'"
     ``` 
 
-* Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
+* Python nutzt 2 Bytes die Speicherung lokaler Variablen in Funktionen. Theoretisch heißt das, dass nur 65536 Variablen in einer Funktion gespeichert werden können. Allerdings hat Python eine praktische, eingebaute Lösung, die benutzt werden kann, um mehr als 2^16 Variablennamen zu speichern. Der folgende Code demonstriert, was im Stack passiert, wenn mehr als 65536 lokale Variablen definiert werden (Warnung: Dieser Code gibt ungefähr 2^18 Zeilen Text aus, also sei darauf vorbereitet!):
      
      ```py
      import dis
@@ -3825,9 +3826,11 @@ What makes those dictionaries become bloated? And why are newly created objects 
     print(dis.dis(f))
     ```
      
-* Multiple Python threads won't run your *Python code* concurrently (yes, you heard it right!). It may seem intuitive to spawn several threads and let them execute your Python code concurrently, but, because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, all you're doing is making your threads execute on the same core turn by turn. Python threads are good for IO-bound tasks, but to achieve actual parallelization in Python for CPU-bound tasks, you might want to use the Python [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) module.
+* Mehrere Python Threads werden deinen *Python code* nicht gleichzeitig laufen lassen (Ja, du hast richtig gehört!).
+Es mag intuitiv erscheinen, mehrere Threads zu erzeugen, die dann deinen Python code gleichzeitig ausführen, aber wegen dem [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, sorgst du nur dafür, dass die Threads abwechselnd auf demselben Kern ausgeführt werden. 
+Python Threads sind gut für IO-gebundene Aufgaben, aber um tatsächliche Parallelisierung für CPU-gebundene Aufgaben in Python zu erreichen, solltest du lieber das Python [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) Modul benutzen.
 
-* Sometimes, the `print` method might not print values immediately. For example,
+* Manchmal gibt die `print` Methode die Werte nicht sofort aus. Zum Beispiel:
 
      ```py
      # File some_file.py
@@ -3837,35 +3840,35 @@ What makes those dictionaries become bloated? And why are newly created objects 
      time.sleep(3)
      ```
 
-     This will print the `wtfpython` after 3 seconds due to the `end` argument because the Ausgabe buffer is flushed either after encountering `\n` or when the program finishes execution. We can force the buffer to flush by passing `flush=True` argument.
+    Das wird `wtfpython` nach 3 Sekunden, aufgrund des `end` Argumentes ausgeben, wei der Ausgabe-Puffer, entweder nach `\n` oder wenn das Programm die Ausführung beendet, geflusht wird. Mit dem Argument `flush=True` können wir den Puffer zum Flushen zwingen.
 
-* List slicing with out of the bounds indices throws no errors
+* List slicing mit Indices, die nicht innerhalb der Grenzen liegen, wirft keinen Fehler
   ```py
   >>> some_list = [1, 2, 3, 4, 5]
   >>> some_list[111:]
   []
   ```
 
-* Slicing an iterable not always creates a new object. For example,
+* Slicing eines Iterables erzeugt nicht immer ein neues Objekt. Zum Beispiel:
     ```py
     >>> some_str = "wtfpython"
     >>> some_list = ['w', 't', 'f', 'p', 'y', 't', 'h', 'o', 'n']
-    >>> some_list is some_list[:] # False expected because a new object is created.
+    >>> some_list is some_list[:] # False erwartet, weil ein neues Objekt erzeugt wird.
     False
-    >>> some_str is some_str[:] # True because strings are immutable, so making a new object is of not much use.
+    >>> some_str is some_str[:] # True, weil Strings immutable sind, daher ist die Erstellung eines neuen Objektes sinnlos.
     True
     ```
 
-* `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](https://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
+* `int('١٢٣٤٥٦٧٨٩')` gibt `123456789` in Python 3 zurück. In Python umfassen Dezimalzeichen auch Ziffernzeichen, und alle Zeichen, die zum Erstellen von Dezimal-Radix-Nummern benutzt werden können, z.B. U+0660, ARABIC-INDIC DIGIT ZERO. Hier  ist eine [interessante Geschichte](https://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) im Zusammenhang mit diesem Verhalten in Python.
 
-* You can separate numeric literals with underscores (for better readability) from Python 3 onwards.
+* Du kannst numerische Literale mit Unterstrichen trennen, um die Lesbarkeit zu erhöhen (Python 3 spezifisch).
 
      ```py
-     >>> six_million = 6_000_000
-     >>> six_million
+     >>> sechs_millionen = 6_000_000
+     >>> sechs_millionen
      6000000
-     >>> hex_address = 0xF00D_CAFE
-     >>> hex_address
+     >>> sechs_millionen = 0xF00D_CAFE
+     >>> sechs_millionen
      4027435774
      ```
 
@@ -3877,8 +3880,7 @@ What makes those dictionaries become bloated? And why are newly created objects 
           result += (s[i:i + len(sub)] == sub)
       return result
   ```
-  The behavior is due to the matching of empty substring(`''`) with slices of length 0 in the original string.
-
+  Das Verhalten ist darauf zurückzuführen, dass leere Teilstrings (`''`) mit Slices der Länge 0 in der ursprünglichen Zeichenkette übereinstimmen 
 ---
 ---
 
