@@ -42,6 +42,7 @@ Also, los gehts...
       - [💡 Erklärung](#-erklärung-4)
     - [▶ Tief im Inneren sind wir alle gleich](#-tief-im-inneren-sind-wir-alle-gleich)
       - [💡 Erklärung:](#-erklärung-5)
+  - [Unterschied macht.](#unterschied-macht)
     - [▶ Unordnung in der Ordnung \*](#-unordnung-in-der-ordnung-)
       - [💡 Erklärung:](#-erklärung-6)
     - [▶ Versuche es weiter... \*](#-versuche-es-weiter-)
@@ -435,11 +436,11 @@ geschuldet, auch als Constant Folding bekannt. Das bedeutet, der Ausdruck `'a'*2
 ### ▶ Vorsicht bei verketteten Operationen
 <!-- Example ID: 07974979-9c86-4720-80bd-467aa19470d9 --->
 ```py
->>> (False == False) in [False] # makes sense
+>>> (False == False) in [False] # ergibt Sinn
 False
->>> False == (False in [False]) # makes sense
+>>> False == (False in [False]) # ergibt Sinn
 False
->>> False == False in [False] # now what?
+>>> False == False in [False] # Was nun?
 True
 
 >>> True is False == False
@@ -692,11 +693,11 @@ class WTF:
 
 **Ausgabe:**
 ```py
->>> WTF() == WTF() # two different instances can't be equal
+>>> WTF() == WTF() # zwei verschiedene Instanzen können nicht gleich sein
 False
->>> WTF() is WTF() # identities are also different
+>>> WTF() is WTF() # Idetitäten sind ebenfalls unterschiedlich
 False
->>> hash(WTF()) == hash(WTF()) # hashes _should_ be different as well
+>>> hash(WTF()) == hash(WTF()) # Hash-Werte _sollten_ ebenfalls verschieden sein
 True
 >>> id(WTF()) == id(WTF())
 True
@@ -729,8 +730,8 @@ True
   D
   True
   ```
-  As you may observe, the order in which the objects are destroyed is what made all the difference here.
-
+  Wie du villeicht beobachtest hast, ist die Reihenfolge, in der die Objekte zerstört werden, das, was hier den
+  Unterschied macht.
 ---
 
 ### ▶ Unordnung in der Ordnung *
@@ -749,13 +750,13 @@ another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
 
 class DictWithHash(dict):
     """
-    A dict that also implements __hash__ magic.
+    Ein Dictionary auch __hash__ magic implementiert.
     """
     __hash__ = lambda self: 0
 
 class OrderedDictWithHash(OrderedDict):
     """
-    An OrderedDict that also implements __hash__ magic.
+    Ein OrderedDict was auch __hash__ magic implementiert.
     """
     __hash__ = lambda self: 0
 ```
@@ -933,7 +934,9 @@ for i, some_dict[i] in enumerate(some_string):
 
   **💡 Erklärung:**
 
-  - The assignment statement `i = 10` never affects the iterations of the loop because of the way for loops work in Python. Before the beginning of every iteration, the next item provided by the iterator (`range(4)` in this case) is unpacked and assigned the target list variables (`i` in this case).
+  - Das Zuweisungs-Statement `i = 10` hat niemals einen Effekt auf die Schleife, aufgrund der Funktionsweise von 
+  for-Schleifen in Python. Vor dem Beginn jeder Iteration, wird das nächste Objekt, was vom Iterator (in diesem
+  Fall `range(4)`) bereitgestellt wird, wird ausgepackt und der Zielliste zugewiesen (in diesem Fall `i`).
 
 * The `enumerate(some_string)` function yields a new value `i` (a counter going up) and a character from the `some_string` in each iteration. It then sets the (just assigned) `i` key of the dictionary `some_dict` to that character. The unrolling of the loop can be simplified as:
   ```py
@@ -950,7 +953,7 @@ for i, some_dict[i] in enumerate(some_string):
 1\.
 ```py
 array = [1, 8, 15]
-# A typical generator expression
+# Ein typischer Generator-Ausdruck
 gen = (x for x in array if array.count(x) > 0)
 array = [2, 8, 22]
 ```
@@ -958,7 +961,7 @@ array = [2, 8, 22]
 **Ausgabe:**
 
 ```py
->>> print(list(gen)) # Where did the other values go?
+>>> print(list(gen)) # Wo sind die anderen Variablen hin?
 [8]
 ```
 
@@ -1035,9 +1038,9 @@ False
 <!-- Example ID: 69329249-bdcb-424f-bd09-cca2e6705a7a --->
 
 ```py
-# Let's initialize a row
+# Lass uns eine Zeile initialisieren
 row = [""] * 3 #row i['', '', '']
-# Let's make a board
+# Lass uns ein Brett bauen
 board = [row] * 3
 ```
 
@@ -1055,11 +1058,11 @@ board = [row] * 3
 [['X', '', ''], ['X', '', ''], ['X', '', '']]
 ```
 
-We didn't assign three `"X"`s, did we?
+Wir haben nicht dreimal `"X"` zugewiesen, oder?
 
 #### 💡 Erklärung:
 
-When we initialize `row` variable, this visualization explains what happens in the memory
+Wenn wir die Variable `row` initialisieren, dann erklärt diese Visualisierung, was im Speicher passiert
 
 ![image](/images/tic-tac-toe/after_row_initialized.png)
 
@@ -1067,7 +1070,7 @@ And when the `board` is initialized by multiplying the `row`, this is what happe
 
 ![image](/images/tic-tac-toe/after_board_initialized.png)
 
-We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/wtfpython/issues/68) issue).
+Wir können dieses Szenario umfahren, indem wir nicht die `row` Variable zum generieren von `board` benutzen. (gefragt [hier](https://github.com/satwikkansal/wtfpython/issues/68)).
 
 ```py
 >>> board = [['']*3 for _ in range(3)]
@@ -1089,7 +1092,7 @@ for x in range(7):
     def some_func():
         return x
     funcs.append(some_func)
-    results.append(some_func())  # note the function call here
+    results.append(some_func())  # Beachte hier den Funktionsaufruf 
 
 funcs_results = [func() for func in funcs]
 ```
@@ -1119,7 +1122,7 @@ The values of `x` were different in every iteration prior to appending `some_fun
 >>> inspect.getclosurevars(funcs[0])
 ClosureVars(nonlocals={}, globals={'x': 6}, builtins={}, unbound=set())
 ```
-Since `x` is a global value, we can change the value that the `funcs` will lookup and return by updating `x`:
+Da `x` ein globaler Wert ist, können wir den Wert, den `funcs` nachschlägt und zurüchgibt, verändern, indem wir `x` updaten:
 
 ```py
 >>> x = 42
