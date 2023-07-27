@@ -650,7 +650,8 @@ Warum also ist Python überall zu finden ?
 
 #### 💡 Erklärung
 
-* Uniqueness of keys in a Python dictionary is by *equivalence*, not identity. So even though `5`, `5.0`, and `5 + 0j` are distinct objects of different types, since they're equal, they can't both be in the same `dict` (or `set`). As soon as you insert any one of them, attempting to look up any distinct but equivalent key will succeed with the original mapped value (rather than failing with a `KeyError`):
+* Einzigartigkeit der Schlüssel in einem Python Dictionary wird durch *Äquivalenz*, nicht durch Identität festgestellt. Obwohl also `5`, `5.0`, und `5 + 0j` verschiedene Objekte unterschiedlichen Typs sind, können sie, da sie gleichwertig sind, nicht im gleichen `dict` (oder `set`) sein.
+Sobald du einen von ihnen einfügst, wird der Versuch, nach einem anderen, aber gleichwertigen Schlüssel zu suchen, mit dem ursprünglichen zugeordneten Wert erfolgreich sein (und nicht mit einem `KeyError` fehlschlagen):
   ```py
   >>> 5 == 5.0 == 5 + 0j
   True
@@ -663,7 +664,9 @@ Warum also ist Python überall zu finden ?
   >>> (5 in some_dict) and (5 + 0j in some_dict)
   True
   ```
-* This applies when setting an item as well. So when you do `some_dict[5] = "Python"`, Python finds the existing item with equivalent key `5.0 -> "Ruby"`, overwrites its value in place, and leaves the original key alone.
+* Das gilt auch, wenn ein Item festgelegt wird. Wenn du also `some_dict[5] = "Python"` ausführst, findet Python
+das existierende Item mit demselben Key `5.0 -> "Ruby"`, überschreibt den Wert an dieser Stelle, und lässt den 
+originalen Wert unangetastet.
   ```py
   >>> some_dict
   {5.0: 'Ruby'}
@@ -671,9 +674,10 @@ Warum also ist Python überall zu finden ?
   >>> some_dict
   {5.0: 'Python'}
   ```
-* So how can we update the key to `5` (instead of `5.0`)? We can't actually do this update in place, but what we can do is first delete the key (`del some_dict[5.0]`), and then set it (`some_dict[5]`) to get the integer `5` as the key instead of floating `5.0`, though this should be needed in rare cases.
+* Wie können wir also den Key zu `5` anstelle von `5.0` updaten? Wir können das tatsächlich nicht an dieser Stelle
+tun, aber wir können den Schlüssel zuerst löschen (`del some_dict[5.0]`), und ihn danach neu festzulegen (`some_dict[5]`), um den Schlüssel `5` zu bekommen, anstelle des floats `5.0`. Das wird jedoch nur in seltenen Fällen benötigt.
 
-* How did Python find `5` in a dictionary containing `5.0`? Python does this in constant time without having to scan through every item by using hash functions. When Python looks up a key `foo` in a dict, it first computes `hash(foo)` (which runs in constant-time). Since in Python it is required that objects that compare equal also have the same hash value ([docs](https://docs.python.org/3/reference/datamodel.html#object.__hash__) here), `5`, `5.0`, and `5 + 0j` have the same hash value.
+* Wie hat Python `5` in einem Dictionary gefunden, welches `5.0` enthält? Python tut dies in konstanter Zeit, ohne jedes Item zu scannen, indem es Hash-Funktionen benutzt. Wenn Python den Key `foo` in einem Dictionary nachschlägt, dann verarbeitet es zuerst `hash(foo)` (was in konstanter Zeit läuft). Da es in Python notwendig ist, dass Objekte, die als gleich gelten auch den gleichen Hash-Wert haben ( siehe hier [docs](https://docs.python.org/3/reference/datamodel.html#object.__hash__)), haben `5`, `5.0`, und `5 + 0j` denselben Hash-Wert.
   ```py
   >>> 5 == 5.0 == 5 + 0j
   True
@@ -1028,9 +1032,9 @@ False
 
 #### 💡 Erklärung
 
-- `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
-- `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise. 
-- In the example, `(not None)` evaluates to `True` since the value `None` is `False` in a boolean context, so the expression becomes `'something' is True`.
+- `is not` ist ein einzelner binärer Operator, der anderes Verhalten zeigt, als wenn man `is` und `not` einzeln benutzt.
+- `is not` wird zu `False` ausgewertet wenn die Variablen auf beiden Seiten des Operators auf dasselbe Objekt verweisen, andernfalls zu `True`.
+- Im Beispiel wird `(not None)` zu `True` ausgewertet, denn der Wert `None` ist `False` im booleschen Kontext, also wird der Ausdruck zu `'something' is True` ausgewertet.
 
 ---
 
@@ -1040,7 +1044,7 @@ False
 ```py
 # Lass uns eine Zeile initialisieren
 row = [""] * 3 #row i['', '', '']
-# Lass uns ein Brett bauen
+# Lass uns ein board bauen
 board = [row] * 3
 ```
 
@@ -1066,7 +1070,7 @@ Wenn wir die Variable `row` initialisieren, dann erklärt diese Visualisierung, 
 
 ![image](/images/tic-tac-toe/after_row_initialized.png)
 
-And when the `board` is initialized by multiplying the `row`, this is what happens inside the memory (each of the elements `board[0]`, `board[1]` and `board[2]` is a reference to the same list referred by `row`)
+Und wenn das `board` durch Multiplizieren der `row` initialisiert wird, dann passiert das hier innerhalb des Speichers (jedes der Elemente `board[0]`, `board[1]` und `board[2]` ist eine Referenz aud dieselbe Liste, aud die `row` verweist)
 
 ![image](/images/tic-tac-toe/after_board_initialized.png)
 
@@ -1116,7 +1120,9 @@ The values of `x` were different in every iteration prior to appending `some_fun
 ```
 
 #### 💡 Erklärung:
-* When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the *variable*, not its *value*. The function looks up `x` in the surrounding context, rather than using the value of `x` at the time the function is created. So all of the functions use the latest value assigned to the variable for computation. We can see that it's using the `x` from the surrounding context (i.e. *not* a local variable) with:
+* Wenn wir eine Funktion innerhalb einer Schleife definieren, welche die Schleifenvariable in ihrem Körper benutzt, dann ist der Abschluss der Schleifenfunktion an die *Variable* gebunden, nicht an ihren *Wert*.
+Die Funktion schlägt `x` in dem umgebenden Kontext nach, anstatt den Wert von `x` zum Zeitpunkt der Erstellung der Funktion zu benutzen. Also verwenden alle Funktionen den letzten Wert, der der Variable zugewiesen wurde, für ihre Berechnungen. Wir können beobachten, dass `x` vom umgebenen Kontext verwendet wird (d.h. *keine* lokale Variable) mit: 
+
 ```py
 >>> import inspect
 >>> inspect.getclosurevars(funcs[0])
@@ -2055,12 +2061,12 @@ a, b = a[b] = {}, 5
   ```
   Similar is the case in our example (`a[b][0]` is the same object as `a`)
 
-* So to sum it up, you can break the example down to
+* Um zusammenzufassen, kannst du das Beispiel wie folgt aufgliedern
   ```py
   a, b = {}, 5
   a[b] = a, b
   ```
-  And the circular reference can be justified by the fact that `a[b][0]` is the same object as `a`
+  And the circular reference can be justified by the fact that `a[b][0]` ist dasselbe Objekt wie `a`
   ```py
   >>> a[b][0] is a
   True
@@ -2092,15 +2098,15 @@ ValueError: Exceeds the limit (4300) for integer string conversion:
 ```
 
 #### 💡 Erklärung:
-This call to `int()` works fine in Python 3.10.6 and raises a ValueError in Python 3.10.8. Note that Python can still work with large integers. The error is only raised when converting between integers and strings.
+Die Aufforderung `int()` funktioniert gut in Python 3.10.6 und gibt einen ValueError in Python 3.10.8 aus. Beachte, dass Python auch mit großen ganzen Zahlen arbeiten kann. Der Fehler tritt nur auf, wenn du zwischen Integern und Strings konvertiert wird.
 
-Fortunately, you can increase the limit for the allowed number of digits when you expect an operation to exceed it. To do this, you can use one of the following:
-- The -X int_max_str_digits command-line flag
-- The set_int_max_str_digits() function from the sys module
-- The PYTHONINTMAXSTRDIGITS environment variable
+Glücklicherweise kannst du den Grenzwert für die zulässige Anzahl von Ziffern erhöhen, wenn du erwartest, dass ein Vorgang diesen Grenzwert überschreitet. Um das zu tun, kannst du folgendes benutzen:
+- Das -X int_max_str_digits command-line flag
+- Die set_int_max_str_digits() Funktion vom sys-modul
+- Die PYTHONINTMAXSTRDIGITS Umgebungsvariable
 
-[Check the documentation](https://docs.python.org/3/library/stdtypes.html#int-max-str-digits) for more details on changing the default limit if you expect your code to exceed this value.
-
+[Check die Dokumentation](https://docs.python.org/3/library/stdtypes.html#int-max-str-digits) für mehr Details
+über das Verändern des Default-Limits, wenn du erwartest, dass dein Code diesen Wert übersteigt.
 
 ---
 
@@ -2131,11 +2137,11 @@ for i in x:
 7
 ```
 
-Yes, it runs for exactly **eight** times and stops.
+Ja, es läuft exakt **acht** mal und stoppt dann.
 
 #### 💡 Erklärung:
 
-* Iteration over a dictionary that you edit at the same time is not supported.
+* Iteration über ein Dictionary, welches du zur selben Zeit modifizierst, wird nicht unterstützt.
 * It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
 * How deleted keys are handled and when the resize occurs might be different for different Python implementations.
 * So for Python versions other than Python 2.7 - Python 3.5, the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/wtfpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
@@ -2158,22 +2164,22 @@ class SomeClass:
 ```py
 >>> x = SomeClass()
 >>> y = x
->>> del x # this should print "Deleted!"
+>>> del x # das sollte "Deleted!" ausgeben
 >>> del y
 Deleted!
 ```
 
-Phew, deleted at last. You might have guessed what saved `__del__` from being called in our first attempt to delete `x`. Let's add more twists to the example.
+Pha, deleted zuletzt. You might have guessed what saved `__del__` from being called in our first attempt to delete `x`. Ergänzen wir das Beispiel um weitere Aspekte
 
 2\.
 ```py
 >>> x = SomeClass()
 >>> y = x
 >>> del x
->>> y # check if y exists
+>>> y # check, ob y existiert
 <__main__.SomeClass instance at 0x7f98a1a67fc8>
->>> del y # Like previously, this should print "Deleted!"
->>> globals() # oh, it didn't. Let's check all our global variables and confirm
+>>> del y # Wie vorher sollte das "Deleted!" ausgeben
+>>> globals() # oh, das hat es nicht. Lass uns alle globalen Variablen checken und das bestätigen
 Deleted!
 {'__builtins__': <module '__builtin__' (built-in)>, 'SomeClass': <class __main__.SomeClass at 0x7f98a1a5f668>, '__package__': None, '__name__': '__main__', '__doc__': None}
 ```
@@ -2301,7 +2307,7 @@ for idx, item in enumerate(list_4):
 [2, 4]
 ```
 
-Can you guess why the Ausgabe is `[2, 4]`?
+Kannst du erklären, warum die Ausgabe `[2, 4]` ist?
 
 #### 💡 Erklärung:
 
@@ -2311,7 +2317,7 @@ Can you guess why the Ausgabe is `[2, 4]`?
      >>> some_list = [1, 2, 3, 4]
      >>> id(some_list)
      139798789457608
-     >>> id(some_list[:]) # Notice that python creates new object for sliced list.
+     >>> id(some_list[:]) # Beachte, dass Python ein neues Objekt für geslicte Listen baut.
      139798779601192
      ```
 
@@ -2323,8 +2329,8 @@ Can you guess why the Ausgabe is `[2, 4]`?
 **Why the Ausgabe is `[2, 4]`?**
 - The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down, i.e., `2` is at index 0, and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. A similar thing will happen with every alternate element in the list sequence.
 
-* Refer to this StackOverflow [thread](https://stackoverflow.com/questions/45946228/what-happens-when-you-try-to-delete-a-list-element-while-iterating-over-it) explaining the example
-* See also this nice StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) for a similar example related to dictionaries in Python.
+* Ich verweise auf diesen StackOverflow [thread](https://stackoverflow.com/questions/45946228/what-happens-when-you-try-to-delete-a-list-element-while-iterating-over-it), welches das Beispiel erklärt
+* Siehe auch diesen schönen StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) für ein ähnliches Beispiel im Bezug auf Dictionaries in Python.
 
 ---
 
