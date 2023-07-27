@@ -709,10 +709,10 @@ True
 
 #### 💡 Erklärung:
 
-* When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
-* When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
-* So, the object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
-* But why did the `is` operator evaluate to `False`? Let's see with this snippet.
+* Wenn `id` genannt wurde, hat Python hat ein `WTF` class-Objekt gebaut und es der `id`-Funktion übergeben. Die `id`-Funktion nimmt die `id` (den Speicherort), und wirft das Objekt weg. Das Objekt ist zerstört.
+* When we do this twice in succession, Python allocates the same memory location to this second object as well. Da (in CPython) `id` denselben Speicherort wie die Objekt-Id benutzt, ist die id der beiden Objekte dieselbe.
+* Also ist die Id des Objektes nur für die Lebensdauer des Objektes einzigartig. Nachdem das Objekt zerstört wurde, oder bevor es gebaut wird, kann etwas anderes diese Id haben.
+* Abe warum wurde der `is` zu `False` ausgewertet? Lass uns das anhand dieses Schnipsels betrachten.
   ```py
   class WTF(object):
     def __init__(self): print("I")
@@ -767,23 +767,23 @@ class OrderedDictWithHash(OrderedDict):
 
 **Ausgabe**
 ```py
->>> dictionary == ordered_dict # If a == b
+>>> dictionary == ordered_dict # Wenn a == b
 True
->>> dictionary == another_ordered_dict # and b == c
+>>> dictionary == another_ordered_dict # und b == c
 True
->>> ordered_dict == another_ordered_dict # then why isn't c == a ??
+>>> ordered_dict == another_ordered_dict # warum ist dann c != a ??
 False
 
-# We all know that a set consists of only unique elements,
-# let's try making a set of these dictionaries and see what happens...
+# Wir wissen alle, dass ein Set nur aus einzigartigen Elementen besteht,
+# Lass uns ein Set aus Dictionaries bauen und sehen, was passiert...
 
 >>> len({dictionary, ordered_dict, another_ordered_dict})
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: unhashable type: 'dict'
 
-# Makes sense since dict don't have __hash__ implemented, let's use
-# our wrapper classes.
+# Ergibt Sinn, denn ein Dictionary implementiert nicht __hash__, lass uns unsere
+# Wrapper-Klasse benutzen.
 >>> dictionary = DictWithHash()
 >>> dictionary[1] = 'a'; dictionary[2] = 'b';
 >>> ordered_dict = OrderedDictWithHash()
@@ -792,7 +792,7 @@ TypeError: unhashable type: 'dict'
 >>> another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
 >>> len({dictionary, ordered_dict, another_ordered_dict})
 1
->>> len({ordered_dict, another_ordered_dict, dictionary}) # changing the order
+>>> len({ordered_dict, another_ordered_dict, dictionary}) # verändere die Reihenfolge
 2
 ```
 
@@ -800,14 +800,15 @@ Was geht hier vor ?
 
 #### 💡 Erklärung:
 
-- The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
-  
-    > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
-- The reason for this equality in behavior is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
-- Okay, so why did changing the order affect the length of the generated `set` object? The answer is the lack of intransitive equality only. Since sets are "unordered" collections of unique elements, the order in which elements are inserted shouldn't matter. But in this case, it does matter. Let's break it down a bit,
+- Der Grund, warum die intransitive Gleichheit zwischen `dictionary`, `ordered_dict` und `another_ordered_dict` nicht gilt, liegt in der `__eq__` Methode und wie diese in der `OrderedDict`-Klasse implementiert ist. Aus der [Dokumentation](https://docs.python.org/3/library/collections.html#ordereddict-objects)
+
+    > Gleichheitstests zwischen OrderedDict-Objekten sind ordnungsabhängig und werden als `list(od1.items())==list(od2.items())` implementiert. Gleichheitstests zwischen `OrderedDict`-Objekten und anderen Mapping-Objekten sind nicht ordnungsabhängig wie bei regulären Dictionaries.
+
+- Der Grund für diese Gleichheit im Verhalten ist, dass sie es ermöglicht, `OrderedDict`-Objekte direkt überall dort zu ersetzen, wo ein reguläres Wörterbuch verwendet wird.
+- Okay, warum also hat die Änderung der Reihenfolge Auswirkungen auf die Länge des erzeugten `set`-Objekts? Die Antwort ist das Fehlen der intransitiven Gleichheit. Da Mengen "ungeordnete" Sammlungen von eindeutigen Elementen sind, sollte die Reihenfolge, in der die Elemente eingefügt werden, keine Rolle spielen. Aber in diesem Fall spielt sie doch eine Rolle. Lass uns das ein wenig aufschlüsseln
     ```py
     >>> some_set = set()
-    >>> some_set.add(dictionary) # these are the mapping objects from the snippets above
+    >>> some_set.add(dictionary) # das sind die Mapping-Objekte von unseren Schnipseln oben
     >>> ordered_dict in some_set
     True
     >>> some_set.add(ordered_dict)
@@ -832,7 +833,7 @@ Was geht hier vor ?
     >>> len(another_set)
     2
     ```
-    So the inconsistency is due to `another_ordered_dict in another_set` being `False` because `ordered_dict` was already present in `another_set` and as observed before, `ordered_dict == another_ordered_dict` is `False`.
+    Die Inkonsistenz liegt bei `another_ordered_dict in another_set`, was `False` ist, weil `ordered_dict` bereits in `another_set` enthalten ist und wie schon vorher beobachtet, `ordered_dict == another_ordered_dict` ist `False`.
 
 ---
 
@@ -852,13 +853,13 @@ def another_func():
         finally:
             print("Finally!")
 
-def one_more_func(): # A gotcha!
+def one_more_func(): # Ein gotcha!
     try:
         for i in range(3):
             try:
                 1 / i
             except ZeroDivisionError:
-                # Let's throw it here and handle it outside for loop
+                # Lass es uns hier hin packen und es außerhalb des Loops behandeln
                 raise ZeroDivisionError("A trivial divide by zero error")
             finally:
                 print("Iteration", i)
@@ -890,9 +891,12 @@ Iteration 0
 
 #### 💡 Erklärung:
 
-- When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed on the way out.
-- The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
-- The caveat here is, if the finally clause executes a `return` or `break` statement, the temporarily saved exception is discarded.
+- Wenn ein `return`-, `break`- oder `continue`-Anweisung in einem `try` ("try…finally") Anweisung ausgeführt wird,
+dann wird der `finally`-Abschnitt am Ende ebenfalls ausgeführt.
+- Der Rückgabewert einer Funktion wird durch die letzte `return`-Anweisung bestimmt. Da der `finally`-Abschnitt
+immer ausgeführt wird, wird eine `return`-Anweisung im `finally`-Abschnitt immer die letzte sein, die ausgeführt wird.
+- Wenn also der `finally`-Abschnitt eine `return`- oder `break`-Anweisung ausführt, dann wird die kurzzeitige
+Exception verworfen.
 
 ---
 
@@ -908,18 +912,18 @@ for i, some_dict[i] in enumerate(some_string):
 
 **Ausgabe:**
 ```py
->>> some_dict # An indexed dict appears.
+>>> some_dict # Ein indiziertes dictionary erscheint.
 {0: 'w', 1: 't', 2: 'f'}
 ```
 
 ####  💡 Erklärung:
 
-* A `for` statement is defined in the [Python grammar](https://docs.python.org/3/reference/grammar.html) as:
+* Eine `for` Anweisung ist in [Python Syntax](https://docs.python.org/3/reference/grammar.html) wie folgt definiert:
   ```
   for_stmt: 'for' exprlist 'in' testlist ':' suite ['else' ':' suite]
   ```
-  Where `exprlist` is the assignment target. This means that the equivalent of `{exprlist} = {next_value}` is **executed for each item** in the iterable.
-  An interesting example that illustrates this:
+  `exprlist` ist dabei das Zuweisungsziel. Das heißt, dass das Äquivalente von `{exprlist} = {next_value}` im Iterable **executed for each item** ist.
+  Ein interessantes Beispiel, was dies verdeutlicht:
   ```py
   for i in range(4):
       print(i)
@@ -942,7 +946,10 @@ for i, some_dict[i] in enumerate(some_string):
   for-Schleifen in Python. Vor dem Beginn jeder Iteration, wird das nächste Objekt, was vom Iterator (in diesem
   Fall `range(4)`) bereitgestellt wird, wird ausgepackt und der Zielliste zugewiesen (in diesem Fall `i`).
 
-* The `enumerate(some_string)` function yields a new value `i` (a counter going up) and a character from the `some_string` in each iteration. It then sets the (just assigned) `i` key of the dictionary `some_dict` to that character. The unrolling of the loop can be simplified as:
+* Die `enumerate(some_string)` Funktion liefert ein neuen Wert `i` (ein Zähler, der aufwärts läuft) und ein
+Character vom String `some_string` in jeder Iteration. Dann wird der gerade erzeugte Wert `i` des Dictionaries
+`some_dict` als Key zu diesem Character gesetzt. Das Verhalten der Schleife kann wie folgt vereinfacht werden:
+
   ```py
   >>> i, some_dict[i] = (0, 'w')
   >>> i, some_dict[i] = (1, 't')
