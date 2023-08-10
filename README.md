@@ -1426,12 +1426,12 @@ True
 
 #### 💡 Erklärung
 
-- In a usual python string, the backslash is used to escape characters that may have a special meaning (like single-quote, double-quote, and the backslash itself).
+- In einem normalen Python-String wird der Backslash zum Escapen von Charactern benutzt, die evtl. eine besondere Bedeutung haben (bspw. einfache Anführungszeichen, doppelte Anführungszeichen und der Backslash selbst).
     ```py
     >>> "wt\"f"
     'wt"f'
     ```
-- In a raw string literal (as indicated by the prefix `r`),  the backslashes pass themselves as is along with the behavior of escaping the following character.
+- In einem raw-String-Literal (wie durch das Präfix `r` gekennzeichnet), werden die Backslashes so wie sie sind weitergegeben, zusammen mit den Verhalten, dass die folgenden Zeichen escaped werden.
     ```py
     >>> r'wt\"f' == 'wt\\"f'
     True
@@ -1443,7 +1443,7 @@ True
     >>> print(r"\\n")
     '\\n'
     ```
-- This means when a parser encounters a backslash in a raw string, it expects another character following it. And in our case (`print(r"\")`), the backslash escaped the trailing quote, leaving the parser without a terminating quote (hence the `SyntaxError`). That's why backslashes don't work at the end of a raw string.
+- Das heißt wenn ein Parser auf ein Backslash in einem raw-String trifft, dann erwartet es noch einen Character, der diesem Backslash folgt. Und in unserem Fall (`print(r"\")`) escaped der Backslash das abschließende Anführungszeichen, wodurch der Parser kein terminierendes Anführungszeichen bekommt (daher der `SyntaxError`). Deshalb funktionieren Backslashes am Ende eines raw-Strings nicht.
 
 ---
 
@@ -1467,10 +1467,10 @@ SyntaxError: invalid syntax
 
 #### 💡 Erklärung:
 
-* Operator precedence affects how an expression is evaluated, and `==` operator has higher precedence than `not` operator in Python.
-* So `not x == y` is equivalent to `not (x == y)` which is equivalent to `not (True == False)` finally evaluating to `True`.
-* But `x == not y` raises a `SyntaxError` because it can be thought of being equivalent to `(x == not) y` and not `x == (not y)` which you might have expected at first sight.
-* The parser expected the `not` token to be a part of the `not in` operator (because both `==` and `not in` operators have the same precedence), but after not being able to find an `in` token following the `not` token, it raises a `SyntaxError`.
+* Operator-Reihenfolge beeinflusst wie ein Ausdruck ausgewertet wird, und der `==` Operator hat eine höhere Priorität als der `not`-Operator in Python.
+* Also ist `not x == y` äquivalent zu `not (x == y)`, was äquivalent zu `not (True == False)` ist und schließlich zu `True` ausgewertet wird.
+* Aber `x == not y` wirft einen `SyntaxError`, weil man es mit `(x == not) y` gleich setzen könnte und nicht `x == (not y)`, was man zuerst erwarten würde.
+* Der Parser erwartet das `not`-Token als Teil de `not in`-Operators (weil sowohl der `==`- als auch der `not in`-Operator die gleiche Priorität haben), aber nachdem er kein `in`-Token, welches nach einem `not`-Token folgt, gefunden hat, wirft er einen `SyntaxError`. 
 
 ---
 
@@ -1482,7 +1482,7 @@ SyntaxError: invalid syntax
 wtfpython
 >>> print("wtfpython""")
 wtfpython
->>> # The following statements raise `SyntaxError`
+>>> # Die folgende Anweisung wirft einen `SyntaxError`
 >>> # print('''wtfpython')
 >>> # print("""wtfpython")
   File "<input>", line 3
@@ -1492,14 +1492,14 @@ SyntaxError: EOF while scanning triple-quoted string literal
 ```
 
 #### 💡 Erklärung:
-+ Python supports implicit [string literal concatenation](https://docs.python.org/3/reference/lexical_analysis.html#string-literal-concatenation), Example,
++ Python unterstützt implizite [String-literal-Konkatenation](https://docs.python.org/3/reference/lexical_analysis.html#string-literal-concatenation), Beispiel:
   ```
   >>> print("wtf" "python")
   wtfpython
   >>> print("wtf" "") # or "wtf"""
   wtf
   ```
-+ `'''` and `"""` are also string delimiters in Python which causes a SyntaxError because the Python interpreter was expecting a terminating triple quote as delimiter while scanning the currently encountered triple quoted string literal.
++ `'''` und `"""` sind auch String-Trennzeichen in Python, was einen SyntaxError hervorruft, weil der Python-Interpreter ein abschließendes dreifaches Anführungszeichen als Trennzeichen erwartet, während er das momentane String-Literal mit dreifachen Anführungszeichen scannt.
 
 ---
 
@@ -1508,8 +1508,8 @@ SyntaxError: EOF while scanning triple-quoted string literal
 1\.
 
 ```py
-# A simple example to count the number of booleans and
-# integers in an iterable of mixed data types.
+# Ein einfaches Beispiel, um die Anzahl der Booleans und
+# der Integer in einem Iterable mit gemischten Datentypen zu zählen.
 mixed_list = [False, 1.0, "some_string", 3, True, [], False]
 integers_found_so_far = 0
 booleans_found_so_far = 0
@@ -1560,7 +1560,7 @@ I have lost faith in truth!
 
 #### 💡 Erklärung:
 
-* `bool` is a subclass of `int` in Python
+* `bool` ist eine Unterklasse von `int` in Python
     
     ```py
     >>> issubclass(bool, int)
@@ -1569,7 +1569,7 @@ I have lost faith in truth!
     False
     ```
     
-* And thus, `True` and `False` are instances of `int`
+* Zudem sind `True` und `False` Instanzen von `int`
   ```py
   >>> isinstance(True, int)
   True
@@ -1577,7 +1577,7 @@ I have lost faith in truth!
   True
   ```
 
-* The integer value of `True` is `1` and that of `False` is `0`.
+* Der Integer Wert von `True` ist `1` und der von `False` ist `0`.
   ```py
   >>> int(True)
   1
@@ -1585,11 +1585,9 @@ I have lost faith in truth!
   0
   ```
 
-* See this StackOverflow [answer](https://stackoverflow.com/a/8169049/4354153) for the rationale behind it.
-
-* Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true).  `True`, `False`, and a `bool` type was added in 2.x versions, but, for backward compatibility, `True` and `False` couldn't be made constants. They just were built-in variables, and it was possible to reassign them
-
-* Python 3 was backward-incompatible, the issue was finally fixed, and thus the last snippet won't work with Python 3.x!
+* Siehe auch diese StackOverflow [Antwort](https://stackoverflow.com/a/8169049/4354153) für die Begründung dahinter.
+* Anfänglich hatte Python keinen `bool` Typ (Leute benutzten 0 für False und nicht-null Werte wie 1 für True).  `True`, `False`, und ein `bool` Typ wurden in den 2.x Versionen hinzugefügt, aber, für Rückwärtskompatibilität, konnten `True` und `False` nicht zu Konstanten gemacht werden. Sie waren nur built-in Variablen, was es möglich machte, sie neu zuzuweisen.
+* Python 3 war rückwärtskompatibel, das Problem wurde schließlich gelöst, und daher wird der letzte Schnipsel nicht mit Python 3.x funktionieren!
 
 ---
 
@@ -1615,7 +1613,7 @@ class C(A):
 >>> A.x, B.x, C.x
 (1, 2, 1)
 >>> A.x = 3
->>> A.x, B.x, C.x # C.x changed, but B.x didn't
+>>> A.x, B.x, C.x # C.x wurde verändert, aber B.x nicht
 (3, 2, 3)
 >>> a = A()
 >>> a.x, A.x
@@ -1658,8 +1656,8 @@ True
 
 #### 💡 Erklärung:
 
-* Class variables and variables in class instances are internally handled as dictionaries of a class object. If a variable name is not found in the dictionary of the current class, the parent classes are searched for it.
-* The `+=` operator modifies the mutable object in-place without creating a new object. So changing the attribute of one instance affects the other instances and the class attribute as well.
+* Klassenvariablen und Variablen in Klasseninstanzen werden intern als Dictionaries von einem Klassenobjekt behandelt. Wenn einen Variablenname nicht im Dictionary der momentanen Klasse gefunden wird, wird die Elternklasse durchsucht.
+* Der `+=` Operator modifiziert das veränderbare Objekt in-place ohne ein neues Objekt zu erzeugen. Also beeinflusst das Ändern eines Attributtes von einer Instanz die anderen Instanzen und die Klassenattribute.
 
 ---
 
@@ -1688,10 +1686,10 @@ def some_func(val):
 ```
 
 #### 💡 Erklärung:
-- This is a bug in CPython's handling of `yield` in generators and comprehensions.
-- Quelle and Erklärung can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
-- Related bug report: https://bugs.python.org/issue10544
-- Python 3.8+ no longer allows `yield` inside list comprehension and will throw a `SyntaxError`.
+- Das ist ein Fehler in CPythons Handhabung von `yield` in Generatoren und Comprehensions.
+- Die Quelle und eine Erklärung können hier gefunden werden: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
+- Der zugehörige Fehlerbericht: https://bugs.python.org/issue10544
+- Python 3.8+ erlaubt kein `yield` in List-Comprehensions und wird einen `SyntaxError` werfen.
 
 ---
 
@@ -1715,7 +1713,7 @@ def some_func(x):
 []
 ```
 
-Where did the `"wtf"` go? Is it due to some special effect of `yield from`? Let's validate that,
+Wo ist das `"wtf"` hin? Liegt es an einem besonderen Effekt von `yield from`? Lass uns das bestätigen:
 
 2\.
 
@@ -1735,17 +1733,15 @@ def some_func(x):
 []
 ```
 
-The same result, this didn't work either.
+Das gleiche Ergebnis; hat also auch nicht funktioniert.
 
 #### 💡 Erklärung:
++ Von Python 3.3 aus wurde es möglich, die `return`-Anweisung mit Werten innerhalb eines Generators zu benutzen (Siehe [PEP380](https://www.python.org/dev/peps/pep-0380/)). Die [offiziellen docs](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) sagen:
 
-+ From Python 3.3 onwards, it became possible to use `return` statement with values inside generators (See [PEP380](https://www.python.org/dev/peps/pep-0380/)). The [official docs](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) say that,
+> "... `return expr` in einem Generator führt zu einem `StopIteration(expr)`, was beim Verlassen des Generators geworfen wird."
 
-> "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator."
-
-+ In the case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically caught inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
-
-+ To get `["wtf"]` from the generator `some_func` we need to catch the `StopIteration` exception,
++ Im Fall von `some_func(3)` wird `StopIteration` am Beginn  wegen der `return`-Anweisung geworfen. Die `StopIteration` Exception wird automatisch innerhalb des `list(...)`-Wrapppers und der `for`-Schleife abgefangen. Daher enden die beiden Schnipsel mit einer leeren Liste.
++ Um `["wtf"]` vom Generator `some_func` zu bekommen, müssen wir die `StopIteration` Exception auffangen:
 
   ```py
   try:
@@ -1770,7 +1766,7 @@ The same result, this didn't work either.
 ```py
 a = float('inf')
 b = float('nan')
-c = float('-iNf')  # These strings are case-insensitive
+c = float('-iNf')  # Diese Strings sind case-insensitiv
 d = float('nan')
 ```
 
@@ -1804,11 +1800,11 @@ nan
 ```py
 >>> x = float('nan')
 >>> y = x / x
->>> y is y # identity holds
+>>> y is y # Identität funktioniert
 True
->>> y == y # equality fails of y
+>>> y == y # Gleichheit von y schlägt fehl
 False
->>> [y] == [y] # but the equality succeeds for the list containing y
+>>> [y] == [y] # aber die Gleichheit für die Liste, die y enthält, gelingt
 True
 ```
 
@@ -1816,9 +1812,9 @@ True
 
 #### 💡 Erklärung:
 
-- `'inf'` and `'nan'` are special strings (case-insensitive), which, when explicitly typecast-ed to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
+- `'inf'` und `'nan'` sind spezielle Strings (case-insensitiv), die, wenn sie explizit zu `floats` getypcasted werden, benutzt werden, um die mathematische "Unendlichkeit" und "not a number" zu repräsentieren.
 
-- Since according to IEEE standards ` NaN != NaN`, obeying this rule breaks the reflexivity assumption of a collection element in Python i.e. if `x` is a part of a collection like `list`, the implementations like comparison are based on the assumption that `x == x`.  Because of this assumption, the identity is compared first (since it's faster) while comparing two elements, and the values are compared only when the identities mismatch. The following snippet will make things clearer,
+- Da nach dem IEEE Standard ` NaN != NaN`, bircht die Befolgung dieser Regel die Reflexivitätsannahme eines Collection-Elements in Python, d.h. wenn `x` Teil einer Collection wie einer `list` ist, dann basieren die Implementierungen, wie zum Beispiel Vergleiche, auf der Annahme, dass `x == x`. Aufgrund dieser Annahme, wird die Identität zuerst verglichen (da dies schneller ist), während die beiden Elemente verglichen werden, und die Werte werden nur verglichen, wenn die Identitäten ungleich sind. Der folgende Schnipsel wird die Dinge klarer erscheinen lassen:
 
   ```py
   >>> x = float('nan')
@@ -1831,9 +1827,9 @@ True
   (False, False)
   ```
 
-  Since the identities of `x` and `y` are different, the values are considered, which are also different; hence the comparison returns `False` this time.
+  Da die Identitäten von `x` und `y` unterschiedlich sind, werden die Werte betrachtet, die ebenfalls unterschiedlich sind; deshalb gibt der Vergleich dieses Mal `False` zurück.
 
-- Interesting read: [Reflexivity, and other pillars of civilization](https://bertrandmeyer.com/2010/02/06/reflexivity-and-other-pillars-of-civilization/)
+- Interessant zu lesen: [Reflexivity, and other pillars of civilization](https://bertrandmeyer.com/2010/02/06/reflexivity-and-other-pillars-of-civilization/)
 
 ---
 
@@ -1841,7 +1837,7 @@ True
 
 <!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --->
 
-This might seem trivial if you know how references work in Python.
+Das sieht vielleicht trivial aus, wenn du weißt wie Referenzen in Python funktionieren.
 
 ```py
 some_tuple = ("A", "tuple", "with", "values")
@@ -1852,7 +1848,7 @@ another_tuple = ([1, 2], [3, 4], [5, 6])
 ```py
 >>> some_tuple[2] = "change this"
 TypeError: 'tuple' object does not support item assignment
->>> another_tuple[2].append(1000) #This throws no error
+>>> another_tuple[2].append(1000) #Das wirft keinen Fehler
 >>> another_tuple
 ([1, 2], [3, 4], [5, 6, 1000])
 >>> another_tuple[2] += [99, 999]
@@ -1861,17 +1857,17 @@ TypeError: 'tuple' object does not support item assignment
 ([1, 2], [3, 4], [5, 6, 1000, 99, 999])
 ```
 
-But I thought tuples were immutable...
+Aber ich dachte Tupel sind unveränderlich...
 
 #### 💡 Erklärung:
 
 * Zitat von https://docs.python.org/3/reference/datamodel.html
 
-    > Immutable sequences
-        An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be modified; however, the collection of objects directly referenced by an immutable object cannot change.)
+    > Unveränderliche Sequenzen
+        Ein Objekt eines unveränderlichen Sequenztypen kann nicht nach der Erzeugung verändert werden. (Wenn das Objekt Referenzen zu anderen Objekten enthält, können die anderen Objekte veränderlich und modifizierbar sein; jedoch kann die Collection von Objekten, die von einem unveränderlichen Objekt referenziert werden, nicht geändert werden.)
 
-* `+=` operator changes the list in-place. The item assignment doesn't work, but when the exception occurs, the item has already been changed in place.
-* There's also an Erklärung in [official Python FAQ](https://docs.python.org/3/faq/programming.html#why-does-a-tuple-i-item-raise-an-exception-when-the-addition-works).
+* Der `+=` Operator verändert die Liste in-place. Die Element-Zuweisung funktioniert nicht, aber wenn die Exception auftritt, wurde das Element bereits an Ort und Stelle verändert.
+* Es gibt auch eine Erklärung im [offiziellen Python FAQ](https://docs.python.org/3/faq/programming.html#why-does-a-tuple-i-item-raise-an-exception-when-the-addition-works).
 
 ---
 
@@ -1889,7 +1885,7 @@ except Exception as e:
 **Ausgabe (Python 2.x):**
 ```py
 >>> print(e)
-# prints nothing
+# gibt nichts aus
 ```
 
 **Ausgabe (Python 3.x):**
@@ -1902,14 +1898,14 @@ NameError: name 'e' is not defined
 
 * Quelle: https://docs.python.org/3/reference/compound_stmts.html#except
 
-  When an exception has been assigned using `as` target, it is cleared at the end of the `except` clause. This is as if
+  Wenn eine Exception mit dem `as`-Target zugewiesen wurde, wird sie am Ende der `except`-Klausel gelöscht. Das ist so, als ob
 
   ```py
   except E as N:
       foo
   ```
 
-  was translated into
+  übersetzt wurde in
 
   ```py
   except E as N:
@@ -1919,9 +1915,9 @@ NameError: name 'e' is not defined
           del N
   ```
 
-  This means the exception must be assigned to a different name to be able to refer to it after the except clause. Exceptions are cleared because, with the traceback attached to them, they form a reference cycle with the stack frame, keeping all locals in that frame alive until the next garbage collection occurs.
+  Das bedeutet, dass einer Exception ein anderer Name zugewiesen werden muss, wenn man es nach einer except-Klausel benutzen möchte. Exceptions werden gelöscht, weil sie mit dem angehängten Traceback einen Referenzzyklus mit dem SatckFrame bilden, der alle Locals in diesem Frame am Leben erhält, bis die nächste Garbage Collection stattfindet.
 
-* The clauses are not scoped in Python. Everything in the example is present in the same scope, and the variable `e` got removed due to the execution of the `except` clause. The same is not the case with functions that have their separate inner-scopes. The example below illustrates this:
+* Die Klauseln besitzen keinen Scope in Python. Alles im Beispiel liegt im selben Scope, und die Variable `e` wurde entfernt, da die except-Klausel ausgeführt wurde. Das gleiche gilt nicht für Funktionen, die ihren eigenen inneren Scope haben. Das Beispiel unten erläutert dies:
 
      ```py
      def f(x):
@@ -1944,14 +1940,14 @@ NameError: name 'e' is not defined
      [5, 4, 3]
      ```
 
-* In Python 2.x, the variable name `e` gets assigned to `Exception()` instance, so when you try to print, it prints nothing.
+* In Python 2.x wird der Variable `e` eine `Exception()`-Instanz zugewiesen, wenn du also versuchst, dies auszugeben, wird gar nichts ausgegeben.
 
     **Ausgabe (Python 2.x):**
     ```py
     >>> e
     Exception()
     >>> print e
-    # Nothing is printed!
+    # Nichts wird ausgegeben!
     ```
 
 ---
@@ -1972,7 +1968,7 @@ some_dict = {'s': 42}
 str
 >>> s = SomeClass('s')
 >>> some_dict[s] = 40
->>> some_dict # expected: Two different keys-value pairs
+>>> some_dict # erwartet: zwei verschiedene key-value-Paare
 {'s': 40}
 >>> type(list(some_dict.keys())[0])
 str
@@ -1980,10 +1976,10 @@ str
 
 #### 💡 Erklärung:
 
-* Both the object `s` and the string `"s"` hash to the same value because `SomeClass` inherits the `__hash__` method of `str` class.
-* `SomeClass("s") == "s"` evaluates to `True` because `SomeClass` also inherits `__eq__` method from `str` class.
-* Since both the objects hash to the same value and are equal, they are represented by the same key in the dictionary.
-* For the desired behavior, we can redefine the `__eq__` method in `SomeClass`
+* Das Objekt `s` und der String `"s"` hashen auf denselben Wert, weil `SomeClass` erbt die `__hash__`-Methode von der `str`-Klasse.
+* `SomeClass("s") == "s"` wird zu `True` ausgewertet, weil `SomeClass` auch die `__eq__`-Methode von der `str`-Klasse erbt.
+* Da beide Objekte auf denselben Wert hashen und gleich sind, werden sie durch denselben Key im Dictionary repräsentiert.
+* Für das gewünschte Verhalten, können wir die `__eq__`-Methode in `SomeClass` neu definieren:
   ```py
   class SomeClass(str):
     def __eq__(self, other):
@@ -1993,8 +1989,8 @@ str
             and super().__eq__(other)
         )
 
-    # When we define a custom __eq__, Python stops automatically inheriting the
-    # __hash__ method, so we need to define it as well
+    # Wenn wir ein benutzerdefiniertes __eq__ definieren, stoppt Python automatisch die Vererbung der
+    # __hash__ Methode, also müssen wir diese auch noch definieren
     __hash__ = str.__hash__
 
   some_dict = {'s':42}
