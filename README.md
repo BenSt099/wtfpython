@@ -1142,7 +1142,7 @@ Da `x` ein globaler Wert ist, können wir den Wert, den `funcs` nachschlägt und
 [42, 42, 42, 42, 42, 42, 42]
 ```
 
-* To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why does this work?** Because this will define the variable *inside* the function's scope. It will no longer go to the surrounding (global) scope to look up the variables value but will create a local variable that stores the value of `x` at that point in time.
+* Um das entsprechende Verhalten zu bekommen, kannst du die Loop-Variable als named-Variable der Funktion übergeben. **Warum funktioniert das?** Weil dies die Variable *innerhalb* des Scopes der Funktion definiert. Sie wird nicht länger im umgebenden (globalen) Scope definiert, sondern es wird eine lokale Variable erzeugt, die den Wert von `x` zu diesem Zeitpunkt speichert.
 
 ```py
 funcs = []
@@ -1160,7 +1160,7 @@ for x in range(7):
 [0, 1, 2, 3, 4, 5, 6]
 ```
 
-It is not longer using the `x` in the global scope:
+`x` wird nicht länger im globalen Scope verwendet:
 
 ```py
 >>> inspect.getclosurevars(funcs[0])
@@ -1181,7 +1181,7 @@ True
 True
 ```
 
-So which is the "ultimate" base class? There's more to the confusion by the way,
+Was ist also die ultimative Basisklasse? Die Verwirrung wird noch größer:
 
 2\. 
 
@@ -1209,13 +1209,13 @@ False
 
 #### 💡 Erklärung
 
-- `type` is a [metaclass](https://realpython.com/python-metaclasses/) in Python.
-- **Everything** is an `object` in Python, which includes classes as well as their objects (instances).
-- class `type` is the metaclass of class `object`, and every class (including `type`) has inherited directly or indirectly from `object`.
-- There is no real base class among `object` and `type`. The confusion in the above snippets is arising because we're thinking about these relationships (`issubclass` and `isinstance`) in terms of Python classes. The relationship between `object` and `type` can't be reproduced in pure python. To be more precise the following relationships can't be reproduced in pure Python,
-    + class A is an instance of class B, and class B is an instance of class A.
-    + class A is an instance of itself.
-- These relationships between `object` and `type` (both being instances of each other as well as themselves) exist in Python because of "cheating" at the implementation level.
+- `type` ist eine [Metaklasse](https://realpython.com/python-metaclasses/) in Python.
+- **Alles** ist ein `object` in Python, was Klassen und ihre Objekte (Instanzen) einschließt.
+- Die Klasse `type` ist eine Metaklasse der Klasse `object`, und jede Klasse (einschließlich `type`) hat direkt oder indirekt von `object` geerbt.
+- Es gibt keine echte Basisklasse zwischen `object` und `type`. Die Verwirrung im obigen Schnipsel ergibt sich weil wir über diese Beziehungen (`issubclass` und `isinstance`) in Form von Python-Klassen denken. Die Beziehung zwischen `object` und `type` kann nicht in reinem Python reproduziert werden. Um präziser zu sein, die folgenden Beziehungen können nicht in reinem Python reproduziert werden:
+    + Klasse A ist eine Instanz der Klasse B, und Klasse B ist eine Instanz von Klasse A.
+    + Klasse A ist eine Instanz von sich selbst.
+- Diese Beziehungen zwischen `object` und `type` (beide sind Instanzen voneinander und von sich selbst) existieren in Python, weil auf dem Level der Implementierung "geschummelt" wird.
 
 ---
 
@@ -1232,14 +1232,14 @@ True
 False
 ```
 
-The Subclass relationships were expected to be transitive, right? (i.e., if `A` is a subclass of `B`, and `B` is a subclass of `C`, the `A` _should_ a subclass of `C`)
+Die Unterklassenbeziehungen sollten transitiv sein, nicht wahr? (d.h., wenn `A` eine Unterklasse von `B` ist, und `B` eine Unterklasse von `C`, dann _sollte_ `A` eine Unterklasse von `C` sein)
 
 #### 💡 Erklärung:
 
-* Subclass relationships are not necessarily transitive in Python. Anyone is allowed to define their own, arbitrary `__subclasscheck__` in a metaclass.
-* When `issubclass(cls, Hashable)` is called, it simply looks for non-Falsey "`__hash__`" method in `cls` or anything it inherits from.
-* Since `object` is hashable, but `list` is non-hashable, it breaks the transitivity relation.
-* More detailed Erklärung can be found [here](https://www.naftaliharris.com/blog/python-subclass-intransitivity/).
+* Unterklassenbeziehungen in Python sind nicht notwendigerweise transitiv in Python. Jedem ist es erlaubt, seine eigene, beliebige `__subclasscheck__` in einer Metaklasse zu definieren.
+* Wenn `issubclass(cls, Hashable)` aufgerufen wird, sucht es einfach nach nicht-Falsey "`__hash__`" Methoden in `cls` oderallem, von dem es erbt.
+* Da `object` hashable ist, aber `list` nicht-hashable, bricht es die transitive Relation.
+* Eine ausführlichere Erklärung kann [hier](https://www.naftaliharris.com/blog/python-subclass-intransitivity/) gefunden werden.
 
 ---
 
@@ -1273,8 +1273,7 @@ True
 True
 ```
 
-Accessing `classm` twice, we get an equal object, but not the *same* one? Let's see what happens
-with instances of `SomeClass`:
+Wenn wir zweimal auf `classm` zugreifen, bekommen wir ein gleiches Objekt, aber nicht *dasselbe* oder? Lass uns sehen, was mit Instanzen von `SomeClass` passiert:
 
 2.
 ```py
@@ -1298,51 +1297,41 @@ True
 True
 ```
 
-Accessing` classm` or `method` twice, creates equal but not *same* objects for the same instance of `SomeClass`.
+Der zweifache Zugriff auf `classm` oder `method`, erzeugt gleiche, aber nicht *gleiche* Objekte für dieselbe Instanz von `SomeClass`.
 
 #### 💡 Erklärung
-* Functions are [descriptors](https://docs.python.org/3/howto/descriptor.html). Whenever a function is accessed as an
-attribute, the descriptor is invoked, creating a method object which "binds" the function with the object owning the
-attribute. If called, the method calls the function, implicitly passing the bound object as the first argument
-(this is how we get `self` as the first argument, despite not passing it explicitly).
+* Funktionen sind [Deskriptoren](https://docs.python.org/3/howto/descriptor.html). Wann immer auf eine Funktion als Attribut zugegriffen wird, wird der Deskriptor aufgerufen, was ein Methodenobjekt erzeugt, das die Funktion mit dem Objekt "verbindet", welches das Attribut besitzt. Wenn aufgerufen, ruft die Methode die Funktion auf und übergibt implizit das gebundene Objekt als erstes Argument (so erhalten wir `self` als erstes Argument, obwohl es nicht explizit übergeben wird).
 ```py
 >>> o1.method
 <bound method SomeClass.method of <__main__.SomeClass object at ...>>
 ```
-* Accessing the attribute multiple times creates a method object every time! Therefore `o1.method is o1.method` is
-never truthy. Accessing functions as class attributes (as opposed to instance) does not create methods, however; so
-`SomeClass.method is SomeClass.method` is truthy.
+* Ein mehrfacher Zugriff auf das Attribut erzeugt jedes Mal ein Methodenobjekt! Daher ist `o1.method is o1.method` niemals wahr.
+Der Zugriff auf Klassenattribute (im Gegensatz zu Instanzen) erzeugt jedoch keine Methoden; also ist
+`SomeClass.method is SomeClass.method` wahr.
 ```py
 >>> SomeClass.method
 <function SomeClass.method at ...>
 ```
-* `classmethod` transforms functions into class methods. Class methods are descriptors that, when accessed, create
-a method object which binds the *class* (type) of the object, instead of the object itself.
+* `classmethod` (Klassenmethoden) transformiert Funktionen in Klassenmethoden. Klassenmethoden sind Deskriptoren, die, wenn auf sie zugegriffen wird, ein Methodenobjekt erzeugen, welches die *Klasse* (Typ) des Objektes bindet, anstelle des Objektes selbst.
 ```py
 >>> o1.classm
 <bound method SomeClass.classm of <class '__main__.SomeClass'>>
 ```
-* Unlike functions, `classmethod`s will create a method also when accessed as class attributes (in which case they
-bind the class, not to the type of it). So `SomeClass.classm is SomeClass.classm` is falsy.
+* Im Gegensatz zu Funktionen erzeugen Klassenmethoden auch dann eine Methode, wenn sie als Klassenattribute aufgerufen werden (in diesem Fall binden sie die Klasse, nicht den Typ der Klasse). Also ist `SomeClass.classm is SomeClass.classm` unwahr.
 ```py
 >>> SomeClass.classm
 <bound method SomeClass.classm of <class '__main__.SomeClass'>>
 ```
-* A method object compares equal when both the functions are equal, and the bound objects are the same. So
-`o1.method == o1.method` is truthy, although not the same object in memory.
-* `staticmethod` transforms functions into a "no-op" descriptor, which returns the function as-is. No method
-objects are ever created, so comparison with `is` is truthy.
+* Ein Methodenobjekt ist gleich wenn beide Funktionen gleich sind, und die gebundenen Objekte gleich sind. Also ist `o1.method == o1.method` wahr, auch wenn sie nicht das gleiche Objekt im Speicher sind.
+* `staticmethod` transformiert Funktionen in ein "no-op" Deskriptor, welches die Funktion so zurückgibt, wie sie ist. Es werden nie Methodenobjekte erzeugt, also ist der Vergleich mit `is` wahr.
 ```py
 >>> o1.staticm
 <function SomeClass.staticm at ...>
 >>> SomeClass.staticm
 <function SomeClass.staticm at ...>
 ```
-* Having to create new "method" objects every time Python calls instance methods and having to modify the arguments
-every time in order to insert `self` affected performance badly.
-CPython 3.7 [solved it](https://bugs.python.org/issue26110) by introducing new opcodes that deal with calling methods
-without creating the temporary method objects. This is used only when the accessed function is actually called, so the
-snippets here are not affected, and still generate methods :)
+* Jedes Mal wenn Python Instanzmethoden aufruft, müssen neue "Methoden"-Objekte erstellt und die Argumente geändert werden, um `self` einfügen zu können, was die Leistung negativ beeinflusst.
+CPython 3.7 [löste dies](https://bugs.python.org/issue26110), indem neue Opcodes eingeführt wurden, die den Aufruf von Methoden behandeln, ohne die temporären Methodenobjekte zu erzeugen. Das wird nur genutzt, wenn die Funktion, auf die zugegriffen wird, tatsächlich aufgerufen wird, also sind die Schnipsel hier nicht betroffen. Sie erzeugen also immer noch Methoden :)
 
 ### ▶ All-true-ation *
 
@@ -1362,11 +1351,11 @@ False
 True
 ```
 
-Why's this True-False alteration?
+Warum ist diese Änderung True/False ?
 
 #### 💡 Erklärung:
 
-- The implementation of `all` function is equivalent to
+- Die Implementierung der `all` Funktion ist äquivalent zu
 
 - ```py
   def all(iterable):
@@ -1376,9 +1365,9 @@ Why's this True-False alteration?
       return True
   ```
 
-- `all([])` returns `True` since the iterable is empty. 
-- `all([[]])` returns `False` because the passed array has one element, `[]`, and in python, an empty list is falsy.
-- `all([[[]]])` and higher recursive variants are always `True`. This is because the passed array's single element (`[[...]]`) is no longer empty, and lists with values are truthy.
+- `all([])` gibt `True` zurück, da das Iterable leer ist. 
+- `all([[]])` gibt `False` zurück, weil das übergebene Array ein Element hat, `[]`, und in Python, eine leere Liste `False` ist.
+- `all([[[]]])` und höhere, rekursive Varianten sind immer `True`, weil das einzelne Element des übergebenen Arrays (`[[...]]`) nicht länger leer ist, und Listen mit Werten `True` sind.
 
 ---
 
@@ -1408,9 +1397,10 @@ SyntaxError: invalid syntax
 
 #### 💡 Erklärung:
 
-- Trailing comma is not always legal in formal parameters list of a Python function.
--  In Python, the argument list is defined partially with leading commas and partially with trailing commas. This conflict causes situations where a comma is trapped in the middle, and no rule accepts it.
--  **Note:** The trailing comma problem is [fixed in Python 3.6](https://bugs.python.org/issue9232). The remarks in [this](https://bugs.python.org/issue9232#msg248399) post discuss in brief different usages of trailing commas in Python.
+- Ein Komma am Ende ist in der Liste der formalen Parameter einer Python-Funktion ist nicht immer zulässig.
+- In Python wird die Liste der Argumente teilweise mit führenden und teilweise mit abschließenden Kommas definiert.
+Dieser Konflikt führt zu Situationen, in denen ein Komma in der Mitte gefangen ist, und keine Regel dies akzeptiert.
+- **Hinweis:** Das abschließende-Komma-Problem wurde [in Python 3.6](https://bugs.python.org/issue9232) gelöst. Die Bemerkungen in [diesem](https://bugs.python.org/issue9232#msg248399) Post diskutieren in Kürze die verschiedenen Verwendungen von abschließenden Kommas in Python.  
 
 ---
 
