@@ -1016,15 +1016,14 @@ array_4 = [400, 500, 600]
 
 #### 💡 Erklärung
 
-- In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
-- So before runtime, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
-- The differences in the Ausgabe of `g1` and `g2` in the second part is due the way variables `array_1` and `array_2` are re-assigned values.
-- In the first case, `array_1` is bound to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
-- In the second case, the slice assignment to `array_2` updates the same old object `[1,2,3,4]` to `[1,2,3,4,5]`. Hence both the `g2` and `array_2` still have reference to the same object (which has now been updated to `[1,2,3,4,5]`).
-- Okay, going by the logic discussed so far, shouldn't be the value of `list(gen)` in the third snippet be `[11, 21, 31, 12, 22, 32, 13, 23, 33]`? (because `array_3` and `array_4` are going to behave just like `array_1`). The reason why (only) `array_4` values got updated is explained in [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details)
-  
-    > Only the outermost for-expression is evaluated immediately, the other expressions are deferred until the generator is run.
+- In einem [Generator](https://wiki.python.org/moin/Generators)-Ausdruck wird die `in`-Klausel zur Deklarationszeit ausgewertet, während die Bedingungsklausel zur Laufzeit ausgewertet wird.
+- Vor der Laufzeit wird `array` wieder der Liste `[2, 8, 22]` zugewiesen, und da von  `1`, `8` und `15`, nur die Anzahl von `8` größer als `0` ist, liefert der Generator nur `8`.
+- Die Unterschiede in der Ausgabe von `g1` und `g2` im zweiten Teil sind auf die Art und Weise zurückzuführen, wie den Variablen `array_1` und `array_2` neue Werte zugewiesen werden.
+- Im ersten Fall wird `array_1` zum neuen Objekt `[1,2,3,4,5]` gebunden und da die `in`-Klausel zur Deklarationszeit ausgewertet wird, bezieht es sich immer noch auf das alte Objekt `[1,2,3,4]` (was nicht zerstört wird).
+- Im zweiten Fall updated die Slice-Anweisung an `array_2` das gleiche alte Objekt `[1,2,3,4]` zu `[1,2,3,4,5]`. Daher verweisen sowohl `g2` als auch `array_2` immer noch auf dasselbe Objekt  (welches nun zu `[1,2,3,4,5]` geupdated wird).
+- Okay, wenn wir die Logik anwenden, die wir bis jetzt kennengelernt haben, sollte dann der Wert von `list(gen)` im dritten Schnipsel nicht `[11, 21, 31, 12, 22, 32, 13, 23, 33]` sein? (weil `array_3` und `array_4` sich genauso wie `array_1` verhalten werden). Die Grund, warum (nur) die Werte von `array_4` geändert werden, wird im [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details) erklärt.
 
+    > Nur der äußerste for-Ausdruck wird direkt ausgewertet, die anderen Ausdrücke werden zurückgestellt, bis der Generator ausgeführt wird.
 ---
 
 
