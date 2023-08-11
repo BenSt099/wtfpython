@@ -3539,16 +3539,16 @@ Sollte das nicht 100 sein?
 <!-- Example ID: bfd19c60-a807-4a26-9598-4912b86ddb36 --->
 
 ```py
-# using "+", three strings:
+# Benutzen von "+" mit drei Strings:
 >>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
 0.25748300552368164
-# using "+=", three strings:
+# Benutzen von "+=" mit drei Strings:
 >>> timeit.timeit("s1 += s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
 0.012188911437988281
 ```
 
 #### 💡 Erklärung:
-+ `+=` ist schneller als `+`, um mehr als zwei String zu konkatenieren, weil der erste String (Beispiel: `s1` für `s1 += s2 + s3`), während der Kalkulation des gesamten Strings, nicht zerstört wird.
++ `+=` ist schneller als `+`, um mehr als zwei String zu konkatenieren, weil der erste String (Beispiel: `s1` für `s1 += s2 + s3`), während der Berechnung des gesamten Strings, nicht zerstört wird.
 
 ---
 
@@ -3587,8 +3587,8 @@ def convert_list_to_string(l, iters):
 **Ausgabe:**
 
 ```py
-# Executed in ipython shell using %timeit for better readability of results.
-# You can also use the timeit module in normal python shell/scriptm=, example usage below
+# Ausgeführt in der ipython-Shell unter Verwendung von %timeit für eine bessere Lesbarkeit der Ergebnisse.
+# Du kannst das timeit-Modul auch in der normalen Python-Shell/scriptm= verwenden, Beispielverwendung unten
 # timeit.timeit('add_string_with_plus(10000)', number=1000, globals=globals())
 
 >>> NUM_ITERS = 1000
@@ -3605,29 +3605,29 @@ def convert_list_to_string(l, iters):
 10.1 µs ± 1.06 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
-Let's increase the number of iterations by a factor of 10.
+Erhöhen wir die Anzahl der Iterationen um den Faktor 10.
 
 ```py
 >>> NUM_ITERS = 10000
->>> %timeit -n1000 add_string_with_plus(NUM_ITERS) # Linear increase in execution time
+>>> %timeit -n1000 add_string_with_plus(NUM_ITERS) # Linearer Anstieg der Ausführungszeit
 1.26 ms ± 76.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
->>> %timeit -n1000 add_bytes_with_plus(NUM_ITERS) # Quadratic increase
+>>> %timeit -n1000 add_bytes_with_plus(NUM_ITERS) # Quadratische Anstieg
 6.82 ms ± 134 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
->>> %timeit -n1000 add_string_with_format(NUM_ITERS) # Linear increase
+>>> %timeit -n1000 add_string_with_format(NUM_ITERS) # Linearer Anstieg
 645 µs ± 24.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
->>> %timeit -n1000 add_string_with_join(NUM_ITERS) # Linear increase
+>>> %timeit -n1000 add_string_with_join(NUM_ITERS) # Linearer Anstieg
 1.17 ms ± 7.25 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 >>> l = ["xyz"]*NUM_ITERS
->>> %timeit -n1000 convert_list_to_string(l, NUM_ITERS) # Linear increase
+>>> %timeit -n1000 convert_list_to_string(l, NUM_ITERS) # Linearer Anstieg
 86.3 µs ± 2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
 #### 💡 Erklärung
-- You can read more about [timeit](https://docs.python.org/3/library/timeit.html) or [%timeit](https://ipython.org/ipython-doc/dev/interactive/magics.html#magic-timeit) on these links. They are used to measure the execution time of code pieces.
-- Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases (justified with the execution times of `add_bytes_with_plus` function)
-- Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for very short strings).
-- Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
-- Unlike `add_bytes_with_plus` because of the `+=` optimizations discussed in the previous example, `add_string_with_plus` didn't show a quadratic increase in execution time. Had the statement been `s = s + "x" + "y" + "z"` instead of `s += "xyz"`, the increase would have been quadratic.
+- Du kannst mehr über timeit hier [timeit](https://docs.python.org/3/library/timeit.html) oder hier [%timeit](https://ipython.org/ipython-doc/dev/interactive/magics.html#magic-timeit) lesen. Sie werden verwendet, um die Ausführungszeit von Codestücken zu messen.
+- Benutze `+` nicht, um lange Strings zu generieren — In Python ist `str` unveränderlich, daher müssen der linke und der rechte String für jedes Paar von Verkettungen in den neuen String kopiert werden. Wenn du 4 String mit Länge 10 konkatenierst, dann kopierst du (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 Characters anstatt nur 40 Characters. Die Situation verschlechtert sich quadratisch mit zunehmender Anzahl und Größe der Zeichenketten (mit den Ausführungszeiten der Funktion `add_bytes_with_plus` begründet)
+- Daher ist es ratsam, die Syntax `.format.` oder `%` zu verwenden. (sie sind jedoch bei sehr kurzen Zeichenfolgen etwas langsamer als `x`).
+- Oder besser, wenn du bereits Inhalte in Form eines iterierbaren Objekts zur Verfügung hast, dann verwende `''.join(iterable_object)`, was viel schneller ist.
+- Im Gegensatz zu `add_bytes_with_plus` zeigte `add_string_with_plus` aufgrund der im vorherigen Beispiel besprochenen `+=`-Optimierungen keinen quadratischen Anstieg der Ausführungszeit. Wäre die Anweisung `s = s + "x" + "y" + "z"` statt `s += "xyz"` gewesen, wäre der Anstieg quadratisch gewesen.
   ```py
   def add_string_with_plus(iters):
       s = ""
@@ -3637,7 +3637,7 @@ Let's increase the number of iterations by a factor of 10.
 
   >>> %timeit -n100 add_string_with_plus(1000)
   388 µs ± 22.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-  >>> %timeit -n100 add_string_with_plus(10000) # Quadratic increase in execution time
+  >>> %timeit -n100 add_string_with_plus(10000) # Quadratischer Anstieg der Ausführungszeit
   9 ms ± 298 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
   ```
 - So viele Möglichkeiten einen gigantischen String zu erzeugen und zu formatieren stehen irgendwie in Kontrast zum [Zen von Python](https://www.python.org/dev/peps/pep-0020/), nachdem gilt:
@@ -3663,7 +3663,7 @@ another_dict = {str(i): 1 for i in range(1_000_000)}
 
 >>> %timeit another_dict['5']
 28.5 ns ± 0.142 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
->>> another_dict[1]  # Trying to access a key that doesn't exist
+>>> another_dict[1]  # Versuch, auf einen Schlüssel zuzugreifen, der nicht existiert
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 KeyError: 1
@@ -3673,11 +3673,10 @@ KeyError: 1
 Wieso werden dieselben lookups immer langsamer?
 
 #### 💡 Erklärung:
-+ CPython has a generic dictionary lookup function that handles all types of keys (`str`, `int`, any object ...), and a specialized one for the common case of dictionaries composed of `str`-only keys.
-+ The specialized function (werden `lookdict_unicode` in CPythons [code](https://github.com/python/cpython/blob/522691c46e2ae51faaad5bbbce7d959dd61770df/Objects/dictobject.c#L841) genannt) knows all existing keys (including the looked-up key) are strings, and uses the faster & simpler string comparison to compare keys, instead of calling the `__eq__` method.
-+ The first time a `dict` instance is accessed with a non-`str` key, it's modified so future lookups use the generic function.
-+ This process is not reversible for the particular `dict` instance, and the key doesn't even have to exist in the dictionary. That's why attempting a failed lookup has the same effect.
-
++ CPython hat eine generische Funktion zum Nachschlagen in Dictionaries, die alle Arten von Schlüsseln (`str`, `int`, beliebige Objekte ...) behandelt, und eine spezialisierte Funktion für den häufigen Fall von Dictionaries, die nur aus `str`-Schlüsseln bestehen.
++ Die spezialisierte Funktion (wird `lookdict_unicode` in CPythons [code](https://github.com/python/cpython/blob/522691c46e2ae51faaad5bbbce7d959dd61770df/Objects/dictobject.c#L841) genannt) weiß, dass alle vorhandenen Schlüssel (einschließlich des nachgeschlagenen Schlüssels) Strings sind, und verwendet den schnelleren und einfacheren Stringvergleich, um Schlüssel zu vergleichen, anstatt die Methode `__eq__` aufzurufen.
++ Das erste Mal, wenn auf eine `dict`-Instanz mit einem Nicht-`str`-Schlüssel zugegriffen wird, wird sie so geändert, dass zukünftige Suchvorgänge die generische Funktion verwenden.
++ Dieser Prozess ist für die jeweilige `dict`-Instanz nicht umkehrbar, und der Schlüssel muss nicht einmal im Dictionary vorhanden sein. Deshalb hat der Versuch eines fehlgeschlagenen Nachschlagevorgangs denselben Effekt.
 
 ### ▶ Blähende Instanz `dict`s *
 <!-- Example ID: fe706ab4-1615-c0ba-a078-76c98cbe3f48 --->
@@ -3713,13 +3712,13 @@ def dict_size(o):
 232
 ```
 
-Versuchen wir es noch einmal... In einem neuen Interpreter:
+Versuchen wir es noch einmal... in einem neuen Interpreter:
 
 ```py
 >>> o1 = SomeClass()
 >>> o2 = SomeClass()
 >>> dict_size(o1)
-104  # as expected
+104  # wie erwartet
 >>> o1.some_attr5 = 5
 >>> o1.some_attr6 = 6
 >>> dict_size(o1)
@@ -3731,15 +3730,14 @@ Versuchen wir es noch einmal... In einem neuen Interpreter:
 232
 ```
 
-What makes those dictionaries become bloated? And why are newly created objects bloated as well?
+Was führt dazu, dass diese Dictionaries aufgebläht werden? Und warum werden neu erstellte Objekte ebenfalls aufgebläht?
 
 #### 💡 Erklärung:
-+ CPython is able to reuse the same "keys" object in multiple dictionaries. This was added in [PEP 412](https://www.python.org/dev/peps/pep-0412/) with the motivation to reduce memory usage, specifically in dictionaries of instances - where keys (instance attributes) tend to be common to all instances.
-+ This optimization is entirely seamless for instance dictionaries, but it is disabled if certain assumptions are broken.
-+ Key-sharing dictionaries do not support deletion; if an instance attribute is deleted, the dictionary is "unshared", and key-sharing is disabled for all future instances of the same class.
-+ Additionaly, if the dictionary keys have been resized (because new keys are inserted), they are kept shared *only* if they are used by a exactly single dictionary (this allows adding many attributes in the `__init__` of the very first created instance, without causing an "unshare"). If multiple instances exist when a resize happens, key-sharing is disabled for all future instances of the same class: CPython can't tell if your instances are using the same set of attributes anymore, and decides to bail out on attempting to share their keys.
-+ A small tip, if you aim to lower your program's memory footprint: don't delete instance attributes, and make sure to initialize all attributes in your `__init__`!
-
++ CPython ist in der Lage, das gleiche "keys"-Objekt in mehreren Dictionaries wiederzuverwenden. Dies wurde in [PEP 412](https://www.python.org/dev/peps/pep-0412/) mit der Motivation hinzugefügt, die Speichernutzung zu reduzieren, insbesondere in Dictionaries von Instanzen - wo Schlüssel (Instanzattribute) tendenziell für alle Instanzen gleich sind.
++ Diese Optimierung ist für Instanz-Dictionaries völlig nahtlos, wird aber deaktiviert, wenn bestimmte Annahmen nicht eingehalten werden.
++ Key-Sharing-Dictionaries unterstützen keine Löschung; wird ein Instanzattribut gelöscht, ist das Wörterbuch "unshared" und Key-Sharing ist für alle zukünftigen Instanzen derselben Klasse deaktiviert.
++ Wenn die Größe der Dictionary-Schlüssel geändert wurde (weil neue Schlüssel eingefügt wurden), werden sie außerdem *nur* dann gemeinsam genutzt, wenn sie von genau einem einzigen Dictionary verwendet werden (dies ermöglicht das Hinzufügen vieler Attribute in der `__init__` der allerersten erstellten Instanz, ohne ein "unshare" zu verursachen). Wenn mehrere Instanzen existieren, wenn eine Größenänderung stattfindet, wird das Key-Sharing für alle zukünftigen Instanzen der gleichen Klasse deaktiviert: CPython kann nicht mehr feststellen, ob die Instanzen den gleichen Satz von Attributen verwenden und entscheidet sich, den Versuch, ihre Schlüssel zu teilen, abzubrechen.
++ Ein kleiner Tipp, wenn du den Speicherbedarf deines Programms verringern willst: lösche  keine Instanzattribute und stelle sicher, dass alle Attribute in `__init__` initialisiert werden!
 
 ### ▶ Kleinigkeiten *
 <!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
