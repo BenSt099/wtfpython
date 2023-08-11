@@ -2846,20 +2846,20 @@ def similar_recursive_func(a):
 
 #### 💡 Erklärung:
 
-* For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
+* Für 1 wäre die korrekte Anweisung für das erwartete Verhalten `x, y = (0, 1) if True else (None, None)`.
 
-* For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
+* Für 2 wäre die korrekte Anweisung für das erwartete Verhalten `t = ('one',)` oder `t = 'one',` (fehlendes Komma) andernfalls wird der Interpreter `t` als ein `str` betrachten und iteriert Character für Character über es.
 
-* `()` is a special token and denotes empty `tuple`.
+* `()` ist ein spezielles Token und bezeichnet ein leeres `tuple`.
 
-* In 3, as you might have already figured out, there's a missing comma after 5th element (`"that"`) in the list. So by implicit string literal concatenation,
+* In 3, wie du vielleicht schon mitbekommen hast, fehlt ein Komma nach dem fünften Element (`"that"`) in der Liste. Also bei implizierter String-Literal-Konkatenation:
 
   ```py
   >>> ten_words_list
   ['some', 'very', 'big', 'list', 'thatconsists', 'of', 'exactly', 'ten', 'words']
   ```
 
-* No `AssertionError` was raised in 4th snippet because instead of asserting the individual expression `a == b`, we're asserting entire tuple. The following snippet will clear things up,
+* Es wurde kein `AssertionError` im 4.ten Schnipsel geworfen, weil wir statt den individuellen Ausdruck `a == b` zu asserten, das ganze Tupel asserten. Der folgende Schnipsel wird die Dinge klarer werden lassen:
 
   ```py
   >>> a = "python"
@@ -2878,11 +2878,11 @@ def similar_recursive_func(a):
   AssertionError: Values are not equal
   ```
 
-* As for the fifth snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](https://docs.python.org/3/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
+* Was den fünften Schnipsel betrifft, so modifizieren die meisten Methoden, die die Elemente von Sequenzen/Mapping-Objekten modifizieren, wie `list.append`, `dict.update`, `list.sort`, die Objekte in-place und geben `None` zurück. Der Grund dafür ist eine Leistungsverbesserung, indem die Erstellung einer Kopie vermieden wird, wenn die Operation in-place ausgeführt werden kann (Verweis nach [hier](https://docs.python.org/3/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
 
-* Last one should be fairly obvious, mutable object (like `list`) can be altered in the function, and the reassignment of an immutable (`a -= 1`) is not an alteration of the value.
+* Das letzte sollte ziemlich offensichtlich sein. Ein veränderliches Objekt (wie `list`) kann in der Funktion geändert werden und die Neuzuweisung eines unveränderlichen Wertes (`a -= 1`) ist keine Änderung des WErtes
 
-* Being aware of these nitpicks can save you hours of debugging effort in the long run. 
+* Wenn du dir dieser Kleinigkeiten bewusst bist, dann kannst du dir auf lange Sicht stundenlanges Debugging sparen. 
 
 ---
 
@@ -2893,25 +2893,25 @@ def similar_recursive_func(a):
 >>> 'a'.split()
 ['a']
 
-# is same as
+# ist dasselbe wie
 >>> 'a'.split(' ')
 ['a']
 
-# but
+# aber
 >>> len(''.split())
 0
 
-# isn't the same as
+# ist nicht dasselbe wie
 >>> len(''.split(' '))
 1
 ```
 
 #### 💡 Erklärung:
 
-- It might appear at first that the default separator for split is a single space `' '`, but as per the [docs](https://docs.python.org/3/library/stdtypes.html#str.split)
-    >  If sep is not specified or is `None`, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
-    > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
-- Noticing how the leading and trailing whitespaces are handled in the following snippet will make things clear,
+- Auf den ersten Blick sieht es so aus, als wäre das Standardtrennzeichen für split ein einzelnes Leerzeichen `' '`, aber der [Dokumentation](https://docs.python.org/3/library/stdtypes.html#str.split) zufolge
+    >  Wenn ein Separator nicht angegeben oder `None` ist, dann wird ein anderer Splitting-Algorithmus angewendet: aufeinanderfolgende Leerzeichen werden als ein einziges Trennzeichen betrachtet, und das Ergebnis enthält keine leeren Strings am Anfang oder Ende, wenn der String führende oder nachfolgende Leerzeichen enthält. Folglich gibt das Splitten eines leeren Strings oder eines Strings, der nur ein Leerzeichen enthält, mit einen None-Separator `[]` zurück.
+    > Wenn ein Separator gegeben ist,Aufeinanderfolgende Begrenzungszeichen werden nicht zusammengefasst und gelten als Begrenzung leerer Strings. (zum Beispiel, `'1,,2'.split(',')` gibt `['1', '', '2']` zurück). Einen leeren String mit einem angegebenen Separator zu splitten gibt `['']` zurück.
+- Wenn du dir ansiehst, wie die führenden und nachfolgenden Leerzeichen im folgenden Schnipsel gehandhabt werden, wird die Sache klarer:
     ```py
     >>> ' a '.split(' ')
     ['', 'a', '']
@@ -2928,7 +2928,7 @@ def similar_recursive_func(a):
 <!-- read-only -->
 
 ```py
-# File: module.py
+# Datei: module.py
 
 def some_weird_name_func_():
     print("works!")
@@ -2952,14 +2952,14 @@ NameError: name '_another_weird_name_func' is not defined
 
 #### 💡 Erklärung:
 
-- It is often advisable to not use wildcard imports. The first obvious reason for this is, in wildcard imports, the names with a leading underscore don't get imported. This may lead to errors during runtime.
-- Had we used `from ... import a, b, c` syntax, the above `NameError` wouldn't have occurred.
+- Es ist oft ratsam, keine Wildcard-Importe zu verwenden. Der erste offensichtliche Grund dafür ist, dass bei Wildcard-Importen die Namen mit einem führenden Unterstrich nicht importiert werden. Das kann zu Fehlern während der Laufzeit führen.
+- Hätten wir diese `from ... import a, b, c` Syntax benutzt, wäre der obige `NameError` nicht aufgetreten.
     ```py
     >>> from module import some_weird_name_func_, _another_weird_name_func
     >>> _another_weird_name_func()
     works!
     ```
-- If you really want to use wildcard imports, then you'd have to define the list `__all__` in your module that will contain a list of public objects that'll be available when we do wildcard imports.
+- Wenn du wirklich Wildcard-Importe verwenden willst, musst du in deinem Modul die Liste `__all__` definieren, die eine Liste der öffentlichen Objekte enthält, die bei Wildcard-Importen zur Verfügung stehen werden.
     ```py
     __all__ = ['_another_weird_name_func']
 
@@ -3000,7 +3000,7 @@ False
 
 #### 💡 Erklärung:
 
-- The `sorted` method always returns a list, and comparing lists and tuples always returns `False` in Python. 
+- Die `sorted` Methode gibt immer eine Liste zurück, und das Vergleichen von Listen und Tupeln gibt in Python immer `False` zurück. 
 
 - ```py
   >>> [] == tuple()
@@ -3010,9 +3010,9 @@ False
   (tuple, list)
   ```
 
-- Unlike `sorted`, the `reversed` method returns an iterator. Why? Because sorting requires the iterator to be either modified in-place or use an extra container (a list), whereas reversing can simply work by iterating from the last index to the first.
+- Im Gegensatz zu `sorted`, gibt die `reversed` Methode einen Iterator zurück. Warum? Weil Sortieren  vorraussetzt, dass der Iterator entweder in-place modifiziert wird oder einen extra Container (eine Liste) benutzt, während die Umkehrung einfach durch Iteration vom letzten Index zum ersten funktionieren kann.
 
-- So during comparison `sorted(y) == sorted(y)`, the first call to `sorted()` will consume the iterator `y`, and the next call will just return an empty list.
+- Also während des Vergleichs `sorted(y) == sorted(y)`, wird der erste Aufruf von `sorted()` den Iterator `y` konsumieren, und der nächste Aufruf wird nur eine leere Liste zurückgeben.
 
   ```py
   >>> x = 7, 8, 9
@@ -3050,7 +3050,7 @@ The midnight time is not printed.
 
 #### 💡 Erklärung:
 
-Before Python 3.5, the boolean value for `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty."
+Vor Python 3.5, wurde der boolesche Wert für das `datetime.time`-Objekt als `False` betrachtet, wenn wenn es Mitternacht in UTC dargestellt hätte. Es ist fehleranfällig, wenn die `if obj:`-Syntax verwendet wird, um zu prüfen, ob `obj` null oder ein Äquivalent von "leer" ist.
 
 ---
 ---
