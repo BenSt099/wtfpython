@@ -4,7 +4,7 @@
 
 Übersetzungen: [English](https://github.com/satwikkansal/wtfpython) |
 
-Andere Modi: [Interaktiv](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
+Andere Modi: [Interaktive Website](https://wtfpython-interactive.vercel.app) | [Interaktives Notebook](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
 
 Python, bekannt als gut designte High-Level und Interpreter-basierte Programmiersprache, stellt viele Features zur Verfügung, um dem Programmierer das Leben zu erleichtern. Allerdings kann es vorkommen, dass ein Python-Schnipsel ein unerwartetes Verhalten zeigt.
 
@@ -3794,7 +3794,7 @@ Was führt dazu, dass diese Dictionaries aufgebläht werden? Und warum werden ne
      True
      ```
 
-     **💡 Erklärung:** If you replace `False` and `True` by 0 and 1 and do the maths, the truth table is equivalent to a converse implication operator. ([Quelle](https://github.com/cosmologicon/pywat/blob/master/Erklärung.md#the-undocumented-converse-implication-operator))
+     **💡 Erklärung:** Wenn du `False` und `True` durch 0 und 1 ersetzt und dann rechnest, dann ist die Wahrheitstabelle äquivalent zu einem Operator der umgekehrten Implikation. ([Quelle](https://github.com/cosmologicon/pywat/blob/master/Erklärung.md#the-undocumented-converse-implication-operator))
      
 * Weil wir über Operatoren sprechen, erwähnen wir auch den `@` Ooperator, der für Matrixmultiplikation benutzt wird (Keine Sorge, diese mal ist es ernst).
 
@@ -3834,7 +3834,7 @@ Python Threads sind gut für IO-gebundene Aufgaben, aber um tatsächliche Parall
 * Manchmal gibt die `print` Methode die Werte nicht sofort aus. Zum Beispiel:
 
      ```py
-     # File some_file.py
+     # Datei some_file.py
      import time
      
      print("wtfpython", end="_")
@@ -3873,7 +3873,7 @@ Python Threads sind gut für IO-gebundene Aufgaben, aber um tatsächliche Parall
      4027435774
      ```
 
-* `'abc'.count('') == 4`. Here's an approximate implementation of `count` method, which would make the things more clear
+* `'abc'.count('') == 4`. Hier ist eine ungefähre Implementierung der Methode `count`, die die Dinge klarer machen würde
   ```py
   def count(s, sub):
       result = 0
