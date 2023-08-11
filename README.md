@@ -2432,11 +2432,11 @@ print(x, ': x in global')
 
 #### 💡 Erklärung:
 
-- In Python, for-loops use the scope they exist in and leave their defined loop-variable behind. This also applies if we explicitly defined the for-loop variable in the global namespace before. In this case, it will rebind the existing variable.
+- In Python benutzen for-Schleifen den Scope, in dem sie existieren und lassen ihre definierte Schleifenvariable zurück. Das passiert auch, wenn wir diese Variable vorher im globalen Namespace definieren. In diesem Fall wird die bestehende Variable neu gebunden.
 
-- The differences in the Ausgabe of Python 2.x and Python 3.x interpreters for list comprehension example can be explained by following change documented in [What’s New In Python 3.0](https://docs.python.org/3/whatsnew/3.0.html) changelog:
+- Die Unterschiede in der Ausgabe des Python 2.x und Python 3.x Interpreters für List-Comprehensions können durch die folgende Änderung erklärt werden, welche im [What’s New In Python 3.0](https://docs.python.org/3/whatsnew/3.0.html) Changelog dokumentiert wurde:
 
-    > "List comprehensions no longer support the syntactic form `[... for var in item1, item2, ...]`. Use `[... for var in (item1, item2, ...)]` instead. Also, note that list comprehensions have different semantics: they are closer to syntactic sugar for a generator expression inside a `list()` constructor, and in particular, the loop control variables are no longer leaked into the surrounding scope."
+    > "List-Comprehensions unterstützen nicht länger die syntaktische Form `[... for var in item1, item2, ...]`. Benutze `[... for var in (item1, item2, ...)]` stattdessen. Beachte zudem, dass List-Comprehensions eine andere Semantik haben: sie sind eher syntaktischer Zucker für einen Generator-Ausdruck innerhalb eines `list()`-Konstruktors und insbesondere werden die Steuervariablen der Schleife nicht mehr in den umgebenden Scope geleakt."
 
 ---
 
@@ -2463,7 +2463,7 @@ def some_func(default_arg=[]):
 
 #### 💡 Erklärung:
 
-- The default mutable arguments of functions in Python aren't really initialized every time you call the function. Instead, the recently assigned value to them is used as the default value. When we explicitly passed `[]` to `some_func` as the argument, the default value of the `default_arg` variable was not used, so the function returned as expected.
+- Die vorgegebenen veränderbaren Argumente von Funktionen in Python werden nicht wirklich jedes Mal, wenn du die Funktion aufrufst, initialisiert. Stattdessen wird der zuletzt zugewiesene Wert als default genommen. Als wir explizit `[]` an `some_func` als Argument übergeben haben, dann wurde der default-Wert der `default_arg`-Variable nicht benutzt, also hat die Funktion das zurückgegeben, was wir erwartet hatten.
 
     ```py
     def some_func(default_arg=[]):
@@ -2473,7 +2473,7 @@ def some_func(default_arg=[]):
 
     **Ausgabe:**
     ```py
-    >>> some_func.__defaults__ #This will show the default argument values for the function
+    >>> some_func.__defaults__ #Das zeigt die default-Werte der Argumente für die Funktion
     ([],)
     >>> some_func()
     >>> some_func.__defaults__
@@ -2486,7 +2486,7 @@ def some_func(default_arg=[]):
     (['some_string', 'some_string'],)
     ```
 
-- A common practice to avoid bugs due to mutable arguments is to assign `None` as the default value and later check if any value is passed to the function corresponding to that argument. Example:
+- Eine typische Vorgehensweise um Fehler, ausgelöst durch veränderbare Argumente, zu verhindern ist es, `None` dem default-Wert zuzuweisen und später zu überprüfen, ob irgendein Wert an die Funktion übergeben wird, der diesem Argument entspricht. Beispiel:
 
     ```py
     def some_func(default_arg=None):
@@ -2503,13 +2503,13 @@ def some_func(default_arg=[]):
 ```py
 some_list = [1, 2, 3]
 try:
-    # This should raise an ``IndexError``
+    # Das sollte einen ``IndexError`` werfen
     print(some_list[4])
 except IndexError, ValueError:
     print("Caught!")
 
 try:
-    # This should raise a ``ValueError``
+    # Das sollte einen ``ValueError`` werfen
     some_list.remove(4)
 except IndexError, ValueError:
     print("Caught again!")
@@ -2532,11 +2532,12 @@ SyntaxError: invalid syntax
 
 #### 💡 Erklärung
 
-* To add multiple Exceptions to the except clause, you need to pass them as parenthesized tuple as the first argument. The second argument is an optional name, which when supplied will bind the Exception instance that has been raised. Example,
+* Um mehrere Exceptions der except-Klausel hinzuzufügen, musst du diese als Tupel mit Klammern und als erstes Argument übergeben. Das zweite Argument ist ein optionaler Name, der, wenn angegeben, die Exception-Instanz bindet, die geworfen wurde. Beispiel:
+
   ```py
   some_list = [1, 2, 3]
   try:
-     # This should raise a ``ValueError``
+     # Das sollte einen ``ValueError`` werfen
      some_list.remove(4)
   except (IndexError, ValueError), e:
      print("Caught again!")
@@ -2555,7 +2556,7 @@ SyntaxError: invalid syntax
   IndentationError: unindent does not match any outer indentation level
   ```
 
-* Separating the exception from the variable with a comma is deprecated and does not work in Python 3; the correct way is to use `as`. Example,
+* Die Exceptions und die Variable mit einem Komma zu trennen ist veraltet und funktioniert in Python 3 nicht mehr; der korrekte Weg wäre `as` zu benutzen. Beispiel:
   ```py
   some_list = [1, 2, 3]
   try:
@@ -2607,11 +2608,11 @@ a += [5, 6, 7, 8]
 
 #### 💡 Erklärung:
 
-*  `a += b` doesn't always behave the same way as `a = a + b`.  Classes *may* implement the *`op=`* operators differently, and lists do this.
+*  `a += b` verhält sich nicht immer wie `a = a + b`. Klassen *können* die *`op=`* Operatoren unterschiedlich implementieren und Listen tun das.
 
-* The expression `a = a + [5,6,7,8]` generates a new list and sets `a`'s reference to that new list, leaving `b` unchanged.
+* Der Ausdruck `a = a + [5,6,7,8]` generiert eine neue Liste und setzt `a`s Referenz auf diese neue Liste, wodurch `b` unverändert bleibt.
 
-* The expression `a += [5,6,7,8]` is actually mapped to an "extend" function that operates on the list such that `a` and `b` still point to the same list that has been modified in-place.
+* Der Ausdruck `a += [5,6,7,8]` wird tatsächlich zu einer "extend"-Funktion gemapped wird, die auf der Liste arbeitet, sodass `a` und `b` immer noch auf dieselbe Liste zeigen, die in-place modifiziert wurde.
 
 ---
 
@@ -2652,15 +2653,16 @@ class SomeClass:
 ```
 
 #### 💡 Erklärung
-- Scopes nested inside class definition ignore names bound at the class level.
-- A generator expression has its own scope.
-- Starting from Python 3.X, list comprehensions also have their own scope.
+
+- Innerhalb der Klassendefinition verschachtelte Scopes ignorieren die auf Klassenebene gebundenen Namen.
+- Ein Generator-Ausdruck hat seinen eigenen Scope.
+- Ausgehend von Python 3.X haben List Comprehensions auch ihren eigenen Scope.
 
 ---
 
 ### ▶ Runden wie ein Bankier *
 
-Let's implement a naive function to get the middle element of a list:
+Lass uns eine naive Funktion implementieren, um das mittlere Element einer Liste zu bekommen:
 ```py
 def get_middle(some_list):
     mid_index = round(len(some_list) / 2)
@@ -2669,22 +2671,22 @@ def get_middle(some_list):
 
 **Python 3.x:**
 ```py
->>> get_middle([1])  # looks good
+>>> get_middle([1])  # sieht gut aus
 1
->>> get_middle([1,2,3])  # looks good
+>>> get_middle([1,2,3])  # sieht gut aus
 2
 >>> get_middle([1,2,3,4,5])  # huh?
 2
->>> len([1,2,3,4,5]) / 2  # good
+>>> len([1,2,3,4,5]) / 2  # gut
 2.5
->>> round(len([1,2,3,4,5]) / 2)  # why?
+>>> round(len([1,2,3,4,5]) / 2)  # Warum?
 2
 ```
-It seems as though Python rounded 2.5 to 2.
+Sieht so aus, als ob Python 2.5 zu 2 rundet.
 
 #### 💡 Erklärung:
 
-- This is not a float precision error, in fact, this behavior is intentional. Since Python 3.0, `round()` uses [banker's rounding](https://en.wikipedia.org/wiki/Rounding#Round_half_to_even) where .5 fractions are rounded to the nearest **even** number:
+- Das ist kein Gleitkommafehler, denn faktisch ist dieses Verhalten Absicht. Seit Python 3.0 benutzt `round()` [banker's rounding](https://en.wikipedia.org/wiki/Rounding#Round_half_to_even), wodurch 0,5er-Brüche auf die nächste **gerade** Zahl gerundet werden:
 
 ```py
 >>> round(0.5)
@@ -2693,7 +2695,7 @@ It seems as though Python rounded 2.5 to 2.
 2
 >>> round(2.5)
 2
->>> import numpy  # numpy does the same
+>>> import numpy  # numpy tut dasselbe
 >>> numpy.round(0.5)
 0.0
 >>> numpy.round(1.5)
@@ -2702,9 +2704,9 @@ It seems as though Python rounded 2.5 to 2.
 2.0
 ```
 
-- This is the recommended way to round .5 fractions as described in [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules). However, the other way (round away from zero) is taught in school most of the time, so banker's rounding is likely not that well known. Furthermore, some of the most popular programming languages (for example: JavaScript, Java, C/C++, Ruby, Rust) do not use banker's rounding either. Therefore, this is still quite special to Python and may result in confusion when rounding fractions. 
-- See the [round() docs](https://docs.python.org/3/library/functions.html#round) or [this stackoverflow thread](https://stackoverflow.com/questions/10825926/python-3-x-rounding-behavior) for more information.
-- Note that `get_middle([1])` only returned 1 because the index was `round(0.5) - 1 = 0 - 1 = -1`, returning the last element in the list.
+- Das ist der empfohlene Weg um 0,5er-Brüche zu runden, wie es auch in [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules) beschrieben wurde. Allerdings wird in der Schule meist die andere Methode (von Null abrunden) gelehrt, so dass banker's rounding wahrscheinlich nicht so bekannt ist. Außerdem benutzen manche der populärsten Programmiersprachen (zum Beispiel: JavaScript, Java, C/C++, Ruby, Rust) nicht das banker's rounding. Daher ist das ziemlich besonders für Python und kann zu Verwirrung beim runden von Brüchen führen.
+- Sieh dir die [round() docs](https://docs.python.org/3/library/functions.html#round) oder [diesen stackoverflow thread](https://stackoverflow.com/questions/10825926/python-3-x-rounding-behavior), um mehr Informationen zu bekommen.
+- Beachte, dass `get_middle([1])` nur 1 zurückgegeben hat, weil der Index `round(0.5) - 1 = 0 - 1 = -1` war, wodurch das letzte Element in der Liste zurückgibt.
 
 ---
 
@@ -2712,7 +2714,7 @@ It seems as though Python rounded 2.5 to 2.
 
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
 
-I haven't met even a single experience Pythonist till date who has not come across one or more of the following scenarios,
+Ich habe bis heute keinen einzigen erfahrenen Pythonisten getroffen, der nicht auf eines oder mehrere der folgenden Szenarien gestoßen ist:
 
 1\.
 
@@ -2723,7 +2725,7 @@ x, y = (0, 1) if True else None, None
 **Ausgabe:**
 
 ```py
->>> x, y  # expected (0, 1)
+>>> x, y  # erwartet: (0, 1)
 ((0, 1), None)
 ```
 
@@ -2787,9 +2789,9 @@ b = "javascript"
 **Ausgabe:**
 
 ```py
-# An assert statement with an assertion failure message.
+# Eine assert-Anweisung mit einer assertion-Fehlermeldung.
 >>> assert(a == b, "Both languages are different")
-# No AssertionError is raised
+# Kein AssertionError wurde geworfen
 ```
 
 5\.
