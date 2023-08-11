@@ -3070,7 +3070,7 @@ import antigravity
 ```
 
 **Ausgabe:**
-Sshh... Es ist supergeheim.
+Sshh... It's a super-secret.
 
 #### 💡 Erklärung:
 + Das `antigravity` Modul ist eines der wenigen easter eggs, die von Python Entwicklern veröffentlicht werden.
@@ -3089,7 +3089,7 @@ for i in range(9):
         for k in range(9):
             print("I am trapped, please rescue!")
             if k == 2:
-                goto .breakout # breaking out from a deeply nested loop
+                goto .breakout # Ausbrechen aus einer tief verschachtelten Schleife
 label .breakout
 print("Freedom!")
 ```
@@ -3153,10 +3153,10 @@ Das wars schon.
 #### 💡 Erklärung:
 -Das ist relevant für [PEP-401](https://www.python.org/dev/peps/pep-0401/), was am 1. April 2009 veröffentlicht wurde (nun weißt du, was das heißt).
 - Zitat vom PEP-401
-  
-  > Recognized that the != inequality operator in Python 3.0 was a horrible, finger-pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
-- There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
-- It works well in an interactive environment, but it will raise a `SyntaxError` when you run via python file (see this [issue](https://github.com/satwikkansal/wtfpython/issues/94)). However, you can wrap the statement inside an `eval` or `compile` to get it working,
+
+  > Die FLUFL hat erkannt, dass der Ungleichheitsoperator != in Python 3.0 ein schrecklicher, fingerschmerzverursachender Fehler war, und führt den <> Diamantoperator als einzige Schreibweise wieder ein.
+- Es gab mehrere Dinge, die Onkel Barry im PEP teilte; du kannst das [hier](https://www.python.org/dev/peps/pep-0401/) nachlesen.
+- Es funktioniert gut in einem Interactive Environment, aber es wirft einen `SyntaxError`, wenn du es in einer Python-Datei ausführst (siehe auch dieses [issue](https://github.com/satwikkansal/wtfpython/issues/94)). Du kannst jedoch die Anweisung innerhalb einer `eval` oder `compile` verpacken, um es zum Laufen zu bekommen:
     ```py
     from __future__ import barry_as_FLUFL
     print(eval('"Ruby" <> "Python"'))
@@ -3209,15 +3209,15 @@ False
 False
 >>> love is not True or False
 True
->>> love is not True or False; love is love  # Love is complicated
+>>> love is not True or False; love is love  # Liebe ist kompliziert
 True
 ```
 
 #### 💡 Erklärung:
 
-* `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
-* And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, **the code for the Zen violates itself** (and that's probably the only place where this happens).
-* Regarding the statement `love is not True or False; love is love`, ironic but it's self-explanatory (if not, please see the examples related to `is` and `is not` operators).
+* Das `this` Modul in Python ist ein Easter Egg für den Zen von Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
+* Und wenn du denkst, dass das schon interessant genug ist, sieh dir die Implementierung von [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py) an. Interessanterweise **verstößt der Code für das Zen gegen sich selbst** (und das ist wahrscheinlich der einzige Ort, an dem dies geschieht).
+* Die Aussage `love is not True or False; love is love` ist ironisch, aber selbsterklärend (wenn nicht, sieh dir die Beispiele zu den `is` und `is not` Operatoren an).
 
 ---
 
@@ -3244,7 +3244,7 @@ Exists!
 Does not exist
 ```
 
-**The `else` clause in exception handling.** Ein Beispiel:
+**Die `else`-Klausel in der Behandlung von Exceptions.** Ein Beispiel:
 
 ```py
 try:
@@ -3261,8 +3261,8 @@ Try block executed successfully...
 ```
 
 #### 💡 Erklärung:
-- The `else` clause after a loop is executed only when there's no explicit `break` after all the iterations. You can think of it as a "nobreak" clause.
-- `else` clause after a try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
+- Die `else`-Klausel nach einer Schleife wird nur dann ausgeführt, wenn es kein explizites `break` nach allen Iterationen gibt. Du kannst es dir als eine "nobreak"-Klausel vorstellen.
+- Eine `else`-Klausel nach einem try-Block wird auch "completion clause" genannt, da wenn die `else`-Klausel in einer `try`-Anweisung erreicht wird, dies bedeutet, dass der try-Block tatsächlich komplett erfolgreich durchlief.
 
 ---
 ### ▶ Ellipsen *
@@ -3287,14 +3287,14 @@ Ellipsis
 ```
 
 #### 💡 Erklärung
-- In Python, `Ellipsis` ist ein global verfügbares built-in Objekt, was äquivalent ist zu `...`.
+- In Python ist `Ellipsis` ein global verfügbares built-in Objekt, was äquivalent zu `...` ist.
     ```py
     >>> ...
     Ellipsis
     ```
-- Ellipsis can be used for several purposes,
-    + As a placeholder for code that hasn't been written yet (just like `pass` statement)
-    + In slicing syntax to represent the full slices in remaining direction
+- Ellipsen können für verschiedene Dinge eingesetzt werden,
+    + Als ein Platzhalter für Code, der noch nicht geschrieben wurde (wie auch die `pass`-Anweisung)
+    + In Slicing-Syntax, um die vollen Slices in der übrigen Richtung zu repräsentieren
     ```py
     >>> import numpy as np
     >>> three_dimensional_array = np.arange(8).reshape(2, 2, 2)
@@ -3310,18 +3310,18 @@ Ellipsis
         ]
     ])
     ```
-    So our `three_dimensional_array` is an array of array of arrays. Let's say we want to print the second element (index `1`) of all the innermost arrays, we can use Ellipsis to bypass all the preceding dimensions
+    Also ist unser `three_dimensional_array` ein Array von Arrays von Arrays. Angenommen, wir wollen das zweite Element (index `1`) aller innersten Arrays ausgeben, dann können wir Ellipsis verwenden, um alle vorhergehenden Dimensionen zu umgehen
     ```py
     >>> three_dimensional_array[:,:,1]
     array([[1, 3],
        [5, 7]])
-    >>> three_dimensional_array[..., 1] # using Ellipsis.
+    >>> three_dimensional_array[..., 1] # Benutzen der Ellipsis.
     array([[1, 3],
        [5, 7]])
     ```
-    Note: this will work for any number of dimensions. You can even select slice in first and last dimension and ignore the middle ones this way (`n_dimensional_array[firs_dim_slice, ..., last_dim_slice]`)
-    + In [type hinting](https://docs.python.org/3/library/typing.html) to indicate only a part of the type (like `(Callable[..., int]` or `Tuple[str, ...]`))
-    + You may also use Ellipsis as a default function argument (in the cases when you want to differentiate between the "no argument passed" and "None value passed" scenarios).
+    Beachte: dies funktioniert für eine beliebige Anzahl von Dimensionen. Auf diese Weise kannst du sogar die erste und letzte Dimension auswählen und die mittleren ignorieren. (`n_dimensional_array[firs_dim_slice, ..., last_dim_slice]`)
+    + In [type hinting](https://docs.python.org/3/library/typing.html) um nur einen Teil des Typs anzugeben (wie `(Callable[..., int]` oder `Tuple[str, ...]`))
+    + Du kannst Ellipsis auch als default-Argument einer Funktion verwenden (in den Fällen, wo du zwischen den Szenarien "no argument passed" und "None value passed" unterscheiden willst).
 
 ---
 
@@ -3339,8 +3339,8 @@ Die Schreibweise ist beabsichtigt. Bitte schicke keinen Patch hierfür ab.
 ```
 
 #### 💡 Erklärung:
-- Hash of infinity is 10⁵ x π.
-- Interestingly, the hash of `float('-inf')` is "-10⁵ x π" in Python 3, whereas "-10⁵ x e" in Python 2.
+- Der Hash von infinity ist 10⁵ x π.
+- Interessanterweise ist der Hash von `float('-inf')` "-10⁵ x π" in Python 3, während er in Python 2 "-10⁵ x e" ist.
 
 ---
 
@@ -3410,12 +3410,12 @@ AttributeError: 'A' object has no attribute '__variable'
 
 #### 💡 Erklärung:
 
-* [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) wird verwendet, um Namenskollisionen zwischen verschiedenen namespaces zu vermeiden.
-* In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore a.k.a "dunder") and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
-* So, to access `__honey` attribute in the first snippet, we had to append `_Yo` to the front, which would prevent conflicts with the same name attribute defined in any other class.
-* But then why didn't it work in the second snippet? Because name mangling excludes the names ending with double underscores.
-* The third snippet was also a consequence of name mangling. The name `__variable` in the statement `return __variable` was mangled to `_A__variable`, which also happens to be the name of the variable we declared in the outer scope.
-* Also, if the mangled name is longer than 255 characters, truncation will happen.
+* [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) wird verwendet, um Namenskollisionen zwischen verschiedenen Namespaces zu vermeiden.
+* In Python modifiziert (lies: demoliert) der Interpreter die Namen der Klassenattribute, die mit `__` (doppelter Unterstrich a.k.a "dunder") anfangen und nicht mit mehr als einem Unterstrich am Ende enden, indem er `_NameOfTheClass` voranstellt.
+* Um also auf das `__honey`-Attribut im ersten Schnipsel zugreifen zu können, müssten wir `_Yo` vorne anhängen, was Konflikte mit demselben Attributsnamen, das in einer anderen Klasse definiert ist, verhindern würde.
+* Aber warum hat es dann im zweiten Schnipsel nicht geklappt? Weil Name Mangling die Namen ausschließt, die mit doppelten Unterstrichen enden.
+* Der dritte Schnipsel war auch eine Konsequenz des Name Manglings. Der Name `__variable` in der Anweisung `return __variable` wurde zu `_A__variable`, was zufällig auch der Name der Variablen ist, die wir im äußeren Scope deklariert haben.
+* Wenn der demolierte Name länger als 255 Zeichen ist, wird er außerdem abgeschnitten.
 
 ---
 ---
@@ -3434,27 +3434,27 @@ AttributeError: 'A' object has no attribute '__variable'
 
 Was?
 
-**Note:** Um dies zu reproduzieren, kopiere einfach die Anweisungen aus dem obigen Ausschnitt und füge sie in deine Datei/Shell ein.
+**Beachte:** Um dies zu reproduzieren, kopiere einfach die Anweisungen aus dem obigen Ausschnitt und füge sie in deine Datei/Shell ein.
 
 #### 💡 Erklärung
 
-Some non-Western characters look identical to letters in the English alphabet but are considered distinct by the interpreter.
+Einige nicht-westliche Schriftzeichen sehen genauso aus wie die Buchstaben des englischen Alphabets, werden aber von Interpreter als unterschiedlich angesehen.
 
 ```py
->>> ord('е') # cyrillic 'e' (Ye)
+>>> ord('е') # kyrillisches 'e' (Ye)
 1077
->>> ord('e') # latin 'e', as used in English and typed using standard keyboard
+>>> ord('e') # lateinisches 'e', wie es in Englisch benutzt wird und auch auf einer Standard-Tastatur vorkommt
 101
 >>> 'е' == 'e'
 False
 
->>> value = 42 # latin e
->>> valuе = 23 # cyrillic 'e', Python 2.x interpreter would raise a `SyntaxError` here
+>>> value = 42 # lateinisches e
+>>> valuе = 23 # kyrillisches 'e', der Python 2.x Interpreter würde hier einen `SyntaxError` werfen
 >>> value
 42
 ```
 
-The built-in `ord()` function returns a character's Unicode [code point](https://en.wikipedia.org/wiki/Code_point), and different code positions of Cyrillic 'e' and Latin 'e' justify the behavior of the above example.
+Die built-in `ord()`-Funktion gibt den Unicode eines Characters zurück [code point](https://en.wikipedia.org/wiki/Code_point), und unterschiedliche Codepositionen des kyrillischen "e" und des lateinischen "e" begründen das Verhalten des obigen Beispiels.
 
 ---
 
@@ -3486,8 +3486,8 @@ Wo ist der Nobelpreis?
 
 #### 💡 Erklärung:
 
-* Notice that the numpy array created in the `energy_send` function is not returned, so that memory space is free to reallocate.
-* `numpy.empty()` returns the next free memory slot without reinitializing it. This memory spot just happens to be the same one that was just freed (usually, but not always).
+* Beachte, dass das numpy array, was in der Funktion `energy_send` erzeugt wurde, nicht zurückgegeben wird, so dass Speicherplatz für die Neuzuweisung frei ist.
+* `numpy.empty()` gibt den nächsten freien Speicherplatz zurück, ohne ihn neu zu initialisieren. Dieser Speicherplatz ist zufällig der gleiche, der gerade freigegeben wurde (normalerweise, aber nicht immer).
 
 ---
 
@@ -3496,7 +3496,7 @@ Wo ist der Nobelpreis?
 ```py
 def square(x):
     """
-    Eine einfahce FUnktion, um das Quadrat einer Zahl durch Addition zu bestimmen
+    Eine einfahce Funktion, um das Quadrat einer Zahl durch Addition zu bestimmen
     """
     sum_so_far = 0
     for counter in range(x):
@@ -3517,12 +3517,12 @@ Sollte das nicht 100 sein?
 
 #### 💡 Erklärung
 
-* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
-* This is how Python handles tabs:
+* **Vermische keine Leerzeichen und Tabs!** Das Zeichen unmittelbar vor dem Return ist ein "Tab", und der Code ist an anderer Stelle im Beispiel um ein Vielfaches von "4 Leerzeichen" eingerückt.
+* So geht Python mit Tabs um:
   
-  > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
-* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
-* Python 3 is kind enough to throw an error for such cases automatically.
+  > Als erstes werden Tabs (von links nach rechts) durch ein bis acht Leerzeichen ersetzt, so dass die Gesamtzahl der Zeichen bis einschließlich der Ersetzung ein Vielfaches von acht ist <...>
+* So wird "tab" in der letzten Zeile der Funktion `square` durch acht Leerzeichen ersetzt und gelangt in die Schleife.
+* Python 3 ist so freundlich, in solchen Fällen automatisch einen Fehler zu melden.
 
     **Ausgabe (Python 3.x):**
     ```py
