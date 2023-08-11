@@ -2023,23 +2023,23 @@ a, b = a[b] = {}, 5
 
 #### 💡 Erklärung:
 
-* According to [Python language reference](https://docs.python.org/3/reference/simple_stmts.html#assignment-statements), assignment statements have the form
+* Nach der [Python-Sprachreferenz](https://docs.python.org/3/reference/simple_stmts.html#assignment-statements) haben Zuweisungsanweisungen die Form
   ```
   (target_list "=")+ (expression_list | yield_expression)
   ```
-  and
-  
-> An assignment statement evaluates the expression list (remember that this can be a single expression or a comma-separated list, the latter yielding a tuple) and assigns the single resulting object to each of the target lists, from left to right.
+  und
 
-* The `+` in `(target_list "=")+` means there can be **one or more** target lists. In this case, target lists are `a, b` and `a[b]` (note the expression list is exactly one, which in our case is `{}, 5`).
+> Eine Zuweisungsanweisung wertet eine Liste von Ausdrücken aus (denk daran, dass dies ein einzelner Ausdruck oder eine durch Komma getrennte Liste sein kann, wobei letzteres ein Tupel ergibt) und weist dem einzelnen resultierenden Objekt jeder der Ziellisten zu, von links nach rechts.
 
-* After the expression list is evaluated, its value is unpacked to the target lists from **left to right**. So, in our case, first the `{}, 5` tuple is unpacked to `a, b` and we now have `a = {}` and `b = 5`.
+* Das `+` in `(target_list "=")+` meint, dass es  **eine oder mehrere** Ziellisten geben kann. In diesem Fall sind die Ziellisten `a, b` und `a[b]` (beachte, dass die Liste von Ausdrücken exakt eine ist, was in unserem Fall `{}, 5` ist).
 
-* `a` is now assigned to `{}`, which is a mutable object.
+* Nachdem die Liste der Ausdrücke ausgewertet wurde, wird ihr Wert von **links nach rechts** in die Ziellisten entpackt. Also wird, in unserem Fall, zuerst das Tupel `{}, 5` zu `a, b` entpackt und wir haben nun `a = {}` und `b = 5`.
 
-* The second target list is `a[b]` (you may expect this to throw an error because both `a` and `b` have not been defined in the statements before. But remember, we just assigned `a` to `{}` and `b` to `5`).
+* `a` wird nun `{}` zugewiesen, was ein veränderliches Objekt ist.
 
-* Now, we are setting the key `5` in the dictionary to the tuple `({}, 5)` creating a circular reference (the `{...}` in the Ausgabe refers to the same object that `a` is already referencing). Another simpler example of circular reference could be
+* Die zweite Zielliste ist `a[b]` (vielleicht hättest du erwartet, dass dies einen Fehler wirft, da sowohl `a` als auch `b` nicht in der Anweisung vorher definiert wurden. Aber denk daran, dass wir gerade `a` dem `{}` und `b` der `5` zugewiesen haben).
+
+* Jetzt setzen wir den Schlüssel `5` im Dictionary auf das Tupel `({}, 5)`, was einen Zirkelschluss erzeugt (das `{...}` in der Ausgabe bezieht sich auf dasselbe Objekt, was `a` bereits referenziert). Ein weiteres, einfacheres Beispiel einer zirkulären Referenz:
   ```py
   >>> some_list = some_list[0] = [0]
   >>> some_list
@@ -2051,14 +2051,14 @@ a, b = a[b] = {}, 5
   >>> some_list[0][0][0][0][0][0] == some_list
   True
   ```
-  Similar is the case in our example (`a[b][0]` is the same object as `a`)
+  Ähnlich verhält es sich in unserem Beispiel (`a[b][0]` ist dasselbe Objekt wie `a`)
 
 * Um zusammenzufassen, kannst du das Beispiel wie folgt aufgliedern
   ```py
   a, b = {}, 5
   a[b] = a, b
   ```
-  And the circular reference can be justified by the fact that `a[b][0]` ist dasselbe Objekt wie `a`
+  Und der zirkuläre Bezug lässt sich durch die Tatsache rechtfertigen, dass `a[b][0]` dasselbe Objekt ist wie `a`
   ```py
   >>> a[b][0] is a
   True
@@ -2134,10 +2134,10 @@ Ja, es läuft exakt **acht** mal und stoppt dann.
 #### 💡 Erklärung:
 
 * Iteration über ein Dictionary, welches du zur selben Zeit modifizierst, wird nicht unterstützt.
-* It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
-* How deleted keys are handled and when the resize occurs might be different for different Python implementations.
-* So for Python versions other than Python 2.7 - Python 3.5, the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/wtfpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
-* Python 3.7.6 onwards, you'll see `RuntimeError: dictionary keys changed during iteration` exception if you try to do this.
+* Es läuft acht Mal, weil sich die Größe des Dictionary an diesem Punkt ändert, um mehr Schlüssel beherbergen zu können (wir haben acht Löscheinträge, daher ist eine Größenänderung nötig). Das ist tatsächlich ein Implementierungsdetail.
+* Wie gelöschte Schlüssel gehandhabt werden und wann eine Größenänderung erfolgt, kann sich je nach Python-Implementierung unterscheiden.
+* Daher mag sich die Anzahl für andere Python-Versionen, als für 2.7 - 3.5, von 8 unterscheiden (aber wie die Anzahl auch sein mag, sie wird bei jedem Programmdurchlauf gleich bleiben). Du kannst ein paar Diskussionen rund um das Thema [hier](https://github.com/satwikkansal/wtfpython/issues/53) oder in [diesem](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread finden.
+* Ab Python 3.7.6 wirst du eine `RuntimeError: dictionary keys changed during iteration` Exception sehen, wenn du so etwas versuchst.
 
 ---
 
@@ -2161,7 +2161,7 @@ class SomeClass:
 Deleted!
 ```
 
-Pha, deleted zuletzt. You might have guessed what saved `__del__` from being called in our first attempt to delete `x`. Ergänzen wir das Beispiel um weitere Aspekte
+Endlich wird deleted ausgegeben. Vielleicht erahnst du schon schon, warum `__del__` nicht schon bei unserem ersten Versuch, `x` zu löschen, aufgerufen wurde. Ergänzen wir das Beispiel um weitere Aspekte
 
 2\.
 ```py
@@ -2176,13 +2176,13 @@ Deleted!
 {'__builtins__': <module '__builtin__' (built-in)>, 'SomeClass': <class __main__.SomeClass at 0x7f98a1a5f668>, '__package__': None, '__name__': '__main__', '__doc__': None}
 ```
 
-Okay, now it's deleted :confused:
+Okay, jetzt ist es gelöscht :confused:
 
 #### 💡 Erklärung:
-+ `del x` doesn’t directly call `x.__del__()`.
-+ When `del x` is encountered, Python deletes the name `x` from current scope and decrements by 1 the reference count of the object `x` referenced. `__del__()` is called only when the object's reference count reaches zero.
-+ In the second Ausgabe snippet, `__del__()` was not called because the previous statement (`>>> y`) in the interactive interpreter created another reference to the same object (specifically, the `_` magic variable which references the result value of the last non `None` expression on the REPL), thus preventing the reference count from reaching zero when `del y` was encountered.
-+ Calling `globals` (or really, executing anything that will have a non `None` result) caused `_` to reference the new result, dropping the existing reference. Now the reference count reached 0 and we can see "Deleted!" being printed (finally!).
++ `del x` ruft nicht direkt `x.__del__()` auf.
++ Wenn auf `del x` gestoßen wird, dann löscht Python den Namen `x` vom momentanen Scope und dekrementiert den Referenz-Counter des Objektes, welches `x` referenziert, um 1. `__del__()` wird nur aufgerufen, wenn der Referenz-Counter des Objektes 0 erreicht.
++ Im zweiten Ausgabe-Schnipsel wurde `__del__()` nicht aufgerufen, weil die vorherige Anweisung (`>>> y`) im interaktiven Interpreter eine neue Referenz zum selben Objekt erzeugt hat (spezifisch die magische Variable `_`, welche das Ergebnis des letzten, nicht-`None` Ausdrucks der REPL referenziert), und daher den Referenz-Counter davon abhält, die 0 zu erreichen, wenn `del y` gelesen wurde.
++ Mit dem Aufruf von `globals` (oder irgendetwas, dass kein Ergebnis hat, dass `None` ist) wurde `_` angewiesen, dass neue Ergebnis zu referenzieren, wodurch die bestehende Referenz fallen gelassen wurde. Nun hat der Referenz-Counter 0 erreicht und wir können sehen, dass "Deleted!" ausgegeben wurde (Endlich!)
 
 ---
 
@@ -2230,8 +2230,8 @@ UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
 #### 💡 Erklärung:
-* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`, but it has not been initialized previously in the same scope, which throws an error.
-* To modify the outer scope variable `a` in `another_func`, we have to use the `global` keyword.
+* Wenn du eine einer Variablen in einem Scope etwas zuweist, dann wird das für diesen Scope lokal. Also wird `a` lokal für den Scope von `another_func`, aber es wurde vorher nicht im selben Scope initialisiert, was einen Fehler wirft.
+* Um die Outer-Scope-Variable `a` in `another_func` zu modifizieren, müssen wir das `global` Schlüsselwort verwenden.
   ```py
   def another_func()
       global a
@@ -2244,8 +2244,8 @@ UnboundLocalError: local variable 'a' referenced before assignment
   >>> another_func()
   2
   ```
-* In `another_closure_func`, `a` becomes local to the scope of `another_inner_func`, but it has not been initialized previously in the same scope, which is why it throws an error. 
-* To modify the outer scope variable `a` in `another_inner_func`, use the `nonlocal` keyword. The nonlocal statement is used to refer to variables defined in the nearest outer (excluding the global) scope.
+* In `another_closure_func` wird `a` für den Scope von `another_inner_func` lokal, aber es wurde vorher nicht im selben Scope initialisiert, was der Grund für den Fehler ist.
+* Um die Outer-Scope-Variable `a` in `another_inner_func` zu modifizieren, brauchen wir das `nonlocal` Schlüsselwort. Die nonlocal-Anweisung bezieht sich auf Variablen, die im nächstgelegenen äußeren Scope (globaler exkludiert) definiert wurden.
   ```py
   def another_func():
       a = 1
@@ -2261,8 +2261,8 @@ UnboundLocalError: local variable 'a' referenced before assignment
   >>> another_func()
   2
   ```
-* The keywords `global` and `nonlocal` tell the python interpreter to not declare new variables and look them up in the corresponding outer scopes.
-* Read [this](https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
+* Die Schlüsselwörter `global` und `nonlocal` teilen dem Python Interpreter mit, keine neuen Variablen zu deklarieren und diese im entsprechenden äußeren Scope nachzuschlagen.
+* Lies [diesen](https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) kurzen, aber tollen Artikel durch, der ein super Leitfaden ist, um mehr über Namespaces und Scope-Auflösung in Python zu lernen. 
 
 ---
 
@@ -2303,7 +2303,7 @@ Kannst du erklären, warum die Ausgabe `[2, 4]` ist?
 
 #### 💡 Erklärung:
 
-* It's never a good idea to change the object you're iterating over. The correct way to do so is to iterate over a copy of the object instead, and `list_3[:]` does just that.
+* Es ist nie eine gute Idee ein Objekt zu verändern, worüber du gerade iterierst. Korrekt wäre es stattdessen über eine Kopie des Objektes zu iterieren, und `list_3[:]` tut genau das.
 
      ```py
      >>> some_list = [1, 2, 3, 4]
@@ -2313,13 +2313,13 @@ Kannst du erklären, warum die Ausgabe `[2, 4]` ist?
      139798779601192
      ```
 
-**Difference between `del`, `remove`, and `pop`:**
-* `del var_name` just removes the binding of the `var_name` from the local or global namespace (That's why the `list_1` is unaffected).
-* `remove` removes the first matching value, not a specific index, raises `ValueError` if the value is not found.
-* `pop` removes the element at a specific index and returns it, raises `IndexError` if an invalid index is specified.
+**Unterschied zwischen `del`, `remove`, und `pop`:**
+* `del var_name` entfernt nur die Bindung von `var_name` vom lokalen oder globalen Namespace (Deshalb ist `list_1` davon nicht betroffen).
+* `remove` entfernt den ersten Wert, der übereinstimmt, keinen spezifischen Index, und wirft einen `ValueError`, wenn der Wert nicht gefunden werden konnte.
+* `pop` entfernt ein Element am angegebenen Index und gibt dieses zurück und wirft einen `IndexError`, wenn ein falscher Index angegeben wurde.
 
-**Why the Ausgabe is `[2, 4]`?**
-- The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down, i.e., `2` is at index 0, and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. A similar thing will happen with every alternate element in the list sequence.
+**Warum ist die Ausgabe `[2, 4]`?**
+- Die Listeniteration wird über den Index ausgeführt und wenn wir `1` von `list_2` oder `list_4` entfernen, ist der Inhalt der Listen nun `[2, 3, 4]`. Die verbliebenen Elemente werden heruntergeschoben, d.h.., `2` ist am Index 0, und `3` ist am Index 1. Da die nächste Iteration an Index 1 nachsehen wird (wo `3` steht), wird die `2` komplett übersprungen. Ähnliches wird anderen Element in einer Listensequenz passieren.
 
 * Ich verweise auf diesen StackOverflow [thread](https://stackoverflow.com/questions/45946228/what-happens-when-you-try-to-delete-a-list-element-while-iterating-over-it), welches das Beispiel erklärt
 * Siehe auch diesen schönen StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) für ein ähnliches Beispiel im Bezug auf Dictionaries in Python.
@@ -2340,15 +2340,15 @@ Kannst du erklären, warum die Ausgabe `[2, 4]` ist?
 >>> numbers_iter = iter(numbers)
 >>> list(zip(numbers_iter, first_three)) 
 [(0, 0), (1, 1), (2, 2)]
-# so far so good, let's zip the remaining
+# so weit, so gut, lass uns den Rest zippen
 >>> list(zip(numbers_iter, remaining))
 [(4, 3), (5, 4), (6, 5)]
 ```
-Where did element `3` go from the `numbers` list?
+Wo ist das Element `3` von der Liste `numbers` hin?
 
 #### 💡 Erklärung:
 
-- From Python [docs](https://docs.python.org/3.3/library/functions.html#zip), here's an approximate implementation of zip function,
+- Von der Python-[Dokumentation](https://docs.python.org/3.3/library/functions.html#zip), hier ist eine ungefähre Implementierung der zip-Funktion:
     ```py
     def zip(*iterables):
         sentinel = object()
@@ -2361,9 +2361,9 @@ Where did element `3` go from the `numbers` list?
                 result.append(elem)
             yield tuple(result)
     ```
-- So the function takes in arbitrary number of iterable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
-- The caveat here is when any iterable is exhausted, the existing elements in the `result` list are discarded. That's what happened with `3` in the `numbers_iter`.
-- The correct way to do the above using `zip` would be,
+- Die Funktion nimmt also beliebige Zahlen von Iterable-Objekten, fügt jedes ihrer Elemente der Liste `result` hinzu, indem es die Funktion `next` auf ihnen aufruft, und stoppt immer dann, wenn einer der Iterables aufgebraucht ist. 
+- Die Einschränkung liegt hier darin, dass wenn ein Iterable aufgebraucht ist, die verbleibenden Elemente in der `result` Liste verworfen werden. Das ist mit der `3` in `numbers_iter` passiert.
+- Die korrekte Vorgehensweise mit `zip` für das obige sähe wie folgt aus:
     ```py
     >>> numbers = list(range(7))
     >>> numbers_iter = iter(numbers)
@@ -2372,7 +2372,7 @@ Where did element `3` go from the `numbers` list?
     >>> list(zip(remaining, numbers_iter))
     [(3, 3), (4, 4), (5, 5), (6, 6)]
     ```
-    The first argument of zip should be the one with fewest elements.
+    Das erste Argument von zip sollte das mit der geringsten Anzahl an Elementen sein.
 
 ---
 
@@ -2392,11 +2392,11 @@ print(x, ': x in global')
 6 : x in global
 ```
 
-But `x` was never defined outside the scope of for loop...
+Aber `x` wurde nie außerhalb des Scopes der for-Schleife definiert...
 
 2\.
 ```py
-# This time let's initialize x first
+# Las uns dieses Mal x zuerst initialisieren
 x = -1
 for x in range(7):
     if x == 6:
