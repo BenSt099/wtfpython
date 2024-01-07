@@ -1,8 +1,8 @@
-<p align="center"><img src="/images/logo.png" alt=""></p>
+<p align="center"><img src="/images/logo.png#gh-light-mode-only" alt=""><img src="/images/logo-dark.png#gh-dark-mode-only" alt=""></p>
 <h1 align="center">What the f*ck Python! 😱</h1>
 <p align="center">Entdecke und verstehe Python durch überraschende Code-Schnipsel.</p>
 
-Übersetzungen: [English](https://github.com/satwikkansal/wtfpython) |
+Übersetzungen: [English](https://github.com/satwikkansal/wtfpython) | [Chinesisch 中文](https://github.com/robertparley/wtfpython-cn) | [Vietnamesisch Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Spanisch Español](https://web.archive.org/web/20220511161045/https://github.com/JoseDeFreitas/wtfpython-es) | [Koreanisch 한국어](https://github.com/buttercrab/wtfpython-ko) | [Russisch Русский](https://github.com/frontdevops/wtfpython) | [Übersetzung hinzufügen](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
 
 Andere Modi: [Interaktive Website](https://wtfpython-interactive.vercel.app) | [Interaktives Notebook](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
 
@@ -1224,6 +1224,7 @@ False
 **Ausgabe:**
 ```py
 >>> from collections import Hashable
+>>> from collections.abc import Hashable
 >>> issubclass(list, object)
 True
 >>> issubclass(object, Hashable)
